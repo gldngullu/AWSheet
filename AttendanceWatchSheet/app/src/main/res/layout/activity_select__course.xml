@@ -4,60 +4,180 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Select_Course">
+    tools:context=".Select_Course"
+    tools:layout_editor_absoluteY="25dp">
 
-    <TableLayout
-        android:layout_width="368dp"
-        android:layout_height="551dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+
+    <android.support.design.widget.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </TableLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/GoodDayText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Good Day <username> , Sir!"
-        tools:layout_editor_absoluteX="107dp"
-        tools:layout_editor_absoluteY="31dp" />
+        android:text="@string/good_day_username_sir"
+        tools:layout_editor_absoluteX="102dp"
+        tools:layout_editor_absoluteY="16dp" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="55dp"
-        android:layout_height="39dp"
-        android:text="Course Addition"
-        tools:layout_editor_absoluteX="165dp"
-        tools:layout_editor_absoluteY="88dp" />
+        android:id="@+id/labelText"
+        android:layout_width="61dp"
+        android:layout_height="38dp"
+        android:text="@string/course_addition"
+        tools:layout_editor_absoluteX="155dp"
+        tools:layout_editor_absoluteY="35dp" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="67dp"
-        android:layout_height="70dp"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="31dp"
+        android:layout_width="50dp"
+        android:layout_height="57dp"
+        android:contentDescription="TODO"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="9dp"
         tools:srcCompat="@tools:sample/avatars[0]" />
+
+    <Button
+        android:id="@+id/settings"
+        android:layout_width="50dp"
+        android:layout_height="35dp"
+        tools:layout_editor_absoluteX="328dp"
+        tools:layout_editor_absoluteY="11dp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="118dp"
+        android:layout_height="139dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="84dp">
+
+        <TextView
+            android:id="@+id/form_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/course_name"
+            tools:layout_editor_absoluteX="59dp"
+            tools:layout_editor_absoluteY="143dp" />
+
+        <TextView
+            android:id="@+id/assistant"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50px"
+            android:text="@string/assistant" />
+
+        <TextView
+            android:id="@+id/syllabus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100px"
+            android:text="TextView"
+            tools:text="Syllabus :" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="162dp"
+        android:layout_height="139dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="155dp"
+        tools:layout_editor_absoluteY="84dp">
+
+        <Spinner
+            android:id="@+id/courselist"
+            android:layout_width="151dp"
+            android:layout_height="25dp"
+            android:paddingBottom="50px"
+            android:visibility="visible"
+            tools:layout_editor_absoluteX="176dp"
+            tools:layout_editor_absoluteY="143dp" />
+
+        <Spinner
+            android:id="@+id/assistantlist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="42px"
+            android:visibility="visible" />
+
+        <EditText
+            android:id="@+id/syllabusLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45px"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="284dp"
+
+        android:layout_height="189dp"
+        android:maxHeight="171dp"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="223dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="187dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/gradeAdder"
+                    android:layout_width="109dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="75dp"
+                    android:text="Grade Adder" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/datepicker"
+        android:layout_width="104dp"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:ems="10"
+        android:inputType="date"
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="412dp"
+        tools:targetApi="o" />
+
+    <TextView
+        android:id="@+id/datepickertext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date_picker"
+        tools:layout_editor_absoluteX="205dp"
+        tools:layout_editor_absoluteY="422dp" />
+
+    <Button
+        android:id="@+id/createbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/create"
+        tools:layout_editor_absoluteX="82dp"
+        tools:layout_editor_absoluteY="466dp" />
+
+    <Button
+        android:id="@+id/cancelbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel"
+        tools:layout_editor_absoluteX="216dp"
+        tools:layout_editor_absoluteY="466dp" />
+
+
 </android.support.constraint.ConstraintLayout>
