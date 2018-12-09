@@ -5,17 +5,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    tools:context=".MainActivity"
+    tools:context=".AttandanceSelectorActivity"
     android:layout_gravity="center"
     >
-
 
     <TableRow
         android:id="@+id/qrRow"
         android:minHeight="100dp"
         android:padding="10dp"
-        android:layout_margin="10dp"
+        android:layout_margin="15dp"
         android:background="@drawable/border_row"
+        android:onClick="goAttandance"
         >
 
         <TextView
@@ -40,8 +40,7 @@
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="50dp"
-                android:text="  Easy to use fast method for attandance tracking "
-                />
+                android:text="  Easy to use fast method for attandance tracking" />
 
         </LinearLayout>
 
@@ -51,8 +50,9 @@
         android:id="@+id/swipeRow"
         android:minHeight="100dp"
         android:padding="10dp"
-        android:layout_margin="10dp"
+        android:layout_margin="15dp"
         android:background="@drawable/border_row"
+        android:onClick="goAttandance"
         >
 
         <TextView
@@ -89,6 +89,7 @@
         android:padding="10dp"
         android:layout_margin="10dp"
         android:background="@drawable/border_row"
+        android:onClick="goAttandance"
         >
 
         <TextView
@@ -99,7 +100,7 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:paddingTop="10dp"
+            android:paddingTop="15dp"
             android:orientation="vertical"
             >
 
