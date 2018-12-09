@@ -1,0 +1,178 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:2:1-25:12
+INJECTED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:2:1-25:12
+INJECTED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:2:1-25:12
+INJECTED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:2:1-25:12
+MERGED from [com.android.support:design:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\35dc3fb6d716f6afb149f9ecddfc28b5\AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\1ef5e5ff92c9334d437bc08808c0b050\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\90f0661179618a5dbab06f128d4f5157\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\fec3b563d5aea0825b74b5d7fb6ec586\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\7d733bf5e051f0a8dbdcb549edc0549f\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-28.0.0.aar\0d1ce4276e690b6f0f67caf4f22b4838\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\bd87c4465b9ae42de8c9f8490c2eab5a\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\38f5a9384fe7f533c3eec0cc874c9768\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\96a7c97d5708c3d80ed3b75abc947fad\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\transition-28.0.0.aar\2ca571a8322a6214c4e617679a839a6b\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\4ca59ee401354ab9c562b7a714eb761d\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\16a33ff023e40958fc5172025d2b5dbf\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\8262d5886d3a3e1a07607c8d5967ebad\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\74f0e7dab1e07083800fcba970e2b765\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\f6a08b879384521359316fc22c4d3af8\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\0d70adaeef31b835c4cd8d0b618e480b\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\f93c4206e299c51a8dd4eaf0e2d7d4d0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\7138f6ac41a18ad8e819b7735d046412\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\5dd8963f21acde20f9de51acd82b76eb\AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\fb2a67e6b0a1d751a531723d7efd520e\AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\88cde449a4b807015a40c848e5a649fb\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\cardview-v7-28.0.0.aar\96e8b8f2d5b0d8630551fcfe1a220057\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\0987b432bf00fb3369868ec1a3ea3520\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\d4e6f1d7615423d87bb0963d3072a92b\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\bc6191771ad51518593c30e4942cf100\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\d4ab5e73b77651a98e080a6f401874b9\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\a8f6a034cf5394301ced7187a516b6eb\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\0fc6ac4bcf1b4727226f01c93f2106f2\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\b29f6e945b3117e740144464c9c577cb\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\88b2a61d8aed7e6896ba8040d71ba6c2\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\dab380a57f33e9b5badadb358e1aa3e2\AndroidManifest.xml:17:1-22:12
+INJECTED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:2:1-25:12
+INJECTED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:2:1-25:12
+INJECTED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:2:1-25:12
+	package
+		ADDED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:3:5-53
+		INJECTED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:2:1-25:12
+		INJECTED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:2:1-25:12
+		INJECTED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:2:11-69
+application
+ADDED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:5:5-23:19
+MERGED from [com.android.support:design:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\35dc3fb6d716f6afb149f9ecddfc28b5\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\35dc3fb6d716f6afb149f9ecddfc28b5\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\90f0661179618a5dbab06f128d4f5157\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\90f0661179618a5dbab06f128d4f5157\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\5dd8963f21acde20f9de51acd82b76eb\AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\5dd8963f21acde20f9de51acd82b76eb\AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\fb2a67e6b0a1d751a531723d7efd520e\AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\fb2a67e6b0a1d751a531723d7efd520e\AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\5dd8963f21acde20f9de51acd82b76eb\AndroidManifest.xml:22:18-91
+	android:supportsRtl
+		ADDED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:10:9-35
+	android:label
+		ADDED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:8:9-41
+	android:roundIcon
+		ADDED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:9:9-54
+	android:icon
+		ADDED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:7:9-43
+	android:allowBackup
+		ADDED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:6:9-35
+	android:theme
+		ADDED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:11:9-40
+activity#com.example.gldng.attendancewatchsheet.AddUser
+ADDED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:12:9-18:20
+	android:name
+		ADDED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:12:19-42
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:13:13-17:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:14:17-69
+	android:name
+		ADDED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:14:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:16:17-77
+	android:name
+		ADDED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:16:27-74
+activity#com.example.gldng.attendancewatchsheet.Select_Course
+ADDED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:19:9-51
+	android:name
+		ADDED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:19:19-48
+activity#com.example.gldng.attendancewatchsheet.Courses_Student
+ADDED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:20:9-22:80
+	android:label
+		ADDED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:22:13-68
+	android:name
+		ADDED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml:21:13-44
+uses-sdk
+INJECTED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml
+MERGED from [com.android.support:design:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\35dc3fb6d716f6afb149f9ecddfc28b5\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\35dc3fb6d716f6afb149f9ecddfc28b5\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\1ef5e5ff92c9334d437bc08808c0b050\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\1ef5e5ff92c9334d437bc08808c0b050\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\90f0661179618a5dbab06f128d4f5157\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\90f0661179618a5dbab06f128d4f5157\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\fec3b563d5aea0825b74b5d7fb6ec586\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\fec3b563d5aea0825b74b5d7fb6ec586\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\7d733bf5e051f0a8dbdcb549edc0549f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\7d733bf5e051f0a8dbdcb549edc0549f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-28.0.0.aar\0d1ce4276e690b6f0f67caf4f22b4838\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-28.0.0.aar\0d1ce4276e690b6f0f67caf4f22b4838\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\bd87c4465b9ae42de8c9f8490c2eab5a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\bd87c4465b9ae42de8c9f8490c2eab5a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\38f5a9384fe7f533c3eec0cc874c9768\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\38f5a9384fe7f533c3eec0cc874c9768\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\96a7c97d5708c3d80ed3b75abc947fad\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\96a7c97d5708c3d80ed3b75abc947fad\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\transition-28.0.0.aar\2ca571a8322a6214c4e617679a839a6b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\transition-28.0.0.aar\2ca571a8322a6214c4e617679a839a6b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\4ca59ee401354ab9c562b7a714eb761d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\4ca59ee401354ab9c562b7a714eb761d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\16a33ff023e40958fc5172025d2b5dbf\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\16a33ff023e40958fc5172025d2b5dbf\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\8262d5886d3a3e1a07607c8d5967ebad\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\8262d5886d3a3e1a07607c8d5967ebad\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\74f0e7dab1e07083800fcba970e2b765\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\74f0e7dab1e07083800fcba970e2b765\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\f6a08b879384521359316fc22c4d3af8\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\f6a08b879384521359316fc22c4d3af8\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\0d70adaeef31b835c4cd8d0b618e480b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\0d70adaeef31b835c4cd8d0b618e480b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\f93c4206e299c51a8dd4eaf0e2d7d4d0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\f93c4206e299c51a8dd4eaf0e2d7d4d0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\7138f6ac41a18ad8e819b7735d046412\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\7138f6ac41a18ad8e819b7735d046412\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\5dd8963f21acde20f9de51acd82b76eb\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\5dd8963f21acde20f9de51acd82b76eb\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\fb2a67e6b0a1d751a531723d7efd520e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\fb2a67e6b0a1d751a531723d7efd520e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\88cde449a4b807015a40c848e5a649fb\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\88cde449a4b807015a40c848e5a649fb\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\cardview-v7-28.0.0.aar\96e8b8f2d5b0d8630551fcfe1a220057\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\cardview-v7-28.0.0.aar\96e8b8f2d5b0d8630551fcfe1a220057\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\0987b432bf00fb3369868ec1a3ea3520\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\0987b432bf00fb3369868ec1a3ea3520\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\d4e6f1d7615423d87bb0963d3072a92b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\d4e6f1d7615423d87bb0963d3072a92b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\bc6191771ad51518593c30e4942cf100\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\bc6191771ad51518593c30e4942cf100\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\d4ab5e73b77651a98e080a6f401874b9\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\d4ab5e73b77651a98e080a6f401874b9\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\a8f6a034cf5394301ced7187a516b6eb\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\a8f6a034cf5394301ced7187a516b6eb\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\0fc6ac4bcf1b4727226f01c93f2106f2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\0fc6ac4bcf1b4727226f01c93f2106f2\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\b29f6e945b3117e740144464c9c577cb\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\b29f6e945b3117e740144464c9c577cb\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\88b2a61d8aed7e6896ba8040d71ba6c2\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\88b2a61d8aed7e6896ba8040d71ba6c2\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\dab380a57f33e9b5badadb358e1aa3e2\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\Mertali\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\dab380a57f33e9b5badadb358e1aa3e2\AndroidManifest.xml:20:5-44
+INJECTED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\AndroidManifest.xml
