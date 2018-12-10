@@ -62,7 +62,9 @@
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="imageAsset" value="C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\res\drawable_icon\activityicon.png" />
+                                      <entry key="iconShape" value="NONE" />
+                                      <entry key="imageAsset" value="C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\res\drawable-hdpi\navigatemember.png" />
+                                      <entry key="outputName" value="navigatemember" />
                                     </map>
                                   </option>
                                 </PersistentState>

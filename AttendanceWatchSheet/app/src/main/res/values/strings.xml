@@ -15,4 +15,7 @@
     <string name="scan">Scan</string>
     <string name="item">Item</string>
     <string name="calendar">Calendar</string>
+    <string name="attend">Attend</string>
+    <string name="member">Member</string>
+    <string name="member">Member</string>
 </resources>
