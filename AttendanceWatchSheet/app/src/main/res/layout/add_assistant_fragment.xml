@@ -12,7 +12,7 @@
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Instructor Name:"
+        android:text="Assistant Name:"
         android:textSize="18sp" />
 
     <EditText
@@ -100,7 +100,7 @@
             android:layout_gravity="clip_horizontal"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
-            android:onClick="alertDialogInstructor"
+            android:onClick="alertDialogAssistant"
             android:text="CREATE USER"
             android:textAlignment="center" />
 
@@ -109,7 +109,7 @@
             android:layout_width="50pt"
             android:layout_height="match_parent"
             android:layout_gravity="right"
-            android:onClick="removeAddInstructorFragment"
+            android:onClick="removeAddAssistantFragment"
             android:text="cancel"
             android:textAlignment="center" />
 
