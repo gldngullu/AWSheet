@@ -19,7 +19,15 @@
 
         <activity android:name=".AttandanceListMethodActivity"></activity>
         <activity android:name=".AttandanceSwipeMethodActivity"></activity>
-        <activity android:name=".AttandanceSelectorActivity"></activity>
+        <activity android:name=".AttandanceSelectorActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+
+            </intent-filter>
+
+        </activity>
         <activity android:name=".AttandanceQrMethodActivity"></activity>
 
 
