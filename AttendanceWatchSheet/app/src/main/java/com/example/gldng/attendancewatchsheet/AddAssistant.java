@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class AddInstructor extends Fragment {
+public class AddAssistant extends Fragment {
 
     Spinner spinner;
     TextView instructorName;
@@ -22,6 +22,7 @@ public class AddInstructor extends Fragment {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(), R.array.Departments, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
         instructorName = getView().findViewById(R.id.instructorName);
         String instructorNameText = (String) instructorName.getText();
         instructorEmail = getView().findViewById(R.id.email);
@@ -32,12 +33,10 @@ public class AddInstructor extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.add_instructor_fragment, container, false);
+        View view = inflater.inflate(R.layout.add_assistant_fragment, container, false);
         return view;
 
     }
-
-
 
 
 }

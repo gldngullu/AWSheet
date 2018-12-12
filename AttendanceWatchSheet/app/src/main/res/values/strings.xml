@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">AttendanceWatchSheet</string>
+    <string-array name="Departments">
+        <item>Math</item>
+        <item>Computer Science</item>
+        <item>Bla Bla</item>
+    </string-array>
     <string name="course_name">Course Name:</string>
     <string name="good_day_username_sir"><![CDATA[Good Day <username> , Sir!]]></string>
     <string name="course_addition">Course Addition</string>
