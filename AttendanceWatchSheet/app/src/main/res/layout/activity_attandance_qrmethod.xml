@@ -32,7 +32,11 @@
             />
     </TableRow>
 
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:id="@+id/qrLoc"
+        />
 
     <TableRow
         android:layout_marginTop="5dp"
