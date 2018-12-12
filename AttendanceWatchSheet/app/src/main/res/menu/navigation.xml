@@ -8,16 +8,16 @@
 
     <item
         android:id="@+id/navigation_courses"
-        android:icon="@drawable/navigatecourses"
+        android:icon="@drawable/navigate_courses"
         android:title="@string/courses" />
 
     <item
         android:id="@+id/navigation_scan"
-        android:icon="@drawable/navigateicons"
+        android:icon="@drawable/navigate_icons"
         android:title="@string/scan" />
     <item
         android:id="@+id/navigation_calendar"
-        android:icon="@drawable/navigatecalendar"
+        android:icon="@drawable/navigate_calendar"
         android:title="@string/calendar" />
 
 
