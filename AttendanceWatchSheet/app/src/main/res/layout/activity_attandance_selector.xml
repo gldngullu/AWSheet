@@ -19,7 +19,7 @@
         >
 
         <TextView
-            android:background="@drawable/ic_center_focus_weak_black_24dp"
+            android:background="@drawable/ic_qrcode_solid"
             android:layout_height="fill_parent"
             android:width="75dp"
             />
