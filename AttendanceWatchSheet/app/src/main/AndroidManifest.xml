@@ -16,6 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Select_Course" />
+        <activity
+            android:name=".Courses_Student"
+            android:label="@string/title_activity_courses__student"></activity>
     </application>
 
 </manifest>
