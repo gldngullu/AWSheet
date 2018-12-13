@@ -14,6 +14,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText etName;
     private EditText etSurname;
     private EditText etPassword;
+    private EditText etConfirmPassword;
     private EditText etSecretQ;
     private Button btRegister;
 
@@ -26,6 +27,7 @@ public class RegisterActivity extends AppCompatActivity {
         etMail=findViewById(R.id.etMail);
         etSurname=findViewById(R.id.etSurname);
         etPassword=findViewById(R.id.etPassword);
+        etConfirmPassword=findViewById(R.id.etConfirmPassword);
         etSecretQ=findViewById(R.id.etSecretQ);
 
         btRegister=findViewById(R.id.btRegister);
@@ -35,12 +37,19 @@ public class RegisterActivity extends AppCompatActivity {
         etSurname.addTextChangedListener(registerTextWatcher);
         etMail.addTextChangedListener(registerTextWatcher);
         etPassword.addTextChangedListener(registerTextWatcher);
+        etConfirmPassword.addTextChangedListener(registerTextWatcher);
         etSecretQ.addTextChangedListener(registerTextWatcher);
 
         btRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(RegisterActivity.this,"Your registration request has been sent.",Toast.LENGTH_LONG).show();
+                String passwordinput=etPassword.getText().toString();
+                String confirmpasswordinput=etConfirmPassword.getText().toString();
+                if(1==passwordinput.compareTo(confirmpasswordinput)){
+                    Toast.makeText(RegisterActivity.this,"Confirmation Password is wrong",Toast.LENGTH_LONG).show();
+                }else {
+                    Toast.makeText(RegisterActivity.this, "Your registration request has been sent.", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -58,9 +67,14 @@ public class RegisterActivity extends AppCompatActivity {
             String mailinput=etMail.getText().toString().trim();
             String surnameinput=etSurname.getText().toString().trim();
             String passwordinput=etPassword.getText().toString().trim();
+            String confirmpasswordinput=etConfirmPassword.getText().toString().trim();
             String secretqinput=etSecretQ.getText().toString().trim();
 
-            btRegister.setEnabled(!mailinput.isEmpty() && !passwordinput.isEmpty() && !nameinput.isEmpty() && !surnameinput.isEmpty() && !secretqinput.isEmpty());
+
+                btRegister.setEnabled(!mailinput.isEmpty() && !passwordinput.isEmpty() && !nameinput.isEmpty() && !surnameinput.isEmpty() && !secretqinput.isEmpty() && !confirmpasswordinput.isEmpty());
+
+
+
 
         }
 
