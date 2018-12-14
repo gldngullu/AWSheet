@@ -1,5 +1,6 @@
 package com.example.gldng.attendancewatchsheet;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -27,10 +28,8 @@ private EditText etForgotSecretQ;
         btForgotSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder pass = new AlertDialog.Builder(ForgotPasswordActivity.this);
-                pass.setTitle("Password Retrieval Successful ");
-
-                pass.setMessage("Your password is: " + "Password");
+                Intent changepassintent = new Intent(ForgotPasswordActivity.this,ResetPasswordActivity.class);
+                ForgotPasswordActivity.this.startActivity(changepassintent);
             }
         });
     }
