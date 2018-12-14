@@ -45,7 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String passwordinput=etPassword.getText().toString();
                 String confirmpasswordinput=etConfirmPassword.getText().toString();
-                if(1==passwordinput.compareTo(confirmpasswordinput)){
+                if(0!=passwordinput.compareTo(confirmpasswordinput)){
                     Toast.makeText(RegisterActivity.this,"Confirmation Password is wrong",Toast.LENGTH_LONG).show();
                 }else {
                     Toast.makeText(RegisterActivity.this, "Your registration request has been sent.", Toast.LENGTH_LONG).show();
