@@ -19,6 +19,7 @@ public class AddUser extends AppCompatActivity {
     Button addAdmin;
     FragmentManager manager;
     FrameLayout frameLayout;
+    String buttonTapped;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,8 @@ public class AddUser extends AppCompatActivity {
                 addAdmin.setVisibility(View.INVISIBLE);
                 addAssistant.setVisibility(View.INVISIBLE);
                 addInstructorFragmentAddition(v);
+                buttonTapped = ((Button) v).getText().toString();
+                System.out.println(buttonTapped);
             }
         });
 
