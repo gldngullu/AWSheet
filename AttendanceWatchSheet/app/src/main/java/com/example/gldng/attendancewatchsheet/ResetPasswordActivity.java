@@ -1,5 +1,6 @@
 package com.example.gldng.attendancewatchsheet;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -28,12 +29,15 @@ private Button btChangePassword;
         btChangePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent goLogin = new Intent(ResetPasswordActivity.this,LoginActivity.class);
+                goLogin.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 String passwordinput=etNewPassword.getText().toString();
                 String confirmpasswordinput=etConfirmNewPassword.getText().toString();
                 if(0!=passwordinput.compareTo(confirmpasswordinput)){
                     Toast.makeText(ResetPasswordActivity.this,"Confirmation Password is wrong",Toast.LENGTH_LONG).show();
                 }else {
                     Toast.makeText(ResetPasswordActivity.this, "Your password has been changed", Toast.LENGTH_LONG).show();
+                    ResetPasswordActivity.this.startActivity(goLogin);
                 }
             }
         });

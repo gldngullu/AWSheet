@@ -1,5 +1,6 @@
 package com.example.gldng.attendancewatchsheet;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -43,12 +44,15 @@ public class RegisterActivity extends AppCompatActivity {
         btRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent registerintent = new Intent(RegisterActivity.this,LoginActivity.class);
+
                 String passwordinput=etPassword.getText().toString();
                 String confirmpasswordinput=etConfirmPassword.getText().toString();
                 if(0!=passwordinput.compareTo(confirmpasswordinput)){
                     Toast.makeText(RegisterActivity.this,"Confirmation Password is wrong",Toast.LENGTH_LONG).show();
                 }else {
                     Toast.makeText(RegisterActivity.this, "Your registration request has been sent.", Toast.LENGTH_LONG).show();
+                    RegisterActivity.this.startActivity(registerintent);
                 }
             }
         });

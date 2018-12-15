@@ -29,6 +29,7 @@ private EditText etForgotSecretQ;
             @Override
             public void onClick(View v) {
                 Intent changepassintent = new Intent(ForgotPasswordActivity.this,ResetPasswordActivity.class);
+                changepassintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 ForgotPasswordActivity.this.startActivity(changepassintent);
             }
         });
