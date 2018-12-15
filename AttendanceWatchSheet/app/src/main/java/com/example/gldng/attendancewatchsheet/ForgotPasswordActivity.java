@@ -31,6 +31,7 @@ private EditText etForgotSecretQ;
                 Intent changepassintent = new Intent(ForgotPasswordActivity.this,ResetPasswordActivity.class);
                 changepassintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 ForgotPasswordActivity.this.startActivity(changepassintent);
+                finish();
             }
         });
     }

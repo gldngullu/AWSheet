@@ -53,6 +53,8 @@ public class RegisterActivity extends AppCompatActivity {
                 }else {
                     Toast.makeText(RegisterActivity.this, "Your registration request has been sent.", Toast.LENGTH_LONG).show();
                     RegisterActivity.this.startActivity(registerintent);
+                    finish();
+
                 }
             }
         });

@@ -38,7 +38,9 @@ private Button btChangePassword;
                 }else {
                     Toast.makeText(ResetPasswordActivity.this, "Your password has been changed", Toast.LENGTH_LONG).show();
                     ResetPasswordActivity.this.startActivity(goLogin);
+
                 }
+
             }
         });
     }
