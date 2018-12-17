@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AttendanceWatchSheet</string>
+    <string name="title_activity_attandance_qrreader">AttandanceQrreaderActivity</string>
 </resources>

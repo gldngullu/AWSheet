@@ -9,28 +9,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".AttandanceQrreaderActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".AttandanceListMethodActivity"></activity>
-        <activity android:name=".AttandanceSwipeMethodActivity"></activity>
+        <activity android:name=".AttandanceListMethodActivity" />
+        <activity android:name=".AttandanceSwipeMethodActivity" />
         <activity android:name=".AttandanceSelectorActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-
+            </intent-filter>
+        </activity>
+        <activity android:name=".AttandanceQrMethodActivity" />
+        <!--<activity
+            android:name="."
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-        </activity>
-        <activity android:name=".AttandanceQrMethodActivity"></activity>
-
-
+        </activity>-->
     </application>
 
 </manifest>
