@@ -27,6 +27,7 @@
         android:layout_marginTop="129dp"
         android:layout_marginEnd="59dp"
         android:layout_marginBottom="205dp"
+        android:onClick="fragmentOpener"
         android:text="Manual"
         app:layout_constraintBottom_toTopOf="@+id/setAddDrop"
         app:layout_constraintEnd_toStartOf="@+id/uploadCourseList"
@@ -39,7 +40,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="62dp"
         android:layout_marginBottom="67dp"
-        android:text="upload"
+        android:onClick="fragmentOpener"
+        android:text="Upload"
         app:layout_constraintBottom_toTopOf="@+id/removeCourse"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/manualAddCourse"
@@ -63,6 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="23dp"
         android:layout_marginBottom="57dp"
+        android:onClick="fragmentOpener"
         android:text="manual"
         app:layout_constraintBottom_toTopOf="@+id/setAddDrop"
         app:layout_constraintStart_toStartOf="@+id/removeCourse"
@@ -73,6 +76,7 @@
         android:layout_width="252dp"
         android:layout_height="77dp"
         android:layout_marginBottom="125dp"
+        android:onClick="fragmentOpener"
         android:text="Set add-Drop date"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,20 +84,17 @@
         app:layout_constraintTop_toBottomOf="@+id/manualAddCourse" />
 
     <FrameLayout
-        android:id="@+id/fragmentLayout"
-        android:layout_width="364dp"
-        android:layout_height="497dp"
+        android:id="@+id/frameLayout2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toTopOf="parent" />
 
-    </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>

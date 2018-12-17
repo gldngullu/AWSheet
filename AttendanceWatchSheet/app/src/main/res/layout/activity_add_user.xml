@@ -29,7 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:onClick="addInstructorFragmentAddition"/>
+        android:onClick="FragmentOpener"/>
 
     <Button
         android:id="@+id/addAssistant"
@@ -42,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addInstructor"
-        android:onClick="addAssistantFragmentAddition"/>
+        android:onClick="FragmentOpener"/>
 
     <Button
         android:id="@+id/addAdmin"
@@ -53,7 +53,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:onClick="addAdminFragmentAddition" />
+        android:onClick="FragmentOpener" />
 
     <FrameLayout
         android:id="@+id/frameLayout"

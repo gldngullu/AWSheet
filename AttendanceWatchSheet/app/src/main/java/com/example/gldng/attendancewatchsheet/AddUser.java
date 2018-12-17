@@ -19,7 +19,6 @@ public class AddUser extends AppCompatActivity {
     Button addAdmin;
     FragmentManager manager;
     FrameLayout frameLayout;
-    String buttonTapped;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,71 +29,40 @@ public class AddUser extends AppCompatActivity {
         addAdmin = findViewById(R.id.addAdmin);
         manager = getFragmentManager();
         frameLayout = findViewById(R.id.frameLayout);
-
-
-
-        addInstructor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addInstructor.setVisibility(View.INVISIBLE);
-                addAdmin.setVisibility(View.INVISIBLE);
-                addAssistant.setVisibility(View.INVISIBLE);
-                addInstructorFragmentAddition(v);
-                buttonTapped = ((Button) v).getText().toString();
-                System.out.println(buttonTapped);
-            }
-        });
-
-        addAssistant.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addInstructor.setVisibility(View.INVISIBLE);
-                addAdmin.setVisibility(View.INVISIBLE);
-                addAssistant.setVisibility(View.INVISIBLE);
-                addAssistantFragmentAddition(v);
-            }
-        });
-
-        addAdmin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addInstructor.setVisibility(View.INVISIBLE);
-                addAdmin.setVisibility(View.INVISIBLE);
-                addAssistant.setVisibility(View.INVISIBLE);
-                addAdminFragmentAddition(v);
-            }
-        });
-
     }
 
+    public void FragmentOpener(View v){
+        addInstructor.setVisibility(View.INVISIBLE);
+        addAdmin.setVisibility(View.INVISIBLE);
+        addAssistant.setVisibility(View.INVISIBLE);
+        int button = v.getId();
+        System.out.println(button);
+        FragmentAdder(button);
+    }
 
-
-    public void addInstructorFragmentAddition(View v){
-        AddInstructor fragment1 = new AddInstructor();
+    public void FragmentAdder(int userType){
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.add(R.id.frameLayout,fragment1,"AddInstructorFragment");
+        switch (userType) {
+            case R.id.addInstructor:
+                AddInstructor fragment1 = new AddInstructor();
+                transaction.add(R.id.frameLayout,fragment1,"AddInstructorFragment");
+                break;
+            case R.id.addAssistant:
+                AddAssistant fragment2 = new AddAssistant();
+                transaction.add(R.id.frameLayout,fragment2,"AddAssistantFragment");
+                break;
+            case R.id.addAdmin:
+                AddAdmin fragment3 = new AddAdmin();
+                transaction.add(R.id.frameLayout,fragment3,"AddAdminFragment");
+                break;
+        }
         transaction.commit();
     }
-    public void addAssistantFragmentAddition(View v){
-        AddAssistant fragment1 = new AddAssistant();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.add(R.id.frameLayout,fragment1,"AddAssistantFragment");
-        transaction.commit();
-    }
-    public void addAdminFragmentAddition(View v){
-        AddAdmin fragment1 = new AddAdmin();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.add(R.id.frameLayout,fragment1,"AddAdminFragment");
-        transaction.commit();
-    }
+
 
     public void alertDialogInstructor(final View v){
         AlertDialog.Builder builder;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            builder = new AlertDialog.Builder(v.getContext(), android.R.style.Theme_DeviceDefault_Light_Dialog_Alert);
-        } else {
-            builder = new AlertDialog.Builder(v.getContext());
-        }
+        builder = new AlertDialog.Builder(v.getContext(), android.R.style.Theme_DeviceDefault_Light_Dialog_Alert);
         builder.setTitle("Add Instructor User")
                 .setMessage("You will add a New Instructor to the System, Are you sure ? ")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
