@@ -5,31 +5,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddUser">
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="63dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginStart="2dp"
+        app:layout_constraintEnd_toStartOf="@+id/AddUser"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/activityicon"
+        android:contentDescription="TODO" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="175dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="44dp"
-        android:fontFamily="casual"
+        android:id="@+id/AddUser"
+        android:layout_width="187dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="112dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="monospace"
+        android:gravity="center"
         android:text="Add User"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/addInstructor"
         android:layout_width="226dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="64dp"
+        android:onClick="FragmentOpener"
         android:text="Add Instructor"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:onClick="FragmentOpener"/>
+        app:layout_constraintTop_toBottomOf="@+id/AddUser" />
 
     <Button
         android:id="@+id/addAssistant"
@@ -59,15 +71,27 @@
         android:id="@+id/frameLayout"
         android:layout_width="271dp"
         android:layout_height="367dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
         android:layout_marginEnd="50dp"
+        android:layout_marginStart="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="384dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginStart="13dp"
+        android:background="?android:attr/windowBackground"
+        android:visibility="visible"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.244" />
+        app:menu="@menu/navigation_admin" />
 
 
 </android.support.constraint.ConstraintLayout>

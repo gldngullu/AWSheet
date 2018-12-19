@@ -63,8 +63,8 @@
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
                                       <entry key="iconShape" value="NONE" />
-                                      <entry key="imageAsset" value="C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\res\drawable-mdpi\navigatecalendar.png" />
-                                      <entry key="outputName" value="navigatecalendar" />
+                                      <entry key="imageAsset" value="C:\Users\Mertali\Documents\GitHub\AWSheet\AttendanceWatchSheet\app\src\main\res\drawable-mdpi\navigate_icons.png" />
+                                      <entry key="outputName" value="scanicon" />
                                     </map>
                                   </option>
                                 </PersistentState>
