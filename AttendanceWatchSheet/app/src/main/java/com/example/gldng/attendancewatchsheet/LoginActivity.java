@@ -74,6 +74,26 @@ private String userMail;
 
             btLogin.setEnabled(!mailinput.isEmpty() && !passwordinput.isEmpty());
 
+            //login buton on click
+            final String userType = "Admin";
+            btLogin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = null;
+                    switch(userType){
+                        case "Admin":
+                            intent = new Intent(LoginActivity.this,HomeActivityAdmin.class);
+                            break;
+                        case "Student":
+                            intent = new Intent(LoginActivity.this,HomeActivityInstructor.class);
+                            break;
+                        case "Instructor":
+                            intent = new Intent(LoginActivity.this,HomeActivity.class);
+                            break;
+                    }
+
+                }
+            });
         }
 
         @Override
