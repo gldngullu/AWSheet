@@ -27,6 +27,7 @@
         <activity android:name=".AttandanceSwipeMethodActivity" />
         <activity android:name=".AttandanceSelectorActivity" />
         <activity android:name=".AttandanceQrMethodActivity" />
+        <activity android:name=".AdminCoursePage"></activity>
     </application>
 
 </manifest>

@@ -73,13 +73,13 @@
         android:layout_height="60dp">
 
         <Button
-            android:id="@+id/doneButton"
+            android:id="@+id/doneButtonAdmin"
             android:layout_width="50pt"
             android:layout_height="match_parent"
             android:layout_gravity="clip_horizontal"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
-            android:onClick="alertDialogAdmin"
+            android:onClick="alertDialog"
             android:text="CREATE USER"
             android:textAlignment="center" />
 
