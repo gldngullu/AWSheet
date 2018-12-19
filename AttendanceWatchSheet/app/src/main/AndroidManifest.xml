@@ -15,8 +15,8 @@
             android:name=".Courses_Student"
             android:label="@string/title_activity_courses__student" />
         <activity android:name=".ForgotPasswordActivity" />
-        <activity android:name=".LoginActivity">
-        <activity android:name=".AttandanceQrreaderActivity">
+        <activity android:name=".AttandanceQrreaderActivity" />
+        <activity android:name=".LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,7 +25,7 @@
         </activity>
         <activity android:name=".AttandanceListMethodActivity" />
         <activity android:name=".AttandanceSwipeMethodActivity" />
-        <activity android:name=".AttandanceSelectorActivity">
+        <activity android:name=".AttandanceSelectorActivity" />
         <activity android:name=".AttandanceQrMethodActivity" />
     </application>
 
