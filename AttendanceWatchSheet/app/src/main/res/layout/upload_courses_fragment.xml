@@ -15,6 +15,22 @@
         android:text="UPLOAD FILE WILL BE HERE"
         android:textSize="24sp" />
 
+    <Button
+        android:id="@+id/confirmUploadCourseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="alertDialog2"
+        android:text="confırm"
+        tools:layout_editor_absoluteX="82dp"
+        tools:layout_editor_absoluteY="266dp" />
+
+    <Button
+        android:id="@+id/cancelUploadCourseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="cancel"
+        tools:layout_editor_absoluteX="212dp"
+        tools:layout_editor_absoluteY="251dp" />
 
 
 </android.support.constraint.ConstraintLayout>

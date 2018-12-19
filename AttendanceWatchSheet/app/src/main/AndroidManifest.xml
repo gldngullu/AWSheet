@@ -9,8 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddUser" />
-        <activity android:name=".Select_Course" />
+
+
+        <activity android:name=".AddUser">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".SelectCourse" />
         <activity
             android:name=".Courses_Student"
             android:label="@string/title_activity_courses__student" />
@@ -23,12 +33,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".RegisterActivity"></activity>
         <activity android:name=".AttandanceListMethodActivity" />
         <activity android:name=".AttandanceSwipeMethodActivity" />
         <activity android:name=".AttandanceSelectorActivity" />
         <activity android:name=".AttandanceQrMethodActivity" />
         <activity android:name=".AdminCoursePage" />
-        <activity android:name=".SelectCourse" />
+        <activity android:name=".HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+>>>>>>> a3dc8b70d657a05ba08f1410d73e4a4fc31545f0
     </application>
 
 </manifest>

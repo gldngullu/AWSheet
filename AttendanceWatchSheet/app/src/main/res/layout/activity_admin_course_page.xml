@@ -33,20 +33,20 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/addCourse"
+        android:id="@+id/addCourseText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="86dp"
         android:layout_marginBottom="16dp"
         android:text="Add Course"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/uploadCourseList"
+        app:layout_constraintBottom_toTopOf="@+id/uploadCourseListButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/manualAddCourse"
+        android:id="@+id/manualAddCourseButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="78dp"
@@ -55,50 +55,50 @@
         android:layout_marginBottom="205dp"
         android:onClick="fragmentOpener"
         android:text="Manual"
-        app:layout_constraintBottom_toTopOf="@+id/setAddDrop"
-        app:layout_constraintEnd_toStartOf="@+id/uploadCourseList"
+        app:layout_constraintBottom_toTopOf="@+id/setAddDropButton"
+        app:layout_constraintEnd_toStartOf="@+id/uploadCourseListButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/uploadCourseList"
+        android:id="@+id/uploadCourseListButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="62dp"
         android:layout_marginBottom="67dp"
         android:onClick="fragmentOpener"
         android:text="Upload"
-        app:layout_constraintBottom_toTopOf="@+id/removeCourse"
+        app:layout_constraintBottom_toTopOf="@+id/removeCourseText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/manualAddCourse"
-        app:layout_constraintTop_toBottomOf="@+id/addCourse" />
+        app:layout_constraintStart_toEndOf="@+id/manualAddCourseButton"
+        app:layout_constraintTop_toBottomOf="@+id/addCourseText" />
 
     <TextView
-        android:id="@+id/removeCourse"
+        android:id="@+id/removeCourseText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="6dp"
         android:text="Remove Course"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/manualDelete"
+        app:layout_constraintBottom_toTopOf="@+id/manualDeleteCourseButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/uploadCourseList" />
+        app:layout_constraintTop_toBottomOf="@+id/uploadCourseListButton" />
 
     <Button
-        android:id="@+id/manualDelete"
+        android:id="@+id/manualDeleteCourseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="23dp"
         android:layout_marginBottom="57dp"
         android:onClick="fragmentOpener"
         android:text="manual"
-        app:layout_constraintBottom_toTopOf="@+id/setAddDrop"
-        app:layout_constraintStart_toStartOf="@+id/removeCourse"
-        app:layout_constraintTop_toBottomOf="@+id/removeCourse" />
+        app:layout_constraintBottom_toTopOf="@+id/setAddDropButton"
+        app:layout_constraintStart_toStartOf="@+id/removeCourseText"
+        app:layout_constraintTop_toBottomOf="@+id/removeCourseText" />
 
     <Button
-        android:id="@+id/setAddDrop"
+        android:id="@+id/setAddDropButton"
         android:layout_width="252dp"
         android:layout_height="77dp"
         android:layout_marginBottom="125dp"
@@ -107,20 +107,22 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/manualAddCourse" />
+        app:layout_constraintTop_toBottomOf="@+id/manualAddCourseButton" />
 
     <FrameLayout
         android:id="@+id/frameLayout2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"

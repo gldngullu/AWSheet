@@ -4,16 +4,35 @@
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home_black_24dp"
+        android:onClick="navMenuSelection"
         android:title="@string/title_home" />
 
     <item
         android:id="@+id/navigation_courses"
         android:enabled="true"
         android:icon="@drawable/navigate_courses"
+<<<<<<< HEAD
         android:title="@string/courses" />
     <item
         android:id="@+id/navigate_scan"
         android:icon="@mipmap/scanicon"
         android:title="Scan" />
+=======
+        android:onClick="navMenuSelection"
+        android:title="@string/courses"
+        />
+
+    <item
+        android:id="@+id/navigation_scan"
+        android:icon="@drawable/navigate_icons"
+        android:onClick="navMenuSelection"
+        android:title="@string/scan" />
+    <item
+        android:id="@+id/navigation_calendar"
+        android:icon="@drawable/navigate_calendar"
+        android:onClick="navMenuSelection"
+        android:title="@string/calendar" />
+
+>>>>>>> a3dc8b70d657a05ba08f1410d73e4a4fc31545f0
 
 </menu>
