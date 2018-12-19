@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    tools:context=".AttandanceSelectorActivity"
+    android:layout_gravity="center"
+    >
+
+    <TableRow
+        android:id="@+id/qrRow"
+        android:minHeight="100dp"
+        android:padding="10dp"
+        android:layout_margin="15dp"
+        android:background="@drawable/border_row"
+        android:onClick="goAttandance"
+        >
+
+        <TextView
+            android:background="@drawable/ic_qrcode_solid"
+            android:layout_height="fill_parent"
+            android:width="75dp"
+            />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingTop="10dp"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="QR Code Method"
+                />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:text="  Easy to use fast method for attandance tracking" />
+
+        </LinearLayout>
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/swipeRow"
+        android:minHeight="100dp"
+        android:padding="10dp"
+        android:layout_margin="15dp"
+        android:background="@drawable/border_row"
+        android:onClick="goAttandance"
+        >
+
+        <TextView
+            android:background="@drawable/ic_reply_black_24dp"
+            android:layout_height="fill_parent"
+            android:scaleX="-1"
+            />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingTop="10dp"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="Swipe Method"
+                />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:text="  Reccomended to learn students by name"
+                />
+
+        </LinearLayout>
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/listRow"
+        android:minHeight="100dp"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/border_row"
+        android:onClick="goAttandance"
+        >
+
+        <TextView
+            android:background="@drawable/ic_view_list_black_24dp"
+            android:layout_height="fill_parent"
+            />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingTop="15dp"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="List Method"
+                />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:text="  Recomended for few student present situations"
+                />
+
+        </LinearLayout>
+
+    </TableRow>
+
+
+
+</TableLayout>

@@ -16,15 +16,17 @@
             android:label="@string/title_activity_courses__student" />
         <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".LoginActivity">
+        <activity android:name=".AttandanceQrreaderActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".Courses_Instructor" />
-        <activity android:name=".ResetPasswordActivity"></activity>
+        <activity android:name=".AttandanceListMethodActivity" />
+        <activity android:name=".AttandanceSwipeMethodActivity" />
+        <activity android:name=".AttandanceSelectorActivity">
+        <activity android:name=".AttandanceQrMethodActivity" />
     </application>
 
 </manifest>

@@ -2,5 +2,12 @@
 <resources>
     <color name="colorPrimary">#049b8c</color>
     <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorTableTopGray">#D3D3D3</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="successGreen">#4BB543</color>
+    <color name="errorRed">#FF0000</color>
+    <color name="darkGray">#A9A9A9</color>
+    <color name="black">#000000</color>
+
+
 </resources>

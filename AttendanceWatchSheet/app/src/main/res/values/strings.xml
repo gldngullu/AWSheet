@@ -22,4 +22,5 @@
     <string name="calendar">Calendar</string>
     <string name="attend">Attend</string>
     <string name="member">Member</string>
+    <string name="title_activity_attandance_qrreader">AttandanceQrreaderActivity</string>
 </resources>
