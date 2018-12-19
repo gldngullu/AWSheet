@@ -1,10 +1,8 @@
 package com.example.gldng.attendancewatchsheet;
 
-import android.content.Context;
-import android.net.Uri;
+import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +10,8 @@ import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
 
-
 public class AddCourse extends Fragment {
+
     TextView courseName;
     TextView courseCode;
     TextView scheduleText1,scheduleText2;
@@ -24,6 +22,10 @@ public class AddCourse extends Fragment {
     Button createButton;
     Button cancelButton;
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+
+    }
 
     @Nullable
     @Override
@@ -32,4 +34,8 @@ public class AddCourse extends Fragment {
         return view;
 
     }
+
+
+
+
 }

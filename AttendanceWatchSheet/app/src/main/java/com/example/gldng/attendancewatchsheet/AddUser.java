@@ -31,7 +31,7 @@ public class AddUser extends AppCompatActivity {
         frameLayout = findViewById(R.id.frameLayout);
     }
 
-    public void FragmentOpener(View v){
+    public void FragmentOpener(View v) {
         addInstructor.setVisibility(View.INVISIBLE);
         addAdmin.setVisibility(View.INVISIBLE);
         addAssistant.setVisibility(View.INVISIBLE);
@@ -40,95 +40,87 @@ public class AddUser extends AppCompatActivity {
         FragmentAdder(button);
     }
 
-    public void FragmentAdder(int userType){
+    public void FragmentAdder(int userType) {
         FragmentTransaction transaction = manager.beginTransaction();
         switch (userType) {
             case R.id.addInstructor:
                 AddInstructor fragment1 = new AddInstructor();
-                transaction.add(R.id.frameLayout,fragment1,"AddInstructorFragment");
+                transaction.add(R.id.frameLayout, fragment1, "AddInstructorFragment");
                 break;
             case R.id.addAssistant:
                 AddAssistant fragment2 = new AddAssistant();
-                transaction.add(R.id.frameLayout,fragment2,"AddAssistantFragment");
+                transaction.add(R.id.frameLayout, fragment2, "AddAssistantFragment");
                 break;
             case R.id.addAdmin:
                 AddAdmin fragment3 = new AddAdmin();
-                transaction.add(R.id.frameLayout,fragment3,"AddAdminFragment");
+                transaction.add(R.id.frameLayout, fragment3, "AddAdminFragment");
                 break;
         }
         transaction.commit();
     }
 
-
-    public void alertDialogInstructor(final View v){
+    public void alertDialog(final View v) {
+        int buttonId = v.getId();
         AlertDialog.Builder builder;
         builder = new AlertDialog.Builder(v.getContext(), android.R.style.Theme_DeviceDefault_Light_Dialog_Alert);
-        builder.setTitle("Add Instructor User")
-                .setMessage("You will add a New Instructor to the System, Are you sure ? ")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // ADD USER TO DATABASE
-                        removeAddInstructorFragment(v);
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // RETURN BACK
-                    }
-                })
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .show();
-    }
-
-    public void alertDialogAssistant(final View v){
-        AlertDialog.Builder builder;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            builder = new AlertDialog.Builder(v.getContext(), android.R.style.Theme_DeviceDefault_Light_Dialog_Alert);
-        } else {
-            builder = new AlertDialog.Builder(v.getContext());
+        switch (buttonId) {
+            case R.id.doneButtonInstructor:
+                builder.setTitle("Add Instructor User")
+                        .setMessage("You will add a New Instructor to the System, Are you sure ? ")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // ADD USER TO DATABASE
+                                removeAddInstructorFragment(v);
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // RETURN BACK
+                            }
+                        });
+                break;
+            case R.id.doneButtonAssistant:
+                builder = new AlertDialog.Builder(v.getContext(), android.R.style.Theme_DeviceDefault_Light_Dialog_Alert);
+                builder.setTitle("Add Assistant User")
+                        .setMessage("You will add a New Assistant to the System, Are you sure ? ")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // ADD USER TO DATABASE
+                                removeAddAssistantFragment(v);
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // RETURN BACK
+                            }
+                        });
+                break;
+            case R.id.doneButtonAdmin:
+                builder.setTitle("Add Admin User")
+                        .setMessage("You will add a New Admin to the System, Are you sure ? ")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // ADD USER TO DATABASE
+                                removeAddAdminFragment(v);
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // RETURN BACK
+                            }
+                        });
+                break;
         }
-        builder.setTitle("Add Assistant User")
-                .setMessage("You will add a New Assistant to the System, Are you sure ? ")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // ADD USER TO DATABASE
-                        removeAddAssistantFragment(v);
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // RETURN BACK
-                    }
-                })
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .show();
+        builder.setIcon(android.R.drawable.ic_dialog_alert);
+        builder.show();
     }
 
-    public void alertDialogAdmin(final View v){
-        AlertDialog.Builder builder;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            builder = new AlertDialog.Builder(v.getContext(), android.R.style.Theme_DeviceDefault_Light_Dialog_Alert);
-        } else {
-            builder = new AlertDialog.Builder(v.getContext());
-        }
-        builder.setTitle("Add Admin User")
-                .setMessage("You will add a New Admin to the System, Are you sure ? ")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // ADD USER TO DATABASE
-                        removeAddAdminFragment(v);
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // RETURN BACK
-                    }
-                })
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .show();
+    public void removeFragment(View v){
+        int id = v.getId();
+        addInstructor.setVisibility(View.VISIBLE);
+        addAdmin.setVisibility(View.VISIBLE);
+        addAssistant.setVisibility(View.VISIBLE);
     }
-
-
 
     public void removeAddInstructorFragment(View v) {
         addInstructor.setVisibility(View.VISIBLE);
@@ -140,7 +132,7 @@ public class AddUser extends AppCompatActivity {
             transaction.remove(fragment1);
             transaction.commit();
         } else {
-            Toast.makeText(this,"There is no fragment here", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "There is no fragment here", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -154,9 +146,10 @@ public class AddUser extends AppCompatActivity {
             transaction.remove(fragment1);
             transaction.commit();
         } else {
-            Toast.makeText(this,"There is no fragment here", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "There is no fragment here", Toast.LENGTH_LONG).show();
         }
     }
+
     public void removeAddAdminFragment(View v) {
         addInstructor.setVisibility(View.VISIBLE);
         addAdmin.setVisibility(View.VISIBLE);
@@ -167,7 +160,7 @@ public class AddUser extends AppCompatActivity {
             transaction.remove(fragment1);
             transaction.commit();
         } else {
-            Toast.makeText(this,"There is no fragment here", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "There is no fragment here", Toast.LENGTH_LONG).show();
         }
     }
 

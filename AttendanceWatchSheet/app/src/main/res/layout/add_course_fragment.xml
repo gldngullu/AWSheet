@@ -1,254 +1,250 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddCourse">
 
-    <!-- TODO: Update blank fragment layout -->
 
-    <android.support.constraint.ConstraintLayout
+    <EditText
+        android:id="@+id/courseCode"
+        android:layout_width="279dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="32dp"
+        android:ems="10"
+        android:hint="Course Code:"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/courseName" />
+
+    <EditText
+        android:id="@+id/courseName"
+        android:layout_width="279dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:hint="Course Name:"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/courseCode"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Switch
+        android:id="@+id/notificationSwitch"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="Notification:"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/semesterTextbox"
+        app:layout_constraintVertical_chainStyle="spread_inside" />
+
+    <TextView
+        android:id="@+id/weeklyScheduleText"
+        android:layout_width="160dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="8dp"
+        android:text="Weekly Schedule"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/courseCode" />
+
+    <EditText
+        android:id="@+id/semesterTextbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="Fall-Spring/ Year"
+        android:inputType="date"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/semesterText"
+        app:layout_constraintTop_toBottomOf="@+id/addScheduleText" />
+
+    <TextView
+        android:id="@+id/semesterText"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="36dp"
+        android:text="Semester: "
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addScheduleButton" />
+
+    <Button
+        android:id="@+id/createButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="CREATE"
+        app:layout_constraintEnd_toStartOf="@+id/cancelButton"
+        app:layout_constraintHorizontal_bias="0.845"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notificationSwitch" />
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="108dp"
+        android:layout_marginBottom="8dp"
+        android:text="CANCEL"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notificationSwitch"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <ImageButton
+        android:id="@+id/addScheduleButton"
+        android:layout_width="55dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="72dp"
+        android:src="@android:drawable/ic_input_add"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <EditText
+        android:id="@+id/addScheduleText"
+        android:layout_width="206dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="Day Hour"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/addScheduleButton"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <EditText
-            android:id="@+id/courseCode"
-            android:layout_width="279dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="52dp"
-            android:layout_marginBottom="32dp"
-            android:ems="10"
-            android:hint="Course Code:"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/courseName" />
-
-        <EditText
-            android:id="@+id/courseName"
-            android:layout_width="279dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="52dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:ems="10"
-            android:hint="Course Name:"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/courseCode"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Switch
-            android:id="@+id/notificationSwitch"
-            android:layout_width="250dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:text="Notification:"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/semesterTextbox"
-            app:layout_constraintVertical_chainStyle="spread_inside" />
-
-        <TextView
-            android:id="@+id/weeklyScheduleText"
-            android:layout_width="160dp"
-            android:layout_height="28dp"
-            android:layout_marginTop="8dp"
-            android:text="Weekly Schedule"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/courseCode" />
-
-        <EditText
-            android:id="@+id/semesterTextbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="8dp"
-            android:ems="10"
-            android:hint="Fall-Spring/ Year"
-            android:inputType="date"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/semesterText"
-            app:layout_constraintTop_toBottomOf="@+id/addScheduleText" />
-
-        <TextView
-            android:id="@+id/semesterText"
-            android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="36dp"
-            android:text="Semester: "
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addScheduleButton" />
-
-        <Button
-            android:id="@+id/createButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="CREATE"
-            app:layout_constraintEnd_toStartOf="@+id/cancelButton"
-            app:layout_constraintHorizontal_bias="0.845"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/notificationSwitch" />
-
-        <Button
-            android:id="@+id/cancelButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="108dp"
-            android:layout_marginBottom="8dp"
-            android:text="CANCEL"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/notificationSwitch"
-            app:layout_constraintVertical_bias="0.0" />
-
-
-        <ImageButton
-            android:id="@+id/addScheduleButton"
-            android:layout_width="55dp"
-            android:layout_height="45dp"
-            android:layout_marginStart="72dp"
-            android:src="@android:drawable/ic_input_add"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-        <EditText
-            android:id="@+id/addScheduleText"
-            android:layout_width="206dp"
-            android:layout_height="44dp"
-            android:layout_marginEnd="8dp"
-            android:ems="10"
-            android:hint="Day Hour"
-            android:inputType="textPersonName"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/addScheduleButton"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        android:layout_height="108dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/weeklyScheduleText">
 
         <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="108dp"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/weeklyScheduleText">
+            android:layout_width="193dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/scheduleText1"
                 android:layout_width="193dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="27dp"
+                android:background="@drawable/button_border"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/scheduleText8"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="239dp" />
 
-                <TextView
-                    android:id="@+id/scheduleText1"
-                    android:layout_width="193dp"
-                    android:layout_height="27dp"
-                    android:background="@drawable/button_border"
-                    android:textAlignment="center"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toStartOf="@+id/scheduleText8"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:layout_editor_absoluteY="239dp" />
-
-                <TextView
-                    android:id="@+id/scheduleText2"
-                    android:layout_width="193dp"
-                    android:layout_height="27dp"
-                    android:background="@drawable/button_border"
-                    android:text="Monday 1"
-                    android:textAlignment="center"
-                    android:textSize="18sp"
-                    tools:layout_editor_absoluteX="0dp"
-                    tools:layout_editor_absoluteY="158dp" />
-
-                <TextView
-                    android:id="@+id/scheduleText3"
-                    android:layout_width="193dp"
-                    android:layout_height="27dp"
-                    android:background="@drawable/button_border"
-                    android:textAlignment="center"
-                    android:textSize="18sp"
-                    tools:layout_editor_absoluteX="0dp"
-                    tools:layout_editor_absoluteY="212dp" />
-
-                <TextView
-                    android:id="@+id/scheduleText4"
-                    android:layout_width="193dp"
-                    android:layout_height="27dp"
-                    android:background="@drawable/button_border"
-                    android:textAlignment="center"
-                    android:textSize="18sp"
-                    tools:layout_editor_absoluteX="0dp"
-                    tools:layout_editor_absoluteY="185dp" />
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/scheduleText2"
                 android:layout_width="193dp"
-                android:layout_height="108dp"
-                android:orientation="vertical"
-                tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="274dp">
+                android:layout_height="27dp"
+                android:background="@drawable/button_border"
+                android:text="Monday 1"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="158dp" />
 
-                <TextView
-                    android:id="@+id/scheduleText5"
-                    android:layout_width="193dp"
-                    android:layout_height="27dp"
-                    android:background="@drawable/button_border"
-                    android:textAlignment="center"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    tools:layout_editor_absoluteY="185dp" />
+            <TextView
+                android:id="@+id/scheduleText3"
+                android:layout_width="193dp"
+                android:layout_height="27dp"
+                android:background="@drawable/button_border"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="212dp" />
 
-                <TextView
-                    android:id="@+id/scheduleText6"
-                    android:layout_width="193dp"
-                    android:layout_height="27dp"
-                    android:background="@drawable/button_border"
-                    android:textAlignment="center"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/scheduleText3"
-                    tools:layout_editor_absoluteX="193dp"
-                    tools:layout_editor_absoluteY="212dp" />
-
-                <TextView
-                    android:id="@+id/scheduleText7"
-                    android:layout_width="193dp"
-                    android:layout_height="27dp"
-                    android:background="@drawable/button_border"
-                    android:textAlignment="center"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    tools:layout_editor_absoluteY="158dp" />
-
-                <TextView
-                    android:id="@+id/scheduleText8"
-                    android:layout_width="193dp"
-                    android:layout_height="27dp"
-                    android:background="@drawable/button_border"
-                    android:textAlignment="center"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/addScheduleButton"
-                    tools:layout_editor_absoluteX="193dp"
-                    tools:layout_editor_absoluteY="239dp" />
-            </LinearLayout>
+            <TextView
+                android:id="@+id/scheduleText4"
+                android:layout_width="193dp"
+                android:layout_height="27dp"
+                android:background="@drawable/button_border"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="185dp" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="193dp"
+            android:layout_height="108dp"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="274dp">
 
-    </android.support.constraint.ConstraintLayout>
-</FrameLayout>
+            <TextView
+                android:id="@+id/scheduleText5"
+                android:layout_width="193dp"
+                android:layout_height="27dp"
+                android:background="@drawable/button_border"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:layout_editor_absoluteY="185dp" />
+
+            <TextView
+                android:id="@+id/scheduleText6"
+                android:layout_width="193dp"
+                android:layout_height="27dp"
+                android:background="@drawable/button_border"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/scheduleText3"
+                tools:layout_editor_absoluteX="193dp"
+                tools:layout_editor_absoluteY="212dp" />
+
+            <TextView
+                android:id="@+id/scheduleText7"
+                android:layout_width="193dp"
+                android:layout_height="27dp"
+                android:background="@drawable/button_border"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:layout_editor_absoluteY="158dp" />
+
+            <TextView
+                android:id="@+id/scheduleText8"
+                android:layout_width="193dp"
+                android:layout_height="27dp"
+                android:background="@drawable/button_border"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/addScheduleButton"
+                tools:layout_editor_absoluteX="193dp"
+                tools:layout_editor_absoluteY="239dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</android.support.constraint.ConstraintLayout>
