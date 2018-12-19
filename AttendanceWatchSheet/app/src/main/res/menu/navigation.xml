@@ -11,7 +11,8 @@
         android:id="@+id/navigation_courses"
         android:icon="@drawable/navigate_courses"
         android:onClick="navMenuSelection"
-        android:title="@string/courses" />
+        android:title="@string/courses"
+        />
 
     <item
         android:id="@+id/navigation_scan"
