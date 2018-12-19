@@ -105,11 +105,11 @@
             android:textAlignment="center" />
 
         <Button
-            android:id="@+id/cancelButton"
+            android:id="@+id/cancelAssistantAdditionButton"
             android:layout_width="50pt"
             android:layout_height="match_parent"
             android:layout_gravity="right"
-            android:onClick="removeAddAssistantFragment"
+            android:onClick="removeFragment"
             android:text="cancel"
             android:textAlignment="center" />
 

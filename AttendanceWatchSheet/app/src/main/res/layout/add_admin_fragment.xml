@@ -84,11 +84,11 @@
             android:textAlignment="center" />
 
         <Button
-            android:id="@+id/cancelButton"
+            android:id="@+id/cancelAdminAdditionButton"
             android:layout_width="50pt"
             android:layout_height="match_parent"
             android:layout_gravity="right"
-            android:onClick="removeAddAdminFragment"
+            android:onClick="removeFragment"
             android:text="cancel"
             android:textAlignment="center" />
 

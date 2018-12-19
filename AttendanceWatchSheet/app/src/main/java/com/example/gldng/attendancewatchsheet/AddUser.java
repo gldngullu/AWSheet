@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -70,7 +71,8 @@ public class AddUser extends AppCompatActivity {
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 // ADD USER TO DATABASE
-                                removeAddInstructorFragment(v);
+                                Log.d("aa",v.toString());
+                                removeFragment(-1);
                             }
                         })
                         .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -86,7 +88,7 @@ public class AddUser extends AppCompatActivity {
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 // ADD USER TO DATABASE
-                                removeAddAssistantFragment(v);
+                                removeFragment(-2);
                             }
                         })
                         .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -101,7 +103,7 @@ public class AddUser extends AppCompatActivity {
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 // ADD USER TO DATABASE
-                                removeAddAdminFragment(v);
+                                removeFragment(-3);
                             }
                         })
                         .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -117,51 +119,76 @@ public class AddUser extends AppCompatActivity {
 
     public void removeFragment(View v){
         int id = v.getId();
+        FragmentTransaction transaction = manager.beginTransaction();
+        switch (id){
+            case R.id.cancelInstructorAdditionButton:
+                AddInstructor fragment1 = (AddInstructor) manager.findFragmentByTag("AddInstructorFragment");
+                if (fragment1 != null) {
+                    transaction.remove(fragment1);
+                    transaction.commit();
+                } else {
+                    Toast.makeText(this, "There is no fragment here", Toast.LENGTH_LONG).show();
+                }
+                break;
+            case R.id.cancelAssistantAdditionButton:
+                AddAssistant fragment2 = (AddAssistant) manager.findFragmentByTag("AddAssistantFragment");
+                if (fragment2 != null) {
+                    transaction.remove(fragment2);
+                    transaction.commit();
+                } else {
+                    Toast.makeText(this, "There is no fragment here", Toast.LENGTH_LONG).show();
+                }
+                break;
+            case R.id.cancelAdminAdditionButton:
+                AddAdmin fragment3 = (AddAdmin) manager.findFragmentByTag("AddAdminFragment");
+                if (fragment3 != null) {
+                    transaction.remove(fragment3);
+                    transaction.commit();
+                } else {
+                    Toast.makeText(this, "There is no fragment here", Toast.LENGTH_LONG).show();
+                }
+                break;
+        }
         addInstructor.setVisibility(View.VISIBLE);
         addAdmin.setVisibility(View.VISIBLE);
         addAssistant.setVisibility(View.VISIBLE);
     }
 
-    public void removeAddInstructorFragment(View v) {
+    public void removeFragment(int id){
+        FragmentTransaction transaction = manager.beginTransaction();
+        switch (id){
+            case -1:
+                AddInstructor fragment1 = (AddInstructor) manager.findFragmentByTag("AddInstructorFragment");
+                if (fragment1 != null) {
+                    transaction.remove(fragment1);
+                    transaction.commit();
+                } else {
+                    Toast.makeText(this, "There is no fragment here", Toast.LENGTH_LONG).show();
+                }
+                break;
+            case -2:
+                AddAssistant fragment2 = (AddAssistant) manager.findFragmentByTag("AddAssistantFragment");
+                if (fragment2 != null) {
+                    transaction.remove(fragment2);
+                    transaction.commit();
+                } else {
+                    Toast.makeText(this, "There is no fragment here", Toast.LENGTH_LONG).show();
+                }
+                break;
+            case -3:
+                AddAdmin fragment3 = (AddAdmin) manager.findFragmentByTag("AddAdminFragment");
+                if (fragment3 != null) {
+                    transaction.remove(fragment3);
+                    transaction.commit();
+                } else {
+                    Toast.makeText(this, "There is no fragment here", Toast.LENGTH_LONG).show();
+                }
+                break;
+        }
         addInstructor.setVisibility(View.VISIBLE);
         addAdmin.setVisibility(View.VISIBLE);
         addAssistant.setVisibility(View.VISIBLE);
-        AddInstructor fragment1 = (AddInstructor) manager.findFragmentByTag("AddInstructorFragment");
-        FragmentTransaction transaction = manager.beginTransaction();
-        if (fragment1 != null) {
-            transaction.remove(fragment1);
-            transaction.commit();
-        } else {
-            Toast.makeText(this, "There is no fragment here", Toast.LENGTH_LONG).show();
-        }
     }
 
-    public void removeAddAssistantFragment(View v) {
-        addInstructor.setVisibility(View.VISIBLE);
-        addAdmin.setVisibility(View.VISIBLE);
-        addAssistant.setVisibility(View.VISIBLE);
-        AddAssistant fragment1 = (AddAssistant) manager.findFragmentByTag("AddAssistantFragment");
-        FragmentTransaction transaction = manager.beginTransaction();
-        if (fragment1 != null) {
-            transaction.remove(fragment1);
-            transaction.commit();
-        } else {
-            Toast.makeText(this, "There is no fragment here", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    public void removeAddAdminFragment(View v) {
-        addInstructor.setVisibility(View.VISIBLE);
-        addAdmin.setVisibility(View.VISIBLE);
-        addAssistant.setVisibility(View.VISIBLE);
-        AddAdmin fragment1 = (AddAdmin) manager.findFragmentByTag("AddAdminFragment");
-        FragmentTransaction transaction = manager.beginTransaction();
-        if (fragment1 != null) {
-            transaction.remove(fragment1);
-            transaction.commit();
-        } else {
-            Toast.makeText(this, "There is no fragment here", Toast.LENGTH_LONG).show();
-        }
-    }
 
 }
