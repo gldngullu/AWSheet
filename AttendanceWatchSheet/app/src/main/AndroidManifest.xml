@@ -12,14 +12,7 @@
 
 
         <activity android:name=".AddUser">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-
         <activity android:name=".SelectCourse" />
         <activity
             android:name=".Courses_Student"
@@ -40,10 +33,6 @@
         <activity android:name=".AttandanceQrMethodActivity" />
         <activity android:name=".AdminCoursePage" />
         <activity android:name=".HomeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 >>>>>>> a3dc8b70d657a05ba08f1410d73e4a4fc31545f0
     </application>

@@ -17,7 +17,6 @@
         android:icon="@mipmap/scanicon"
         android:title="Scan" 
         android:onClick="navMenuSelection"
-        android:title="@string/courses"
         />
 
     <item

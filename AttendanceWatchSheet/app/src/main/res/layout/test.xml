@@ -90,7 +90,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/scheduleText8"
+                android:id="@+id/scheduleText9"
                 android:layout_width="0dp"
                 android:layout_height="27dp"
                 android:background="@drawable/button_border"

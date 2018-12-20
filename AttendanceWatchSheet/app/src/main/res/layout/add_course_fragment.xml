@@ -94,7 +94,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:onClick="alertDialog2"
+        android:onClick="alertDialog"
         android:text="CREATE"
         app:layout_constraintEnd_toStartOf="@+id/cancelCourseAdditionButton"
         app:layout_constraintHorizontal_bias="0.845"
