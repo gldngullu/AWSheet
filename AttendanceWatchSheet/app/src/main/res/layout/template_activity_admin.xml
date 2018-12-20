@@ -34,9 +34,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    # KODUNUZU BU ARAYA YAZIN
-    #
-    #///////////////////////////////////////////////////////////////
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="384dp"

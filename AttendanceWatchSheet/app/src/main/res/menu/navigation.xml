@@ -11,13 +11,11 @@
         android:id="@+id/navigation_courses"
         android:enabled="true"
         android:icon="@drawable/navigate_courses"
-<<<<<<< HEAD
         android:title="@string/courses" />
     <item
         android:id="@+id/navigate_scan"
         android:icon="@mipmap/scanicon"
-        android:title="Scan" />
-=======
+        android:title="Scan" 
         android:onClick="navMenuSelection"
         android:title="@string/courses"
         />
