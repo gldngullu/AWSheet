@@ -31,6 +31,5 @@
         android:onClick="navMenuSelection"
         android:title="@string/calendar" />
 
->>>>>>> a3dc8b70d657a05ba08f1410d73e4a4fc31545f0
 
 </menu>
