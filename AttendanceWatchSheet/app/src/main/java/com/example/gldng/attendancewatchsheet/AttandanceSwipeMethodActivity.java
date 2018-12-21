@@ -1,14 +1,16 @@
 package com.example.gldng.attendancewatchsheet;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.ArrayList;
 
-public class AttandanceSwipeMethodActivity extends AppCompatActivity {
+public class AttandanceSwipeMethodActivity extends AppCompatActivity implements NavigationMenuActions{
 
     ArrayList<SwipeCard> a1;
     SwipeCardAdapter swipeCardAdapter;
@@ -61,6 +63,25 @@ public class AttandanceSwipeMethodActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    public void navMenuSelection(View v) {
+        Intent intent = null;
+        switch (v.getId()){
+            case R.id.navigation_home:
+                intent = new Intent(AttandanceSwipeMethodActivity.this,HomeActivityInstructor.class);
+                break;
+            case R.id.navigation_courses:
+                intent = new Intent(AttandanceSwipeMethodActivity.this,Courses_Instructor.class);
+                break;
+            case R.id.navigation_attend:
+                intent = new Intent(AttandanceSwipeMethodActivity.this,AttandanceSelectorActivity.class);
+                break;
+            case R.id.navigation_calendar:
+                //intent = new Intent(HomeActivityInstructor.this,.class);
+                break;
+        }
+        startActivity(intent);
     }
 
 

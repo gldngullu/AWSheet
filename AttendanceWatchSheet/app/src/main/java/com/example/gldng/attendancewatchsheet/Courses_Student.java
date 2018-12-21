@@ -1,7 +1,9 @@
 package com.example.gldng.attendancewatchsheet;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.internal.NavigationMenu;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -10,9 +12,11 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.zxing.qrcode.QRCodeReader;
+
 import java.util.List;
 
-public class Courses_Student extends AppCompatActivity {
+public class Courses_Student extends AppCompatActivity implements NavigationMenuActions {
     private TextView mTextMessage;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -75,6 +79,27 @@ public class Courses_Student extends AppCompatActivity {
 
 
 
+    }
+
+
+    @Override
+    public void navMenuSelection(View v) {
+        Intent intent = null;
+        switch (v.getId()){
+            case R.id.navigation_home:
+                intent = new Intent(Courses_Student.this,HomeActivity.class);
+                break;
+            case R.id.navigation_courses:
+                //intent = new Intent(HomeActivity.this,Courses_Student.class);
+                break;
+            case R.id.navigation_scan:
+                intent = new Intent(Courses_Student.this,QRCodeReader.class);
+                break;
+            case R.id.navigation_calendar:
+                //intent = new Intent(HomeActivity.this,.class);
+                break;
+        }
+        startActivity(intent);
     }
 
 

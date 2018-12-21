@@ -30,5 +30,6 @@ public class HomeActivityInstructor extends AppCompatActivity implements Navigat
                 //intent = new Intent(HomeActivityInstructor.this,.class);
                 break;
         }
+        startActivity(intent);
     }
 }

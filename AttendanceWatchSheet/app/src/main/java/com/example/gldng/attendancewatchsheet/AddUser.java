@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,7 +14,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-public class AddUser extends AppCompatActivity {
+public class AddUser extends AppCompatActivity implements NavigationMenuActions{
 
     Button addInstructor;
     Button addAssistant;
@@ -191,4 +192,20 @@ public class AddUser extends AppCompatActivity {
     }
 
 
+    @Override
+    public void navMenuSelection(View v) {
+        Intent intent = null;
+        switch (v.getId()){
+            case R.id.navigation_home:
+                intent = new Intent(AddUser.this,HomeActivityAdmin.class);
+                break;
+            case R.id.navigation_courses:
+                intent = new Intent(AddUser.this,AdminCoursePage.class);
+                break;
+            case R.id.navigation_member:
+                //intent = new Intent(AddUser.this,AddUser.class);
+                break;
+        }
+        startActivity(intent);
+    }
 }

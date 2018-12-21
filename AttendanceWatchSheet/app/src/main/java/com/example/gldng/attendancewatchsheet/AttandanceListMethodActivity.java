@@ -1,5 +1,6 @@
 package com.example.gldng.attendancewatchsheet;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class AttandanceListMethodActivity extends AppCompatActivity implements SpinnerHelper{
+public class AttandanceListMethodActivity extends AppCompatActivity implements SpinnerHelper,NavigationMenuActions{
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -120,5 +121,24 @@ public class AttandanceListMethodActivity extends AppCompatActivity implements S
             }
         });
 
+    }
+
+    public void navMenuSelection(View v) {
+        Intent intent = null;
+        switch (v.getId()){
+            case R.id.navigation_home:
+                intent = new Intent(AttandanceListMethodActivity.this,HomeActivityInstructor.class);
+                break;
+            case R.id.navigation_courses:
+                intent = new Intent(AttandanceListMethodActivity.this,Courses_Instructor.class);
+                break;
+            case R.id.navigation_attend:
+                intent = new Intent(AttandanceListMethodActivity.this,AttandanceSelectorActivity.class);
+                break;
+            case R.id.navigation_calendar:
+                //intent = new Intent(HomeActivityInstructor.this,.class);
+                break;
+        }
+        startActivity(intent);
     }
 }

@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,7 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class AdminCoursePage extends AppCompatActivity {
+public class AdminCoursePage extends AppCompatActivity implements NavigationMenuActions{
 Button manualAddCourseButton;
 Button uploadCourseListButton;
 Button manualDeleteCourseButton;
@@ -224,4 +225,22 @@ FragmentManager manager;
         addCourseText.setVisibility(View.VISIBLE);
         removeCourseText.setVisibility(View.VISIBLE);
     }
+
+    @Override
+    public void navMenuSelection(View v) {
+        Intent intent = null;
+        switch (v.getId()){
+            case R.id.navigation_home:
+                intent = new Intent(AdminCoursePage.this,HomeActivityAdmin.class);
+                break;
+            case R.id.navigation_courses:
+                //intent = new Intent(AddUser.this,AdminCoursePage.class);
+                break;
+            case R.id.navigation_member:
+                intent = new Intent(AdminCoursePage.this,AddUser.class);
+                break;
+        }
+        startActivity(intent);
+    }
+
 }

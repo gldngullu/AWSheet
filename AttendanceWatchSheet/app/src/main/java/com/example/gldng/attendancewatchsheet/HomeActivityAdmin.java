@@ -29,6 +29,7 @@ public class HomeActivityAdmin extends AppCompatActivity implements NavigationMe
                 intent = new Intent(HomeActivityAdmin.this,AddUser.class);
                 break;
         }
+        startActivity(intent);
     }
 
 }

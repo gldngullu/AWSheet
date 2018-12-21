@@ -16,7 +16,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.google.zxing.qrcode.QRCodeReader;
 
-public class AttandanceQrreaderActivity extends AppCompatActivity {
+public class AttandanceQrreaderActivity extends AppCompatActivity implements NavigationMenuActions{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,25 @@ public class AttandanceQrreaderActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode,resultCode,data);
         Toast.makeText(this,result.getContents(),Toast.LENGTH_LONG).show();
+    }
+
+    public void navMenuSelection(View v) {
+        Intent intent = null;
+        switch (v.getId()){
+            case R.id.navigation_home:
+                intent = new Intent(AttandanceQrreaderActivity.this,HomeActivityInstructor.class);
+                break;
+            case R.id.navigation_courses:
+                intent = new Intent(AttandanceQrreaderActivity.this,Courses_Instructor.class);
+                break;
+            case R.id.navigation_attend:
+                intent = new Intent(AttandanceQrreaderActivity.this,AttandanceSelectorActivity.class);
+                break;
+            case R.id.navigation_calendar:
+                //intent = new Intent(HomeActivityInstructor.this,.class);
+                break;
+        }
+        startActivity(intent);
     }
 
 }

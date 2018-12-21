@@ -4,21 +4,23 @@
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home_black_24dp"
+        android:onClick="navMenuSelection"
         android:title="@string/title_home" />
 
     <item
         android:id="@+id/navigation_courses"
         android:icon="@mipmap/navigatebarcourse"
+        android:onClick="navMenuSelection"
         android:title="@string/courses" />
 
     <item
         android:id="@+id/navigation_attend"
         android:icon="@drawable/navigateattend"
+        android:onClick="navMenuSelection"
         android:title="@string/attend" />
     <item
         android:id="@+id/navigation_calendar"
         android:icon="@drawable/navigate_calendar"
+        android:onClick="navMenuSelection"
         android:title="@string/calendar" />
-
-
 </menu>

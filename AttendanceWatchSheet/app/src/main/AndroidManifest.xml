@@ -1,40 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.gldng.attendancewatchsheet">
 
+    <uses-feature
+        android:name="android.software.leanback"
+        android:required="false" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
 
-
-        <activity android:name=".AddUser">
-        </activity>
-        <activity android:name=".SelectCourse" />
-        <activity
-            android:name=".Courses_Student"
-            android:label="@string/title_activity_courses__student" />
-        <activity android:name=".ForgotPasswordActivity" />
-        <activity android:name=".AttandanceQrreaderActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".RegisterActivity"/>
+        <activity android:name=".ForgotPasswordActivity" />
+
+        <activity android:name=".AddUser" />
+        <activity android:name=".AdminCoursePage" />
+
+        <activity android:name=".AttandanceQrreaderActivity" />
         <activity android:name=".AttandanceListMethodActivity" />
         <activity android:name=".AttandanceSwipeMethodActivity" />
         <activity android:name=".AttandanceSelectorActivity" />
         <activity android:name=".AttandanceQrMethodActivity" />
-        <activity android:name=".AdminCoursePage" />
-        <activity android:name=".HomeActivity">
-        </activity>
->>>>>>> a3dc8b70d657a05ba08f1410d73e4a4fc31545f0
+
+        <activity android:name=".Courses_Instructor" />
+        <activity android:name=".Courses_Student" />
+
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".HomeActivityAdmin" />
+        <activity android:name=".HomeActivityInstructor" />
+
+        <activity android:name=".ResetPasswordActivity" />
+        <activity android:name=".SelectCourse" />
     </application>
 
 </manifest>

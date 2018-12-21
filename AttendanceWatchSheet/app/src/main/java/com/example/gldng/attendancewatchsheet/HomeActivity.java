@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.google.zxing.qrcode.QRCodeReader;
@@ -33,5 +34,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationMenuAct
                 //intent = new Intent(HomeActivity.this,.class);
                 break;
         }
+        startActivity(intent);
+    }
+
+    public void navMenuSelection(MenuItem item) {
+        
     }
 }

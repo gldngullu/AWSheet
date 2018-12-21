@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class ResetPasswordActivity extends AppCompatActivity {
+public class ResetPasswordActivity extends AppCompatActivity implements NavigationMenuActions{
 private EditText etNewPassword;
 private EditText etConfirmNewPassword;
 private Button btChangePassword;
@@ -61,9 +61,6 @@ private Button btChangePassword;
 
             btChangePassword.setEnabled(!newpasswordinput.isEmpty() && !confirmnewpasswordinput.isEmpty());
 
-
-
-
         }
 
         @Override
@@ -71,4 +68,10 @@ private Button btChangePassword;
 
         }
     };
+
+
+    @Override
+    public void navMenuSelection(View v) {
+        // look into it
+    }
 }
