@@ -13,13 +13,10 @@
         android:icon="@drawable/navigate_courses"
         android:onClick="navMenuSelection"
         android:title="@string/courses" />
-    <item
         android:id="@+id/navigate_scan"
         android:icon="@mipmap/scanicon"
         android:title="Scan" 
         android:onClick="navMenuSelection"
-        />
-
     <item
         android:id="@+id/navigation_scan"
         android:icon="@drawable/navigate_icons"

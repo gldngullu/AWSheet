@@ -4,13 +4,37 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ListView;
 
 public class Courses_Instructor extends AppCompatActivity implements NavigationMenuActions{
+
+
+
+    private ListView course_list;
+    private Button addCoursebtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_courses__instructor);
+        course_list=findViewById(R.id.course_list);
+        addCoursebtn=findViewById(R.id.addcourse);
+
+
+        addCoursebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent CourseAddition = new Intent(Courses_Instructor.this,SelectCourse.class);
+                Courses_Instructor.this.startActivity(CourseAddition);
+
+
+            }
+        });
+
+
+
     }
 
     public void navMenuSelection(View v) {
