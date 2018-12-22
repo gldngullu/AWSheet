@@ -10,10 +10,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.util.ArrayList;
+
 
 public class AdminCoursePage extends AppCompatActivity implements NavigationMenuActions{
 Button manualAddCourseButton;
@@ -24,6 +31,7 @@ TextView addCourseText;
 TextView removeCourseText;
 FrameLayout frameLayout2;
 FragmentManager manager;
+static ArrayList<String> StringsForListView = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +45,10 @@ FragmentManager manager;
         removeCourseText = findViewById(R.id.removeCourseText);
         manager = getFragmentManager();
         frameLayout2 = findViewById(R.id.frameLayout2);
+
     }
 
-    public void fragmentOpener(View v){
+    public void fragmentOpener(View v) {
         manualAddCourseButton.setVisibility(View.INVISIBLE);
         uploadCourseListButton.setVisibility(View.INVISIBLE);
         manualDeleteCourseButton.setVisibility(View.INVISIBLE);
@@ -51,24 +60,24 @@ FragmentManager manager;
 
     }
 
-    public void FragmentAdder(int userType){
+    public void FragmentAdder(int userType) {
         FragmentTransaction transaction = manager.beginTransaction();
         switch (userType) {
             case R.id.manualAddCourseButton:
                 AddCourse fragment1 = new AddCourse();
-                transaction.add(R.id.frameLayout2,fragment1,"manualAddCourseFragment");
+                transaction.add(R.id.frameLayout2, fragment1, "manualAddCourseFragment");
                 break;
             case R.id.uploadCourseListButton:
                 UploadCourses fragment2 = new UploadCourses();
-                transaction.add(R.id.frameLayout2,fragment2,"uploadCoursesFragment");
+                transaction.add(R.id.frameLayout2, fragment2, "uploadCoursesFragment");
                 break;
             case R.id.manualDeleteCourseButton:
                 RemoveCourse fragment3 = new RemoveCourse();
-                transaction.add(R.id.frameLayout2,fragment3,"removeCourseFragment");
+                transaction.add(R.id.frameLayout2, fragment3, "removeCourseFragment");
                 break;
             case R.id.setAddDropButton:
                 SetAddDrop fragment4 = new SetAddDrop();
-                transaction.add(R.id.frameLayout2,fragment4,"setAddDropFragment");
+                transaction.add(R.id.frameLayout2, fragment4, "setAddDropFragment");
                 break;
         }
         transaction.commit();
@@ -85,7 +94,22 @@ FragmentManager manager;
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 // ADD course TO DATABASE
-                                removeFragment(-1);
+                                removeFragment2(-1);
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // RETURN BACK
+                            }
+                        });
+                break;
+            case R.id.confirmUploadCourseButton:
+                builder.setTitle("Upload Course")
+                        .setMessage("You will upload a new file for the course list. Do you confirm ? ")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // delete course from DATABASE
+                                removeFragment2(-2);
                             }
                         })
                         .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -100,7 +124,7 @@ FragmentManager manager;
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 // delete course from DATABASE
-                                removeFragment(-1);
+                                removeFragment2(-3);
                             }
                         })
                         .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -110,12 +134,12 @@ FragmentManager manager;
                         });
                 break;
             case R.id.confirmAddDropSetButton:
-                builder.setTitle("Upload Course")
-                        .setMessage("You will upload a new file for the course list. Do you confirm ? ")
+                builder.setTitle("Set Add Drop")
+                        .setMessage("You will set add-drop deadline for the courses. Do you confirm?")
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 // delete course from DATABASE
-                                removeFragment(-1);
+                                removeFragment2(-4);
                             }
                         })
                         .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -129,12 +153,12 @@ FragmentManager manager;
         builder.show();
     }
 
-    public void removeFragment(View v){
+    public void removeFragment2(final View v) {
         int id = v.getId();
         FragmentTransaction transaction = manager.beginTransaction();
-        switch (id){
+        switch (id) {
             case R.id.cancelCourseAdditionButton:
-                AddInstructor fragment1 = (AddInstructor) manager.findFragmentByTag("AddInstructorFragment");
+                AddCourse fragment1 = (AddCourse) manager.findFragmentByTag("manualAddCourseFragment");
                 if (fragment1 != null) {
                     transaction.remove(fragment1);
                     transaction.commit();
@@ -143,7 +167,7 @@ FragmentManager manager;
                 }
                 break;
             case R.id.cancelCourseRemovingButton:
-                AddAssistant fragment2 = (AddAssistant) manager.findFragmentByTag("AddAssistantFragment");
+                RemoveCourse fragment2 = (RemoveCourse) manager.findFragmentByTag("removeCourseFragment");
                 if (fragment2 != null) {
                     transaction.remove(fragment2);
                     transaction.commit();
@@ -152,7 +176,7 @@ FragmentManager manager;
                 }
                 break;
             case R.id.cancelUploadCourseButton:
-                AddAdmin fragment3 = (AddAdmin) manager.findFragmentByTag("AddAdminFragment");
+                UploadCourses fragment3 = (UploadCourses) manager.findFragmentByTag("uploadCoursesFragment");
                 if (fragment3 != null) {
                     transaction.remove(fragment3);
                     transaction.commit();
@@ -161,7 +185,7 @@ FragmentManager manager;
                 }
                 break;
             case R.id.cancelAddDropSetButton:
-                AddAdmin fragment4 = (AddAdmin) manager.findFragmentByTag("AddAdminFragment");
+                SetAddDrop fragment4 = (SetAddDrop) manager.findFragmentByTag("setAddDropFragment");
                 if (fragment4 != null) {
                     transaction.remove(fragment4);
                     transaction.commit();
@@ -169,6 +193,7 @@ FragmentManager manager;
                     Toast.makeText(this, "There is no fragment here", Toast.LENGTH_LONG).show();
                 }
                 break;
+
         }
         manualAddCourseButton.setVisibility(View.VISIBLE);
         uploadCourseListButton.setVisibility(View.VISIBLE);
@@ -178,11 +203,11 @@ FragmentManager manager;
         removeCourseText.setVisibility(View.VISIBLE);
     }
 
-    public void removeFragment(int id){
+    public void removeFragment2(int id) {
         FragmentTransaction transaction = manager.beginTransaction();
-        switch (id){
+        switch (id) {
             case -1:
-                AddInstructor fragment1 = (AddInstructor) manager.findFragmentByTag("AddInstructorFragment");
+                AddCourse fragment1 = (AddCourse) manager.findFragmentByTag("manualAddCourseFragment");
                 if (fragment1 != null) {
                     transaction.remove(fragment1);
                     transaction.commit();
@@ -191,7 +216,7 @@ FragmentManager manager;
                 }
                 break;
             case -2:
-                AddAssistant fragment2 = (AddAssistant) manager.findFragmentByTag("AddAssistantFragment");
+                UploadCourses fragment2 = (UploadCourses) manager.findFragmentByTag("uploadCoursesFragment");
                 if (fragment2 != null) {
                     transaction.remove(fragment2);
                     transaction.commit();
@@ -200,7 +225,7 @@ FragmentManager manager;
                 }
                 break;
             case -3:
-                AddAdmin fragment3 = (AddAdmin) manager.findFragmentByTag("AddAdminFragment");
+                RemoveCourse fragment3 = (RemoveCourse) manager.findFragmentByTag("removeCourseFragment");
                 if (fragment3 != null) {
                     transaction.remove(fragment3);
                     transaction.commit();
@@ -209,7 +234,7 @@ FragmentManager manager;
                 }
                 break;
             case -4:
-                AddAdmin fragment4 = (AddAdmin) manager.findFragmentByTag("AddAdminFragment");
+                SetAddDrop fragment4 = (SetAddDrop) manager.findFragmentByTag("setAddDropFragment");
                 if (fragment4 != null) {
                     transaction.remove(fragment4);
                     transaction.commit();
@@ -224,6 +249,25 @@ FragmentManager manager;
         setAddDropButton.setVisibility(View.VISIBLE);
         addCourseText.setVisibility(View.VISIBLE);
         removeCourseText.setVisibility(View.VISIBLE);
+
+    }
+
+    public void AddDataInListView(View view) {
+        int ButtonId = view.getId();
+        switch (ButtonId) {
+            case R.id.addScheduleButton:
+                ListView listView = findViewById(R.id.listView);
+                Spinner spinnerdays = findViewById(R.id.SpinnerForDays);
+                Spinner spinnerhours = findViewById(R.id.SpinnerForHours);
+                String data = spinnerdays.getSelectedItem().toString() +spinnerhours.getSelectedItem().toString();
+                StringsForListView.add(data);
+                ArrayAdapter<String> veriAdaptoru = new ArrayAdapter<String>
+                        (this, android.R.layout.simple_list_item_1, android.R.id.text1, StringsForListView);
+                listView.setAdapter(veriAdaptoru);
+                break;
+
+        }
+
     }
 
     @Override
