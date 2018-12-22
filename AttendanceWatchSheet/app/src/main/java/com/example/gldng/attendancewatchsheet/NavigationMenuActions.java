@@ -4,6 +4,5 @@ import android.view.View;
 
 public interface NavigationMenuActions {
 
-    public void navMenuSelection(View v);
-
+    public void navBarBuilder();
 }

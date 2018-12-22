@@ -5,10 +5,13 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -37,6 +40,9 @@ static ArrayList<String> StringsForListView = new ArrayList<>();
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_course_page);
+
+        navBarBuilder();
+
         manualAddCourseButton = findViewById(R.id.manualAddCourseButton);
         uploadCourseListButton = findViewById(R.id.uploadCourseListButton);
         manualDeleteCourseButton = findViewById(R.id.manualDeleteCourseButton);
@@ -271,20 +277,27 @@ static ArrayList<String> StringsForListView = new ArrayList<>();
     }
 
     @Override
-    public void navMenuSelection(View v) {
-        Intent intent = null;
-        switch (v.getId()){
-            case R.id.navigation_home:
-                intent = new Intent(AdminCoursePage.this,HomeActivityAdmin.class);
-                break;
-            case R.id.navigation_courses:
-                //intent = new Intent(AddUser.this,AdminCoursePage.class);
-                break;
-            case R.id.navigation_member:
-                intent = new Intent(AdminCoursePage.this,AddUser.class);
-                break;
-        }
-        startActivity(intent);
+    public void navBarBuilder(){
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Intent intent = null;
+                switch (item.getItemId()){
+                    case R.id.navigation_home:
+                        intent = new Intent(AdminCoursePage.this,HomeActivityAdmin.class);
+                        break;
+                    case R.id.navigation_courses:
+                        return false;
+                    case R.id.navigation_member:
+                        intent = new Intent(AdminCoursePage.this,AddUser.class);
+                        break;
+                }
+                startActivity(intent);
+                return true;
+            }
+        });
     }
+
 
 }
