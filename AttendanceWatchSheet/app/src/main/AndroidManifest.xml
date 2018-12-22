@@ -52,7 +52,13 @@
         <activity android:name=".HomeActivityInstructor" />
 
         <activity android:name=".ResetPasswordActivity" />
-        <activity android:name=".SelectCourse" />
+        <activity android:name=".SelectCourse" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+    </activity>
 
         <activity android:name=".AdminCoursePage">
             <intent-filter>

@@ -13,7 +13,7 @@ public class Courses_Instructor extends AppCompatActivity implements NavigationM
 
     private ListView course_list;
     private Button addCoursebtn;
-
+    private Button removeCoursebtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,20 @@ public class Courses_Instructor extends AppCompatActivity implements NavigationM
         setContentView(R.layout.activity_courses__instructor);
         course_list=findViewById(R.id.course_list);
         addCoursebtn=findViewById(R.id.addcourse);
+        removeCoursebtn=findViewById(R.id.removeCourseButton);
+
+
+
+        removeCoursebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent CourseDrop = new Intent(Courses_Instructor.this,RemoveCourse.class);
+                Courses_Instructor.this.startActivity(CourseDrop);
+            }
+        });
+
+
+
 
 
         addCoursebtn.setOnClickListener(new View.OnClickListener() {
@@ -28,8 +42,6 @@ public class Courses_Instructor extends AppCompatActivity implements NavigationM
             public void onClick(View v) {
                 Intent CourseAddition = new Intent(Courses_Instructor.this,SelectCourse.class);
                 Courses_Instructor.this.startActivity(CourseAddition);
-
-
             }
         });
 

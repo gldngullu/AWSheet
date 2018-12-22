@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:overScrollMode="always"
+    android:scrollbarStyle="insideInset"
+    android:scrollbars="vertical"
     tools:context=".SelectCourse">
 
     <ImageView
@@ -90,7 +93,7 @@
         android:layout_marginTop="63dp"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintBottom_toTopOf="@+id/gradeText"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
         app:layout_constraintHorizontal_bias="0.966"
         app:layout_constraintStart_toStartOf="parent"
@@ -158,16 +161,17 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Name" />
+
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="284dp"
 
-        android:layout_height="189dp"
+        android:layout_height="150dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="64dp"
         android:maxHeight="171dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -176,22 +180,21 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <ScrollView
+            android:id="@+id/Midterm_View"
             android:layout_width="match_parent"
-            android:layout_height="187dp">
+            android:layout_height="151dp">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
                 android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/gradeAdder"
-                    android:layout_width="109dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="75dp"
-                    android:text="Grade Adder" />
             </LinearLayout>
         </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"></LinearLayout>
     </LinearLayout>
 
     <Button
@@ -205,6 +208,33 @@
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/gradeText"
+        android:layout_width="153dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="9dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:text="Midterm /Quiz/Att." />
+
+    <Button
+        android:id="@+id/gradeAdder"
+        android:layout_width="85dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginTop="8dp"
+        android:text="Grade Adder"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         app:layout_constraintVertical_bias="0.0" />
 
     <android.support.design.widget.BottomNavigationView
@@ -239,5 +269,21 @@
         app:layout_constraintStart_toEndOf="@+id/createbtn"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
         app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/percent"
+        android:layout_width="63dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toStartOf="@+id/gradeAdder"
+        app:layout_constraintStart_toEndOf="@+id/gradeText"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        tools:text="%" />
 
 </android.support.constraint.ConstraintLayout>

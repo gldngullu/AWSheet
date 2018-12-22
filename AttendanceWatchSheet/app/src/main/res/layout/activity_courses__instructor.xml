@@ -12,8 +12,8 @@
         android:id="@+id/addcourse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
-        android:layout_marginBottom="88dp"
+        android:layout_marginBottom="76dp"
+        android:layout_marginStart="80dp"
         android:text="+"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/course_list" />
@@ -81,5 +81,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/removecourse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        tools:layout_editor_absoluteX="233dp"
+        tools:layout_editor_absoluteY="534dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remove Course"
+        tools:layout_editor_absoluteX="233dp"
+        tools:layout_editor_absoluteY="582dp" />
 
 </android.support.constraint.ConstraintLayout>
