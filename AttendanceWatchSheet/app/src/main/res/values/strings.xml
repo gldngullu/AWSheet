@@ -31,9 +31,6 @@
         <item>Bla Bla</item>
     </string-array>
 
-<<<<<<< Updated upstream
-    <!--  Remove or change this placeholder text -->
-=======
     <string-array name="Days">
         <item>Monday</item>
         <item>Tuesday</item>
@@ -53,8 +50,6 @@
         <item>8</item>
     </string-array>
 
-    <!-- TODO: Remove or change this placeholder text -->
->>>>>>> Stashed changes
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="activity_tag">Activity Tag</string>
 
