@@ -2,10 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.gldng.attendancewatchsheet">
+
 <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
     <uses-feature
-        android:name="android.software.leanback"
+        android:name="android.hardware.touchscreen"
         android:required="false" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,6 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        android:theme="@style/AppTheme">
 
         <activity android:name=".LoginActivity">
             <intent-filter>
@@ -22,26 +26,48 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity"/>
+
+        <activity android:name=".AddUser">
+        </activity>
+        <activity
+            android:name=".Courses_Student"
+            android:label="@string/title_activity_courses__student" />
         <activity android:name=".ForgotPasswordActivity" />
 
-        <activity android:name=".AddUser" />
-        <activity android:name=".AdminCoursePage" />
 
         <activity android:name=".AttandanceQrreaderActivity" />
         <activity android:name=".AttandanceListMethodActivity" />
         <activity android:name=".AttandanceSwipeMethodActivity" />
-        <activity android:name=".AttandanceSelectorActivity" />
+        <activity android:name=".AttandanceSelectorActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity android:name=".AttandanceQrMethodActivity" />
-
         <activity android:name=".Courses_Instructor" />
-        <activity android:name=".Courses_Student" />
-
-        <activity android:name=".HomeActivity" />
         <activity android:name=".HomeActivityAdmin" />
         <activity android:name=".HomeActivityInstructor" />
 
         <activity android:name=".ResetPasswordActivity" />
         <activity android:name=".SelectCourse" />
+
+        <activity android:name=".AdminCoursePage">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

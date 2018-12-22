@@ -6,9 +6,14 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class AddCourse extends Fragment {
 
@@ -21,10 +26,18 @@ public class AddCourse extends Fragment {
     Switch notification;
     Button createButton;
     Button cancelButton;
+    Spinner spinnerForDays,spinnerForHours;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-
+        spinnerForDays = (Spinner) getView().findViewById(R.id.SpinnerForDays);
+        spinnerForHours = (Spinner) getView().findViewById(R.id.SpinnerForHours);
+        ArrayAdapter<CharSequence> arrayAdapterForDays =
+                ArrayAdapter.createFromResource(this.getContext(), R.array.Days, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> arrayAdapterForHours =
+                ArrayAdapter.createFromResource(this.getContext(), R.array.Hours, android.R.layout.simple_spinner_item);
+        spinnerForDays.setAdapter(arrayAdapterForDays);
+        spinnerForHours.setAdapter(arrayAdapterForHours);
     }
 
     @Nullable
@@ -35,7 +48,8 @@ public class AddCourse extends Fragment {
 
     }
 
+    }
 
 
 
-}
+
