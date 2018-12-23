@@ -65,7 +65,6 @@ public class RegisterActivity extends AppCompatActivity {
                     Response.Listener<String> responselistener = new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-
                             try {
                                 JSONObject jsonResponse  = new JSONObject(response);
                                 int success = jsonResponse.getInt("success");
