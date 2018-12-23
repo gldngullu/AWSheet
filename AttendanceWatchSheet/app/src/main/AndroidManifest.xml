@@ -39,40 +39,27 @@
             android:label="@string/title_activity_courses__student" />
         <activity android:name=".ForgotPasswordActivity" />
 
+        <activity android:name=".Courses_Student" android:label="@string/title_activity_courses__student" />
 
         <activity android:name=".AttandanceQrreaderActivity" />
         <activity android:name=".AttandanceListMethodActivity" />
         <activity android:name=".AttandanceSwipeMethodActivity" />
-        <activity android:name=".AttandanceSelectorActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
+        <activity android:name=".AttandanceSelectorActivity" />
         <activity android:name=".AttandanceQrMethodActivity" />
-        <activity android:name=".Courses_Instructor" />
+
         <activity android:name=".HomeActivityAdmin" />
         <activity android:name=".HomeActivityInstructor" />
+        <activity android:name=".HomeActivity" />
 
         <activity android:name=".ResetPasswordActivity" />
+
         <activity android:name=".SelectCourse" />
+        <activity android:name=".Courses_Instructor" />
 
-        <activity android:name=".AdminCoursePage">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".AdminCoursePage" />
+        <activity android:name=".AddUser" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".HomeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>
