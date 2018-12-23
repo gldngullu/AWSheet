@@ -75,7 +75,7 @@ private String userMail;
             btLogin.setEnabled(!mailinput.isEmpty() && !passwordinput.isEmpty());
 
             //login buton on click
-            final int userType = 3;
+            final int userType = 2;
             btLogin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

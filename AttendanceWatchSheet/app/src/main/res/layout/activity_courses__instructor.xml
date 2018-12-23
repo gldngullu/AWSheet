@@ -43,7 +43,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addacoursetext"
-        app:menu="@menu/navigation_instructor" />
+        app:menu="@menu/navigation_instructor"
+        app:itemIconTint="@color/bottom_nav_color"
+        app:itemTextColor="@color/bottom_nav_color"
+        />
 
     <TextView
         android:id="@+id/addacoursetext"
@@ -88,7 +91,9 @@
         android:layout_height="wrap_content"
         android:text="-"
         tools:layout_editor_absoluteX="233dp"
-        tools:layout_editor_absoluteY="534dp" />
+        tools:layout_editor_absoluteY="534dp"
+
+        />
 
     <TextView
         android:id="@+id/textView"

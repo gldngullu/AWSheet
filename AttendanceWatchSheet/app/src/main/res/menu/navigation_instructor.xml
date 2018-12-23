@@ -7,7 +7,7 @@
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/navigation_courses"
+        android:id="@+id/navigation_courses_instructor"
         android:icon="@mipmap/navigatebarcourse"
         android:title="@string/courses" />
 

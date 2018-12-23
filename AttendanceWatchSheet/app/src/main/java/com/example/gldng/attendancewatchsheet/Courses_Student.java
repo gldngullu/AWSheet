@@ -6,6 +6,8 @@ import android.support.annotation.NonNull;
 import android.support.design.internal.NavigationMenu;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -16,30 +18,35 @@ import com.google.zxing.qrcode.QRCodeReader;
 
 import java.util.List;
 
-public class Courses_Student extends AppCompatActivity implements NavigationMenuActions {
+public class Courses_Student extends AppCompatActivity implements NavigationMenuActions{
     private TextView mTextMessage;
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_courses:
-                    mTextMessage.setText(R.string.title_dashboard);
-                    return true;
-                case R.id.navigation_scan:
-                    mTextMessage.setText(R.string.title_notifications);
-                    return true;
-                case R.id.navigation_calendar:
-                    mTextMessage.setText(R.string.title_home);
-                    return true;
+
+    @Override
+    public void navBarBuilder(){
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Intent intent = null;
+                switch (item.getItemId()){
+                    case R.id.navigation_home:
+                        intent = new Intent(Courses_Student.this,HomeActivity.class);
+                        break;
+                    case R.id.navigation_courses:
+                        return true;
+                    case R.id.navigation_scan:
+                        intent = new Intent(Courses_Student.this,AttandanceQrreaderActivity.class);
+                        break;
+                    case R.id.navigation_calendar:
+                        intent = new Intent(Courses_Student.this,HomeActivity.class);
+                        break;
+                }
+                startActivity(intent);
+                return false;
             }
-            return false;
-        }
-    };
+        });
+    }
 
     Button addcourse;
     Button removecourse;
@@ -53,9 +60,8 @@ public class Courses_Student extends AppCompatActivity implements NavigationMenu
         removecourse = findViewById(R.id.removecourse);
         course_list = findViewById(R.id.course_list);
         mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+        navBarBuilder();
 
         addcourse.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,27 +85,6 @@ public class Courses_Student extends AppCompatActivity implements NavigationMenu
 
 
 
-    }
-
-
-    @Override
-    public void navMenuSelection(View v) {
-        Intent intent = null;
-        switch (v.getId()){
-            case R.id.navigation_home:
-                intent = new Intent(Courses_Student.this,HomeActivity.class);
-                break;
-            case R.id.navigation_courses:
-                //intent = new Intent(HomeActivity.this,Courses_Student.class);
-                break;
-            case R.id.navigation_scan:
-                intent = new Intent(Courses_Student.this,QRCodeReader.class);
-                break;
-            case R.id.navigation_calendar:
-                //intent = new Intent(HomeActivity.this,.class);
-                break;
-        }
-        startActivity(intent);
     }
 
 

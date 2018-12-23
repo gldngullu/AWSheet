@@ -1,8 +1,11 @@
 package com.example.gldng.attendancewatchsheet;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -157,23 +160,31 @@ public class SelectCourse extends AppCompatActivity implements NavigationMenuAct
             }
 
 
-    public void navMenuSelection(View v) {
-        Intent intent = null;
-        switch (v.getId()) {
-            case R.id.navigation_home:
-                intent = new Intent(SelectCourse.this, HomeActivityInstructor.class);
-                break;
-            case R.id.navigation_courses:
-                intent = new Intent(SelectCourse.this, Courses_Instructor.class);
-                break;
-            case R.id.navigation_attend:
-                intent = new Intent(SelectCourse.this, AttandanceSelectorActivity.class);
-                break;
-            case R.id.navigation_calendar:
-                //intent = new Intent(HomeActivityInstructor.this,.class);
-                break;
-        }
-        startActivity(intent);
+    @Override
+    public void navBarBuilder(){
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Intent intent = null;
+                switch (item.getItemId()){
+                    case R.id.navigation_home:
+                        intent = new Intent(SelectCourse.this,Courses_Instructor.class);
+                        break;
+                    case R.id.navigation_courses:
+                        intent = new Intent(SelectCourse.this,Courses_Instructor.class);
+                        break;
+                    case R.id.navigation_scan:
+                        intent = new Intent(SelectCourse.this,AttandanceSelectorActivity.class);
+                        break;
+                    case R.id.navigation_calendar:
+                        intent = new Intent(SelectCourse.this,HomeActivityInstructor.class);
+                        break;
+                }
+                startActivity(intent);
+                return false;
+            }
+        });
     }
 
 }

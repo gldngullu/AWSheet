@@ -1,8 +1,12 @@
 package com.example.gldng.attendancewatchsheet;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -19,10 +23,10 @@ public class Courses_Instructor extends AppCompatActivity implements NavigationM
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_courses__instructor);
+        navBarBuilder();
         course_list=findViewById(R.id.course_list);
         addCoursebtn=findViewById(R.id.addcourse);
         removeCoursebtn=findViewById(R.id.removeCourseButton);
-
 
 
         removeCoursebtn.setOnClickListener(new View.OnClickListener() {
@@ -32,9 +36,6 @@ public class Courses_Instructor extends AppCompatActivity implements NavigationM
                 Courses_Instructor.this.startActivity(CourseDrop);
             }
         });
-
-
-
 
 
         addCoursebtn.setOnClickListener(new View.OnClickListener() {
@@ -49,22 +50,30 @@ public class Courses_Instructor extends AppCompatActivity implements NavigationM
 
     }
 
-    public void navMenuSelection(View v) {
-        Intent intent = null;
-        switch (v.getId()){
-            case R.id.navigation_home:
-                intent = new Intent(Courses_Instructor.this,HomeActivityInstructor.class);
-                break;
-            case R.id.navigation_courses:
-                intent = new Intent(Courses_Instructor.this,Courses_Instructor.class);
-                break;
-            case R.id.navigation_attend:
-                intent = new Intent(Courses_Instructor.this,AttandanceSelectorActivity.class);
-                break;
-            case R.id.navigation_calendar:
-                //intent = new Intent(HomeActivityInstructor.this,.class);
-                break;
-        }
-        startActivity(intent);
+
+    @Override
+    public void navBarBuilder(){
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Intent intent = null;
+                switch (item.getItemId()){
+                    case R.id.navigation_home:
+                        intent = new Intent(Courses_Instructor.this,HomeActivityInstructor.class);
+                        break;
+                    case R.id.navigation_courses_instructor:
+                        return true;
+                    case R.id.navigation_attend:
+                        intent = new Intent(Courses_Instructor.this,AttandanceSelectorActivity.class);
+                        break;
+                    case R.id.navigation_calendar:
+                        intent = new Intent(Courses_Instructor.this,HomeActivityInstructor.class);
+                        break;
+                }
+                startActivity(intent);
+                return false;
+            }
+        });
     }
 }
