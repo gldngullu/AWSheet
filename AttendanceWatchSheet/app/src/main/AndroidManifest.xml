@@ -39,8 +39,6 @@
             android:label="@string/title_activity_courses__student" />
         <activity android:name=".ForgotPasswordActivity" />
 
-        <activity android:name=".Courses_Student" android:label="@string/title_activity_courses__student" />
-
         <activity android:name=".AttandanceQrreaderActivity" />
         <activity android:name=".AttandanceListMethodActivity" />
         <activity android:name=".AttandanceSwipeMethodActivity" />
@@ -57,7 +55,7 @@
         <activity android:name=".Courses_Instructor" />
 
         <activity android:name=".AdminCoursePage" />
-        <activity android:name=".AddUser" />
+
 
 
     </application>
