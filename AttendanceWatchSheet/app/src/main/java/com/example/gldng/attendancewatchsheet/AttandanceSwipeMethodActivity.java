@@ -89,6 +89,7 @@ public class AttandanceSwipeMethodActivity extends AppCompatActivity implements 
                         intent = new Intent(AttandanceSwipeMethodActivity.this,HomeActivityInstructor.class);
                         break;
                 }
+                intent.putExtra("email",getIntent().getStringExtra("email"));
                 startActivity(intent);
                 return false;
             }

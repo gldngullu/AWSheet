@@ -251,6 +251,7 @@ public class SelectCourse extends AppCompatActivity implements NavigationMenuAct
                         intent = new Intent(SelectCourse.this,HomeActivityInstructor.class);
                         break;
                 }
+                intent.putExtra("email",getIntent().getStringExtra("email"));
                 startActivity(intent);
                 return false;
             }

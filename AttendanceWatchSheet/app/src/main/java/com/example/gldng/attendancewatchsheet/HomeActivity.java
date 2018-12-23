@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.zxing.qrcode.QRCodeReader;
 
@@ -20,6 +21,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationMenuAct
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.template_activity);
+
+        TextView textView = (TextView) findViewById(R.id.userEmail);
+        textView.setText(getIntent().getStringExtra("email"));
 
         navBarBuilder();
     }
@@ -44,6 +48,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationMenuAct
                         intent = new Intent(HomeActivity.this,HomeActivity.class);
                         break;
                 }
+                intent.putExtra("email",getIntent().getStringExtra("email"));
                 startActivity(intent);
                 return false;
             }

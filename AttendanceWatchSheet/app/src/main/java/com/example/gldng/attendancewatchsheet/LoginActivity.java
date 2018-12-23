@@ -74,8 +74,9 @@ private String userMail;
 
             btLogin.setEnabled(!mailinput.isEmpty() && !passwordinput.isEmpty());
 
+            userMail = mailinput;
             //login buton on click
-            final int userType = 2;
+            final int userType = 3;
             btLogin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -91,6 +92,7 @@ private String userMail;
                             intent = new Intent(LoginActivity.this,HomeActivity.class);
                             break;
                     }
+                    intent.putExtra("email",userMail);
                     startActivity(intent);
 
                 }

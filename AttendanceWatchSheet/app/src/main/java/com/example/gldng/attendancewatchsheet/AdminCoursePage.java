@@ -293,6 +293,7 @@ static ArrayList<String> StringsForListView = new ArrayList<>();
                         intent = new Intent(AdminCoursePage.this,AddUser.class);
                         break;
                 }
+                intent.putExtra("email",getIntent().getStringExtra("email"));
                 startActivity(intent);
                 return true;
             }

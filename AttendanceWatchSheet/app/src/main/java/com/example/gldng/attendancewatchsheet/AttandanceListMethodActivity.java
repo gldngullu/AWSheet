@@ -147,6 +147,7 @@ public class AttandanceListMethodActivity extends AppCompatActivity implements S
                         intent = new Intent(AttandanceListMethodActivity.this,HomeActivityInstructor.class);
                         break;
                 }
+                intent.putExtra("email",getIntent().getStringExtra("email"));
                 startActivity(intent);
                 return false;
             }

@@ -216,6 +216,7 @@ public class AddUser extends AppCompatActivity implements NavigationMenuActions{
                     case R.id.navigation_member:
                         return false;
                 }
+                intent.putExtra("email",getIntent().getStringExtra("email"));
                 startActivity(intent);
                 return true;
             }

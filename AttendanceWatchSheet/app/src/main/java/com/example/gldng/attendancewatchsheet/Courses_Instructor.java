@@ -71,6 +71,7 @@ public class Courses_Instructor extends AppCompatActivity implements NavigationM
                         intent = new Intent(Courses_Instructor.this,HomeActivityInstructor.class);
                         break;
                 }
+                intent.putExtra("email",getIntent().getStringExtra("email"));
                 startActivity(intent);
                 return false;
             }

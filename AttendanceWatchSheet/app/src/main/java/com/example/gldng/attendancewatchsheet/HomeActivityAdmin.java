@@ -8,6 +8,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.zxing.qrcode.QRCodeReader;
 
@@ -17,7 +18,13 @@ public class HomeActivityAdmin extends AppCompatActivity implements NavigationMe
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.template_activity_admin);
+
+
+        TextView textView = (TextView) findViewById(R.id.userEmail);
+        textView.setText(getIntent().getStringExtra("email"));
+
         navBarBuilder();
+
     }
 
     @Override
@@ -37,6 +44,7 @@ public class HomeActivityAdmin extends AppCompatActivity implements NavigationMe
                         intent = new Intent(HomeActivityAdmin.this,AddUser.class);
                         break;
                 }
+                intent.putExtra("email",getIntent().getStringExtra("email"));
                 startActivity(intent);
                 return true;
             }

@@ -61,6 +61,7 @@ public class AttandanceQrMethodActivity extends AppCompatActivity implements Nav
                         intent = new Intent(AttandanceQrMethodActivity.this,HomeActivityInstructor.class);
                         break;
                 }
+                intent.putExtra("email",getIntent().getStringExtra("email"));
                 startActivity(intent);
                 return false;
             }

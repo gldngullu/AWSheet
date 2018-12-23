@@ -42,6 +42,7 @@ public class Courses_Student extends AppCompatActivity implements NavigationMenu
                         intent = new Intent(Courses_Student.this,HomeActivity.class);
                         break;
                 }
+                intent.putExtra("email",getIntent().getStringExtra("email"));
                 startActivity(intent);
                 return false;
             }

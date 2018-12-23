@@ -8,6 +8,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 public class HomeActivityInstructor extends AppCompatActivity implements NavigationMenuActions{
 
@@ -16,6 +17,10 @@ public class HomeActivityInstructor extends AppCompatActivity implements Navigat
         super.onCreate(savedInstanceState);
         setContentView(R.layout.template_activity_instructor);
         navBarBuilder();
+
+
+        TextView textView = (TextView) findViewById(R.id.userEmail);
+        textView.setText(getIntent().getStringExtra("email"));
     }
 
     @Override
@@ -38,6 +43,7 @@ public class HomeActivityInstructor extends AppCompatActivity implements Navigat
                         intent = new Intent(HomeActivityInstructor.this,HomeActivityInstructor.class);
                         break;
                 }
+                intent.putExtra("email",getIntent().getStringExtra("email"));
                 startActivity(intent);
                 return true;
             }

@@ -55,6 +55,7 @@ public class AttandanceSelectorActivity extends AppCompatActivity implements Nav
                         intent = new Intent(AttandanceSelectorActivity.this,HomeActivityInstructor.class);
                         break;
                 }
+                intent.putExtra("email",getIntent().getStringExtra("email"));
                 startActivity(intent);
                 return false;
             }

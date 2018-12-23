@@ -57,6 +57,7 @@ public class AttandanceQrreaderActivity extends AppCompatActivity implements Nav
                         intent = new Intent(AttandanceQrreaderActivity.this,HomeActivity.class);
                         break;
                 }
+                intent.putExtra("email",getIntent().getStringExtra("email"));
                 startActivity(intent);
                 return false;
             }
