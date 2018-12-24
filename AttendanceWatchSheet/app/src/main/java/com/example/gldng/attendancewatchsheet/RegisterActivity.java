@@ -71,10 +71,10 @@ public class RegisterActivity extends AppCompatActivity {
                                 int success = jsonResponse.getInt("success");
                                 if(success==1){
                                     Log.d("successful","quary succesful");
-                                    Toast.makeText(RegisterActivity.this, "quary succesful", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(RegisterActivity.this, "Registiration succesful", Toast.LENGTH_LONG).show();
                                 }else{
                                     Log.d("unsuccessful","quary unsuccesful");
-                                    Toast.makeText(RegisterActivity.this, "quary unsuccesful", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(RegisterActivity.this, "Registiration unsuccesful", Toast.LENGTH_LONG).show();
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();

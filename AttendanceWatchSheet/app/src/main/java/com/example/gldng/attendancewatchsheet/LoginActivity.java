@@ -5,10 +5,19 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
 private EditText etLoginMail;
@@ -56,6 +65,69 @@ private String userMail;
         });
 
 
+        //login buton on click
+        final int userType = 3;
+        btLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+             String mail = etLoginMail.getText().toString();
+                String pass = etLoginPassword.getText().toString();
+
+                Response.Listener<String> response1Listener=new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonResponse = new JSONObject(response);
+                            int success= jsonResponse.getInt("success");
+
+                            if(success==1){
+                                int usertype = jsonResponse.getInt("usertype");
+
+
+
+                                Intent intent = null;
+                                switch(usertype){
+                                    case 3:
+                                        intent = new Intent(LoginActivity.this,HomeActivityAdmin.class);
+                                        intent.putExtra("usertype", usertype);
+                                        finish();
+                                        break;
+                                    case 2:
+                                        intent = new Intent(LoginActivity.this,HomeActivityInstructor.class);
+                                        intent.putExtra("usertype", usertype);
+                                        finish();
+                                        break;
+                                    case 1:
+                                        intent = new Intent(LoginActivity.this,HomeActivity.class);
+                                        intent.putExtra("usertype", usertype);
+                                        finish();
+                                        break;
+                                }
+                                startActivity(intent);
+                            }else{
+
+                                Toast.makeText(LoginActivity.this,"Login really unsuccesful",Toast.LENGTH_LONG).show();
+
+                            }
+                        } catch (JSONException e) {
+                            Toast.makeText(LoginActivity.this,"Login unsuccesful",Toast.LENGTH_LONG).show();
+                            e.printStackTrace();
+                        }
+
+                    }
+                };
+
+                LoginRequest loginRequest= new LoginRequest(mail,pass,response1Listener);
+                RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
+                queue.add(loginRequest);
+
+
+
+            }
+        });
+
+
         etLoginMail.addTextChangedListener(loginTextWatcher);
         etLoginPassword.addTextChangedListener(loginTextWatcher);
     }
@@ -74,27 +146,7 @@ private String userMail;
 
             btLogin.setEnabled(!mailinput.isEmpty() && !passwordinput.isEmpty());
 
-            //login buton on click
-            final int userType = 3;
-            btLogin.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = null;
-                    switch(userType){
-                        case 1:
-                            intent = new Intent(LoginActivity.this,HomeActivityAdmin.class);
-                            break;
-                        case 2:
-                            intent = new Intent(LoginActivity.this,HomeActivityInstructor.class);
-                            break;
-                        case 3:
-                            intent = new Intent(LoginActivity.this,HomeActivity.class);
-                            break;
-                    }
-                    startActivity(intent);
 
-                }
-            });
         }
 
         @Override
