@@ -23,6 +23,8 @@ public class AttandanceSwipeMethodActivity extends AppCompatActivity implements 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attandance_swipemethod);
 
+        navBarBuilder();
+
         //Swipe Actions
         SwipeFlingAdapterView flingCounter = (SwipeFlingAdapterView) findViewById(R.id.itemToSwipe);
 
@@ -67,7 +69,6 @@ public class AttandanceSwipeMethodActivity extends AppCompatActivity implements 
 
 
     }
-
     @Override
     public void navBarBuilder(){
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
@@ -79,11 +80,11 @@ public class AttandanceSwipeMethodActivity extends AppCompatActivity implements 
                     case R.id.navigation_home:
                         intent = new Intent(AttandanceSwipeMethodActivity.this,HomeActivityInstructor.class);
                         break;
-                    case R.id.navigation_courses:
+                    case R.id.navigation_courses_instructor:
                         intent = new Intent(AttandanceSwipeMethodActivity.this,Courses_Instructor.class);
                         break;
-                    case R.id.navigation_scan:
-                        intent = new Intent(AttandanceSwipeMethodActivity.this,Courses_Instructor.class);
+                    case R.id.navigation_attend:
+                        intent = new Intent(AttandanceSwipeMethodActivity.this,AttandanceSelectorActivity.class);
                         break;
                     case R.id.navigation_calendar:
                         intent = new Intent(AttandanceSwipeMethodActivity.this,HomeActivityInstructor.class);

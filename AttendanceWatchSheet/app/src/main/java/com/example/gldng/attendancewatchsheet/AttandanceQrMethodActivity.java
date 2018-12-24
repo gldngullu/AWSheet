@@ -37,7 +37,9 @@ public class AttandanceQrMethodActivity extends AppCompatActivity implements Nav
             e.printStackTrace();
         }
 
+        navBarBuilder();
     }
+
 
 
     @Override
@@ -51,11 +53,11 @@ public class AttandanceQrMethodActivity extends AppCompatActivity implements Nav
                     case R.id.navigation_home:
                         intent = new Intent(AttandanceQrMethodActivity.this,HomeActivityInstructor.class);
                         break;
-                    case R.id.navigation_courses:
+                    case R.id.navigation_courses_instructor:
                         intent = new Intent(AttandanceQrMethodActivity.this,Courses_Instructor.class);
                         break;
-                    case R.id.navigation_scan:
-                        intent = new Intent(AttandanceQrMethodActivity.this,Courses_Instructor.class);
+                    case R.id.navigation_attend:
+                        intent = new Intent(AttandanceQrMethodActivity.this,AttandanceSelectorActivity.class);
                         break;
                     case R.id.navigation_calendar:
                         intent = new Intent(AttandanceQrMethodActivity.this,HomeActivityInstructor.class);
@@ -67,5 +69,4 @@ public class AttandanceQrMethodActivity extends AppCompatActivity implements Nav
             }
         });
     }
-
 }

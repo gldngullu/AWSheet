@@ -27,19 +27,20 @@
         </activity>
         <activity android:name=".RegisterActivity"/>
 
-        <activity android:name=".AddUser">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".AddUser" />
         <activity
             android:name=".Courses_Student"
             android:label="@string/title_activity_courses__student" />
         <activity android:name=".ForgotPasswordActivity" />
 
-        <activity android:name=".AttandanceQrreaderActivity" />
+        <activity android:name=".CaptureActivityPortrait"
+            android:screenOrientation="fullSensor"
+            android:stateNotNeeded="true"
+            android:theme="@style/zxing_CaptureTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:replace="screenOrientation"
+            />
+        <activity android:name=".AttandanceQrreaderActivity"/>
         <activity android:name=".AttandanceListMethodActivity" />
         <activity android:name=".AttandanceSwipeMethodActivity" />
         <activity android:name=".AttandanceSelectorActivity" />

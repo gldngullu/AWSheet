@@ -25,15 +25,20 @@ public class AttandanceQrreaderActivity extends AppCompatActivity implements Nav
         navBarBuilder();
 
         IntentIntegrator intentIntegrator = new IntentIntegrator(this);
-        intentIntegrator.setDesiredBarcodeFormats(IntentIntegrator.DATA_MATRIX_TYPES);
+        intentIntegrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
         intentIntegrator.setPrompt("Scan the qr code");
         intentIntegrator.setCameraId(0);
+        intentIntegrator.setOrientationLocked(true);
+        intentIntegrator.setBeepEnabled(true);
+        intentIntegrator.setCaptureActivity(CaptureActivityPortrait.class);
+        intentIntegrator.setBarcodeImageEnabled(true);
+
         intentIntegrator.initiateScan();
 
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode,resultCode,data);
-        Toast.makeText(this,result.getContents(),Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"aaaa",Toast.LENGTH_LONG).show();
     }
 
 
