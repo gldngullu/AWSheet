@@ -1,32 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home_black_24dp"
-        android:onClick="navMenuSelection"
-        android:title="@string/title_home" />
+        android:title="@string/title_home"
+        />
 
     <item
         android:id="@+id/navigation_courses"
         android:enabled="true"
         android:icon="@drawable/navigate_courses"
-        android:onClick="navMenuSelection"
-        android:title="@string/courses" />
-        android:id="@+id/navigate_scan"
-        android:icon="@mipmap/scanicon"
-        android:title="Scan" 
-        android:onClick="navMenuSelection"
+        android:title="@string/courses"
+        />
     <item
         android:id="@+id/navigation_scan"
-        android:icon="@drawable/navigate_icons"
-        android:onClick="navMenuSelection"
-        android:title="@string/scan" />
+        android:icon="@mipmap/scanicon"
+        android:title="Scan"
+        />
+
     <item
         android:id="@+id/navigation_calendar"
         android:icon="@drawable/navigate_calendar"
-        android:onClick="navMenuSelection"
-        android:title="@string/calendar" />
-
-
+        android:enabled="false"
+        android:title="@string/calendar"
+        />
 </menu>

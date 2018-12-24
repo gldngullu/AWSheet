@@ -84,7 +84,7 @@ private String userMail;
                             if(success==1){
                                 int usertype = jsonResponse.getInt("usertype");
 
-
+								userMail = mail;
 
                                 Intent intent = null;
                                 switch(usertype){
@@ -104,6 +104,7 @@ private String userMail;
                                         finish();
                                         break;
                                 }
+								intent.putExtra("email",userMail);
                                 startActivity(intent);
                             }else{
 

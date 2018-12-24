@@ -21,7 +21,7 @@
         android:layout_height="40sp"
         android:layout_gravity="bottom"
         android:ems="10"
-        android:hint="Name Surname "
+        android:hint="Name"
         android:inputType="textEmailAddress" />
 
 
@@ -29,6 +29,26 @@
         android:layout_width="match_parent"
         android:layout_height="18dp" />
 
+    <TextView
+        android:id="@+id/assistantSurnameText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Assistant Surname:"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/assistantSurname"
+        android:layout_width="match_parent"
+        android:layout_height="40sp"
+        android:layout_gravity="bottom"
+        android:ems="10"
+        android:hint="Surname "
+        android:inputType="textEmailAddress" />
+
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="18dp" />
     <TextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
@@ -62,28 +82,7 @@
         android:layout_width="match_parent"
         android:layout_height="18dp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="100dp"
-            android:layout_height="55dp"
-            android:text="Select Department:"
-            android:textAlignment="viewStart"
-            android:textSize="18dp"
-            />
-
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/btn_dropdown"
-            android:spinnerMode="dropdown"
-            android:minHeight="55dp"/>
-    </LinearLayout>
 
     <Space
         android:layout_width="match_parent"

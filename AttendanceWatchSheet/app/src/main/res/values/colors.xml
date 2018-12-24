@@ -8,6 +8,7 @@
     <color name="errorRed">#FF0000</color>
     <color name="darkGray">#A9A9A9</color>
     <color name="black">#000000</color>
+    <color name="gray">#A9A9A9</color>
 
 
 </resources>

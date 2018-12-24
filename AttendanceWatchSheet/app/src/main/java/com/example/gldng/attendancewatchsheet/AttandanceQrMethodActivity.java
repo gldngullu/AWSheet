@@ -3,8 +3,11 @@ package com.example.gldng.attendancewatchsheet;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -15,6 +18,7 @@ import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 public class AttandanceQrMethodActivity extends AppCompatActivity implements NavigationMenuActions{
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,23 +39,33 @@ public class AttandanceQrMethodActivity extends AppCompatActivity implements Nav
 
     }
 
-    public void navMenuSelection(View v) {
-        Intent intent = null;
-        switch (v.getId()){
-            case R.id.navigation_home:
-                intent = new Intent(AttandanceQrMethodActivity.this,HomeActivityInstructor.class);
-                break;
-            case R.id.navigation_courses:
-                intent = new Intent(AttandanceQrMethodActivity.this,Courses_Instructor.class);
-                break;
-            case R.id.navigation_attend:
-                intent = new Intent(AttandanceQrMethodActivity.this,AttandanceSelectorActivity.class);
-                break;
-            case R.id.navigation_calendar:
-                //intent = new Intent(HomeActivityInstructor.this,.class);
-                break;
-        }
-        startActivity(intent);
+
+    @Override
+    public void navBarBuilder(){
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Intent intent = null;
+                switch (item.getItemId()){
+                    case R.id.navigation_home:
+                        intent = new Intent(AttandanceQrMethodActivity.this,HomeActivityInstructor.class);
+                        break;
+                    case R.id.navigation_courses:
+                        intent = new Intent(AttandanceQrMethodActivity.this,Courses_Instructor.class);
+                        break;
+                    case R.id.navigation_scan:
+                        intent = new Intent(AttandanceQrMethodActivity.this,Courses_Instructor.class);
+                        break;
+                    case R.id.navigation_calendar:
+                        intent = new Intent(AttandanceQrMethodActivity.this,HomeActivityInstructor.class);
+                        break;
+                }
+                intent.putExtra("email",getIntent().getStringExtra("email"));
+                startActivity(intent);
+                return false;
+            }
+        });
     }
 
 }

@@ -12,22 +12,16 @@ import android.widget.TextView;
 
 public class AddAssistant extends Fragment {
 
-    Spinner spinner;
+
     TextView instructorName;
     TextView instructorEmail;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        Spinner spinner =  (Spinner) getView().findViewById(R.id.spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(), R.array.Departments, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-
         instructorName = getView().findViewById(R.id.instructorName);
         String instructorNameText = (String) instructorName.getText();
         instructorEmail = getView().findViewById(R.id.email);
         String instructorEmailText = (String) instructorEmail.getText();
-        String deparment = spinner.getSelectedItem().toString();
     }
 
     @Nullable

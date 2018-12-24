@@ -6,18 +6,17 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegisterRequest extends StringRequest {
+public class AddUserRequest extends StringRequest {
     private static final String Register_request_url = "http://awsheet.cf/connect/register.php";
     private Map<String, String> params;
 
-    public RegisterRequest(String mail, String name, String surname, String password, String secretq, Response.Listener<String> listener) {
+    public AddUserRequest(String mailAddress, String name, String surname, String password, Response.Listener<String> listener) {
         super(Method.POST, Register_request_url, listener, null);
         params = new HashMap<>();
-        params.put("mailAdress", mail);
+        params.put("mailAddress", mailAddress);
         params.put("name", name);
         params.put("surname", surname);
         params.put("password", password);
-        params.put("secretq", secretq);
     }
 
     @Override
