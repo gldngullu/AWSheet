@@ -65,14 +65,15 @@ private String userMail;
         });
 
 
-        //login buton on click
-        final int userType = 3;
+       
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
              String mail = etLoginMail.getText().toString();
                 String pass = etLoginPassword.getText().toString();
+
+                userMail = mail;
 
                 Response.Listener<String> response1Listener=new Response.Listener<String>() {
                     @Override
@@ -84,7 +85,7 @@ private String userMail;
                             if(success==1){
                                 int usertype = jsonResponse.getInt("usertype");
 
-								userMail = mail;
+
 
                                 Intent intent = null;
                                 switch(usertype){
