@@ -111,9 +111,10 @@ public class RegisterActivity extends AppCompatActivity {
             String passwordinput=etPassword.getText().toString().trim();
             String confirmpasswordinput=etConfirmPassword.getText().toString().trim();
             String secretqinput=etSecretQ.getText().toString().trim();
+            boolean a=isValidEmail(mailinput);
 
 
-                btRegister.setEnabled(!mailinput.isEmpty() && !passwordinput.isEmpty() && !nameinput.isEmpty() && !surnameinput.isEmpty() && !secretqinput.isEmpty() && !confirmpasswordinput.isEmpty());
+                btRegister.setEnabled(a && !mailinput.isEmpty() && !passwordinput.isEmpty() && !nameinput.isEmpty() && !surnameinput.isEmpty() && !secretqinput.isEmpty() && !confirmpasswordinput.isEmpty());
 
 
 
@@ -125,5 +126,12 @@ public class RegisterActivity extends AppCompatActivity {
 
         }
     };
+
+    public final static boolean isValidEmail(CharSequence target) {
+        if (target == null)
+            return false;
+
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+    }
 }
 

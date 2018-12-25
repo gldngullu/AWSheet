@@ -145,8 +145,9 @@ private String userMail;
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             String mailinput=etLoginMail.getText().toString().trim();
             String passwordinput=etLoginPassword.getText().toString().trim();
+            boolean a=isValidEmail(mailinput);
 
-            btLogin.setEnabled(!mailinput.isEmpty() && !passwordinput.isEmpty());
+            btLogin.setEnabled(!mailinput.isEmpty() && !passwordinput.isEmpty()&& a);
 
 
         }
@@ -157,4 +158,11 @@ private String userMail;
 
         }
     };
+
+    public final static boolean isValidEmail(CharSequence target) {
+        if (target == null)
+            return false;
+
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+    }
 }

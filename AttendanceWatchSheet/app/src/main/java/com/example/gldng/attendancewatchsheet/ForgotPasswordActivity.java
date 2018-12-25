@@ -88,8 +88,10 @@ private EditText etForgotSecretQ;
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             String mailinput=etForgotMail.getText().toString().trim();
             String secretqinput=etForgotSecretQ.getText().toString().trim();
+            boolean a = isValidEmail(mailinput);
 
-            btForgotSubmit.setEnabled(!mailinput.isEmpty() && !secretqinput.isEmpty());
+
+            btForgotSubmit.setEnabled(a && !mailinput.isEmpty() && !secretqinput.isEmpty());
         }
 
         @Override
@@ -97,4 +99,10 @@ private EditText etForgotSecretQ;
 
         }
     };
+    public final static boolean isValidEmail(CharSequence target) {
+        if (target == null)
+            return false;
+
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+    }
 }
