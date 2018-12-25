@@ -9,6 +9,14 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ForgotPasswordActivity extends AppCompatActivity {
 private EditText etForgotMail;
@@ -28,10 +36,44 @@ private EditText etForgotSecretQ;
         btForgotSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent changepassintent = new Intent(ForgotPasswordActivity.this,ResetPasswordActivity.class);
-                changepassintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                ForgotPasswordActivity.this.startActivity(changepassintent);
-                finish();
+
+                String mail = etForgotMail.getText().toString();
+                String secretq = etForgotSecretQ.getText().toString();
+
+                Response.Listener<String> response2Listener=new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonResponse = new JSONObject(response);
+                            int success= jsonResponse.getInt("success");
+
+                            if(success==1){
+                                Intent changepassintent = new Intent(ForgotPasswordActivity.this,ResetPasswordActivity.class);
+                                changepassintent.putExtra("mailAdress",etForgotMail.getText().toString());
+                                ForgotPasswordActivity.this.startActivity(changepassintent);
+                                finish();
+
+
+
+                            }else{
+
+                                Toast.makeText(ForgotPasswordActivity.this,"Invalid information",Toast.LENGTH_LONG).show();
+
+                            }
+                        } catch (JSONException e) {
+                            Toast.makeText(ForgotPasswordActivity.this,"JSON Exception",Toast.LENGTH_LONG).show();
+                            e.printStackTrace();
+                        }
+
+                    }
+                };
+                ForgotPasswordRequest forgotRequest= new ForgotPasswordRequest(mail,secretq,response2Listener);
+                RequestQueue queue = Volley.newRequestQueue(ForgotPasswordActivity.this);
+                queue.add(forgotRequest);
+
+
+
+
             }
         });
     }

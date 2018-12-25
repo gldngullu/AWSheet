@@ -13,6 +13,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class ResetPasswordActivity extends AppCompatActivity implements NavigationMenuActions{
 private EditText etNewPassword;
 private EditText etConfirmNewPassword;
@@ -32,15 +39,51 @@ private Button btChangePassword;
         btChangePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goLogin = new Intent(ResetPasswordActivity.this,LoginActivity.class);
-                goLogin.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+
                 String passwordinput=etNewPassword.getText().toString();
                 String confirmpasswordinput=etConfirmNewPassword.getText().toString();
                 if(0!=passwordinput.compareTo(confirmpasswordinput)){
                     Toast.makeText(ResetPasswordActivity.this,"Confirmation Password is wrong",Toast.LENGTH_LONG).show();
                 }else {
-                    Toast.makeText(ResetPasswordActivity.this, "Your password has been changed", Toast.LENGTH_LONG).show();
-                    ResetPasswordActivity.this.startActivity(goLogin);
+
+                    Bundle bundle = getIntent().getExtras();
+                    String mail = bundle.getString("mailAdress");
+                    String password = etNewPassword.getText().toString();
+
+
+                    Response.Listener<String> response2Listener=new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject jsonResponse = new JSONObject(response);
+                                int success= jsonResponse.getInt("success");
+
+                                if(success==1){
+                                    Intent goLogin = new Intent(ResetPasswordActivity.this,LoginActivity.class);
+                                    Toast.makeText(ResetPasswordActivity.this, "Your password has been changed", Toast.LENGTH_LONG).show();
+                                    ResetPasswordActivity.this.startActivity(goLogin);
+                                    finish();
+
+
+
+                                }else{
+
+                                    Toast.makeText(ResetPasswordActivity.this,"Invalid information",Toast.LENGTH_LONG).show();
+
+                                }
+                            } catch (JSONException e) {
+                                Toast.makeText(ResetPasswordActivity.this,"JSON Exception",Toast.LENGTH_LONG).show();
+                                e.printStackTrace();
+                            }
+
+                        }
+                    };
+                    ResetPasswordRequest resetRequest= new ResetPasswordRequest(mail,password,response2Listener);
+                    RequestQueue queue = Volley.newRequestQueue(ResetPasswordActivity.this);
+                    queue.add(resetRequest);
+
+
 
                 }
 

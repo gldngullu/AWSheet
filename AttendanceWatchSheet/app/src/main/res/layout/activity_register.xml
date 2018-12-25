@@ -16,6 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
+
         app:srcCompat="@drawable/activityicon"
         />
 
@@ -30,7 +31,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginRight="40dp"
         android:ems="10"
-        android:digits="AaBbCcDdEeFfGgHhİiIıJjKkLlMmNnOoPpRrSsTtUuVvYyZzWwQq"
+        android:digits="AaBbCcÇçDdEeFfGgHhİiIıJjKkLlMmNnOoÖöPpRrSsTtUuÜüVvYyZzWwQq"
         android:hint="Name"
         android:inputType="textPersonName" />
 
@@ -44,7 +45,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginRight="40dp"
         android:ems="10"
-        android:digits="AaBbCcDdEeFfGgHhİiIıJjKkLlMmNnOoPpRrSsTtUuVvYyZzWwQq"
+        android:digits="AaBbCcÇçDdEeFfGgHhİiIıJjKkLlMmNnOoÖöPpRrSsTtUuÜüVvYyZzWwQq"
         android:hint="Surname"
         android:inputType="textPersonName" />
 
@@ -99,7 +100,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginRight="40dp"
         android:ems="10"
-        android:digits="AaBbCcDdEeFfGgHhiIıJjKkLlMmNnOoPpRrSsTtUuVvYyZzWwQq"
+        android:digits="AaBbCcÇçDdEeFfGgHhİiIıJjKkLlMmNnOoÖöPpRrSsTtUuÜüVvYyZzWwQq"
         android:hint="Mother's Maiden Name"
         android:inputType="textPersonName" />
 
