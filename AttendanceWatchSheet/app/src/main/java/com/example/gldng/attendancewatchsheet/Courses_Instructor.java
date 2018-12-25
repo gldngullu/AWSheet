@@ -23,26 +23,28 @@ public class Courses_Instructor extends AppCompatActivity implements NavigationM
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_courses__instructor);
+        addCoursebtn=(Button)findViewById(R.id.addcourse);
+        removeCoursebtn=(Button)findViewById(R.id.removecourse);
+        course_list=(ListView) findViewById(R.id.course_list);
         navBarBuilder();
-        course_list=findViewById(R.id.course_list);
-        addCoursebtn=findViewById(R.id.addcourse);
-        removeCoursebtn=findViewById(R.id.removeCourseButton);
 
-
-        removeCoursebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent CourseDrop = new Intent(Courses_Instructor.this,RemoveCourse.class);
-                Courses_Instructor.this.startActivity(CourseDrop);
-            }
-        });
 
 
         addCoursebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent CourseAddition = new Intent(Courses_Instructor.this,SelectCourse.class);
+                CourseAddition.putExtra("email",getIntent().getStringExtra("email"));
                 Courses_Instructor.this.startActivity(CourseAddition);
+            }
+        });
+
+        removeCoursebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent CourseCancel = new Intent(Courses_Instructor.this,HomeActivityInstructor.class);
+                CourseCancel.putExtra("email",getIntent().getStringExtra("email"));
+                Courses_Instructor.this.startActivity(CourseCancel);
             }
         });
 

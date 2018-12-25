@@ -53,8 +53,8 @@
         <activity android:name=".ResetPasswordActivity" />
 
         <activity android:name=".SelectCourse" />
-        <activity android:name=".Courses_Instructor" />
 
+        <activity android:name=".Courses_Instructor" />
         <activity android:name=".AdminCoursePage" />
 
 
