@@ -38,6 +38,11 @@ import java.util.ArrayList;
 
 public class SelectCourse extends AppCompatActivity implements NavigationMenuActions {
 
+    String CourseSelectRequestAssistantName;
+    String examnameRequest;
+    String CourseSelectRequestCourseName;
+    String CourseSelectRequestSyllabus;
+    String ExamGrade;
     private Spinner courselist;
     private Spinner assistantlist;
     private EditText syllabusText;
@@ -46,19 +51,26 @@ public class SelectCourse extends AppCompatActivity implements NavigationMenuAct
     private Button Cancelbtn;
     private EditText gradeText;
     private EditText gradePercent;
-    private String CourseNamesSpinnerURL="http://awsheet.cf/connect/allcourses.php";
-    private String AssistantNamesSpinnerURL="http://awsheet.cf/connect/allassistants.php" ;
+    private String CourseNamesSpinnerURL = "http://awsheet.cf/connect/allcourses.php";
+    private String AssistantNamesSpinnerURL = "http://awsheet.cf/connect/allassistants.php";
     private ArrayList<String> Coursenames;
     private ArrayList<String> Assistantnames;
     private JSONArray resultCourseName;
     private JSONArray resultAssistantName;
-    String CourseSelectRequestAssistantName;
     private ScrollView examLayout;
-    String examnameRequest;
-    String CourseSelectRequestCourseName;
-    String CourseSelectRequestSyllabus;
-    String ExamGrade;
 
+    private OnItemSelectedListener Listener = new OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            String validationForCreateButton1 = courselist.getSelectedItem().toString();
+            String validationForCreateButton2 = assistantlist.getSelectedItem().toString();
+            Createbtn.setEnabled(!validationForCreateButton1.isEmpty() && !validationForCreateButton2.isEmpty());
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+        }
+    };
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -68,24 +80,25 @@ public class SelectCourse extends AppCompatActivity implements NavigationMenuAct
         navBarBuilder();
 
         Coursenames = new ArrayList<>();
-        syllabusText=(EditText)findViewById(R.id.syllabusss);
-        GradeAdd=(Button)findViewById(R.id.gradeAdder);
-        Createbtn=(Button)findViewById(R.id.createbtn);
-        Cancelbtn=(Button)findViewById(R.id.cancelbtn);
-        gradeText=(EditText) findViewById(R.id.gradeText);
-        gradePercent=(EditText)findViewById(R.id.percent);
-        examLayout =(ScrollView) findViewById(R.id.Midterm_View);
+        Assistantnames = new ArrayList<>();
+        syllabusText = (EditText) findViewById(R.id.syllabusss);
+        GradeAdd = (Button) findViewById(R.id.gradeAdder);
+        Createbtn = (Button) findViewById(R.id.createbtn);
+        Cancelbtn = (Button) findViewById(R.id.cancelbtn);
+        gradeText = (EditText) findViewById(R.id.gradeText);
+        gradePercent = (EditText) findViewById(R.id.percent);
+        examLayout = (ScrollView) findViewById(R.id.Midterm_View);
         courselist = (Spinner) this.findViewById(R.id.courselist);
         assistantlist = (Spinner) this.findViewById(R.id.assistantlist);
         Createbtn.setEnabled(false);
-        examnameRequest="";
-        ExamGrade="";
-        CourseSelectRequestCourseName="";
-        CourseSelectRequestSyllabus="";
-        //
-        getDataToSpinner();
+        examnameRequest = "";
+        ExamGrade = "";
+        CourseSelectRequestCourseName = "";
+        CourseSelectRequestSyllabus = "";
+        getDataToSpinner(CourseNamesSpinnerURL);
+        getDataToSpinner(AssistantNamesSpinnerURL);
 
-        courselist.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+        courselist.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String course = courselist.getItemAtPosition(courselist.getSelectedItemPosition()).toString();
@@ -119,13 +132,18 @@ public class SelectCourse extends AppCompatActivity implements NavigationMenuAct
         //courselist.setAdapter(arrayAdapterForDays);
         //assistantlist.setAdapter(arrayAdapterForHours);
 
-
         GradeAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+               String  ExamGrade = gradePercent.getText().toString();
+                String examname = gradeText.getText().toString();
+                int exm= Integer.parseInt(ExamGrade);
+                if(exm< 0 ||exm > 100){
+                    Toast.makeText(SelectCourse.this,"YOU MUST ENTER BETWEEN 0 AND 100", Toast.LENGTH_LONG).show();
+                }
 
-                ExamGrade=gradePercent.getText().toString();
-                examnameRequest=Add_Course_Exam();
+                examnameRequest = Add_Course_Exam(examname);
+
             }
         });
 
@@ -136,25 +154,24 @@ public class SelectCourse extends AppCompatActivity implements NavigationMenuAct
                 CourseSelectRequestCourseName = courselist.getSelectedItem().toString();
                 CourseSelectRequestAssistantName = assistantlist.getSelectedItem().toString();
                 CourseSelectRequestSyllabus = syllabusText.getText().toString();
-                if(CourseSelectRequestCourseName.isEmpty()){
-                    Toast.makeText(SelectCourse.this, "YOU MUST CHOOSE A COURSE NAME",Toast.LENGTH_LONG).show();
+                if (CourseSelectRequestCourseName.isEmpty()) {
+                    Toast.makeText(SelectCourse.this, "YOU MUST CHOOSE A COURSE NAME", Toast.LENGTH_LONG).show();
                 }
-                if(CourseSelectRequestAssistantName.isEmpty()){
-                    Toast.makeText(SelectCourse.this, "YOU MUST USE ASSISTANT NAME",Toast.LENGTH_LONG).show();
-                }
-                else{
+                if (CourseSelectRequestAssistantName.isEmpty()) {
+                    Toast.makeText(SelectCourse.this, "YOU MUST USE ASSISTANT NAME", Toast.LENGTH_LONG).show();
+                } else {
                     Response.Listener<String> responselistener = new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
 
                             try {
-                                JSONObject jsonResponse  = new JSONObject(response);
+                                JSONObject jsonResponse = new JSONObject(response);
                                 int success = jsonResponse.getInt("success");
-                                if(success==1){
-                                    Log.d("successful","YEY , QUARY WORKED");
+                                if (success == 1) {
+                                    Log.d("successful", "YEY , QUARY WORKED");
                                     Toast.makeText(SelectCourse.this, "YEY , QUERY WORKED !", Toast.LENGTH_LONG).show();
-                                }else{
-                                    Log.d("unsuccessful","TUH , QUARY DOES NOT WORKED");
+                                } else {
+                                    Log.d("unsuccessful", "TUH , QUARY DOES NOT WORKED");
                                     Toast.makeText(SelectCourse.this, "TUH , QUERY DOES NOT WORKED !", Toast.LENGTH_LONG).show();
                                 }
                             } catch (JSONException e) {
@@ -165,9 +182,9 @@ public class SelectCourse extends AppCompatActivity implements NavigationMenuAct
                     };                                               //*--------------------WARNING------------------*//
                     // String InstructorMail="mertalikoprulu@gmail.com";// THIS PART HAS TO GET FROM INTENT FROM INSTRUCTOR MAIN PAGE !!!!!!!!
                     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                    String emailIns=getIntent().getStringExtra("email");
-                    CourseSelectRequest courseSelectionRequest = new CourseSelectRequest(emailIns,CourseSelectRequestAssistantName,CourseSelectRequestCourseName,CourseSelectRequestSyllabus,responselistener);
-                    ExamAddRequest examAdditionRequest =  new ExamAddRequest(CourseSelectRequestCourseName,examnameRequest,ExamGrade,responselistener);
+                    String emailIns = getIntent().getStringExtra("email");
+                    CourseSelectRequest courseSelectionRequest = new CourseSelectRequest(emailIns, CourseSelectRequestAssistantName, CourseSelectRequestCourseName, CourseSelectRequestSyllabus, responselistener);
+                    ExamAddRequest examAdditionRequest = new ExamAddRequest(CourseSelectRequestCourseName, examnameRequest, ExamGrade, responselistener);
                     RequestQueue queue = Volley.newRequestQueue(SelectCourse.this);
                     queue.add(courseSelectionRequest);
                     queue.add(examAdditionRequest);
@@ -190,30 +207,15 @@ public class SelectCourse extends AppCompatActivity implements NavigationMenuAct
 
     }
 
-
-    private OnItemSelectedListener Listener=new OnItemSelectedListener() {
-        @Override
-        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-           String validationForCreateButton1 = courselist.getSelectedItem().toString();
-            String validationForCreateButton2= assistantlist.getSelectedItem().toString();
-            Createbtn.setEnabled(!validationForCreateButton1.isEmpty()&&!validationForCreateButton2.isEmpty());
-        }
-
-        @Override
-        public void onNothingSelected(AdapterView<?> parent) {
-
-        }
-    };
-
-    private void getDataToSpinner(){
-        StringRequest stringRequest = new StringRequest("http://awsheet.cf/connect/allcourses.php",
+    private void getDataToSpinner(String URL) {
+        StringRequest stringRequest = new StringRequest(URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         JSONObject j = null;
                         try {
                             j = new JSONObject(response);
-                            resultCourseName = j.getJSONArray("coursename");
+                            resultCourseName = j.getJSONArray("result");
                             loadCourseName(resultCourseName);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -226,21 +228,46 @@ public class SelectCourse extends AppCompatActivity implements NavigationMenuAct
 
                     }
                 });
+        StringRequest stringRequest1 = new StringRequest(URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        JSONObject j = null;
+                        try {
+                            j = new JSONObject(response);
+                            resultCourseName = j.getJSONArray("result");
+                            loadAssistantName(resultCourseName);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+
+
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+        requestQueue.add(stringRequest1);
     }
 
-            public String Add_Course_Exam(){
-              String exammname=gradeText.getText().toString();
-               examLayout.addView(gradeText);
-                                        return exammname;
+    public String Add_Course_Exam(String exammname) {
+        ExamGrade = gradePercent.getText().toString();
+        exammname = gradeText.getText().toString();
+        examLayout.addView(gradeText);
+        return exammname;
     }
 
-    private void loadCourseName(JSONArray j){
+    private void loadCourseName(JSONArray j) {
         System.out.println(j.toString());
-        for(int i=0;i<j.length();i++){
+        for (int i = 0; i < j.length(); i++) {
             try {
                 JSONObject json = j.getJSONObject(i);
+                // System.out.println(json.getString("coursecode"));
                 Coursenames.add(json.getString("coursecode"));
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -249,30 +276,42 @@ public class SelectCourse extends AppCompatActivity implements NavigationMenuAct
         courselist.setAdapter(new ArrayAdapter<String>(SelectCourse.this, android.R.layout.simple_spinner_dropdown_item, Coursenames));
     }
 
-
+    private void loadAssistantName(JSONArray j) {
+        System.out.println(j.toString());
+        for (int i = 0; i < j.length(); i++) {
+            try {
+                JSONObject json = j.getJSONObject(i);
+                //System.out.println(json.getString("assistantMail"));
+                Assistantnames.add(json.getString("assistantMail"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        assistantlist.setAdapter(new ArrayAdapter<String>(SelectCourse.this, android.R.layout.simple_spinner_dropdown_item, Assistantnames));
+    }
 
     @Override
-    public void navBarBuilder(){
+    public void navBarBuilder() {
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Intent intent = null;
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.navigation_home:
-                        intent = new Intent(SelectCourse.this,Courses_Instructor.class);
+                        intent = new Intent(SelectCourse.this, Courses_Instructor.class);
                         break;
                     case R.id.navigation_courses:
-                        intent = new Intent(SelectCourse.this,Courses_Instructor.class);
+                        intent = new Intent(SelectCourse.this, Courses_Instructor.class);
                         break;
                     case R.id.navigation_scan:
-                        intent = new Intent(SelectCourse.this,AttandanceSelectorActivity.class);
+                        intent = new Intent(SelectCourse.this, AttandanceSelectorActivity.class);
                         break;
                     case R.id.navigation_calendar:
-                        intent = new Intent(SelectCourse.this,HomeActivityInstructor.class);
+                        intent = new Intent(SelectCourse.this, HomeActivityInstructor.class);
                         break;
                 }
-                intent.putExtra("email",getIntent().getStringExtra("email"));
+                intent.putExtra("email", getIntent().getStringExtra("email"));
                 startActivity(intent);
                 return false;
             }

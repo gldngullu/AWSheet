@@ -2,10 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relative"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
-
 
     <ImageView
         android:id="@+id/imageView"
@@ -23,13 +23,13 @@
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
-        android:ems="10"
-        android:maxLength="30"
+        android:layout_marginTop="20dp"
         android:digits="1.@234567890abcdefghiıjklmnoprstuvyzwq"
+        android:ems="10"
         android:hint="E-Mail"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:maxLength="30" />
 
     <EditText
         android:id="@+id/etLoginPassword"
@@ -38,13 +38,13 @@
         android:layout_below="@+id/etLoginMail"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
-        android:maxLength="30"
-        android:ems="10"
+        android:layout_marginTop="20dp"
         android:digits="1234567890AaBbCcDdEeFfGgHhiIıJjKkLlMmNnOoPpRrSsTtUuVvYyZzWwQq"
+        android:ems="10"
         android:hint="Password"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:maxLength="30" />
 
     <Button
         android:id="@+id/btLogin"
@@ -53,8 +53,8 @@
         android:layout_below="@+id/btBorder"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
+        android:layout_marginTop="20dp"
         android:text="LOGIN"
         android:textStyle="bold" />
 
@@ -65,8 +65,8 @@
         android:layout_below="@+id/etLoginPassword"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
+        android:layout_marginTop="20dp"
         android:text="Forgot Password ?"
         android:textSize="18sp" />
 
@@ -85,8 +85,8 @@
         android:layout_below="@+id/btLogin"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
+        android:layout_marginTop="20dp"
         android:text="Regıster"
         android:textStyle="bold" />
 

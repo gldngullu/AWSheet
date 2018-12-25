@@ -19,7 +19,9 @@
         tools:ignore="GoogleAppIndexingWarning">
         android:theme="@style/AppTheme">
 
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity"
+            android:windowSoftInputMode="adjustPan"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -52,8 +54,9 @@
 
         <activity android:name=".ResetPasswordActivity" />
 
-        <activity android:name=".SelectCourse" />
-
+        <activity android:name=".SelectCourse"
+            android:windowSoftInputMode="adjustPan"
+            />
         <activity android:name=".Courses_Instructor" />
         <activity android:name=".AdminCoursePage" />
 
