@@ -91,6 +91,11 @@ private String userMail;
 
                                 Intent intent = null;
                                 switch(usertype){
+                                    case 4:
+                                        intent = new Intent(LoginActivity.this,HomeActivityInstructor.class);
+                                        intent.putExtra("usertype", usertype);
+                                        finish();
+                                        break;
                                     case 3:
                                         intent = new Intent(LoginActivity.this,HomeActivityAdmin.class);
                                         intent.putExtra("usertype", usertype);
