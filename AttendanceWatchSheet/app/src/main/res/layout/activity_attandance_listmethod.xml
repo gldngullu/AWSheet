@@ -74,7 +74,7 @@
         <TableLayout
             android:id="@+id/attandaceListTable"
             android:layout_width="fill_parent"
-            android:layout_height="330dp"
+            android:layout_height="233dp"
             android:background="@drawable/border_row"
             android:padding="0dp">
 
@@ -127,6 +127,20 @@
         app:itemIconTint="@color/bottom_nav_color"
         app:itemTextColor="@color/bottom_nav_color"
         />
+
+    <Button
+        android:id="@+id/SendButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Submit"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
 
 
 </android.support.constraint.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.gldng.attendancewatchsheet;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -7,12 +8,14 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -21,49 +24,56 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class AttandanceListMethodActivity extends AppCompatActivity implements SpinnerHelper,NavigationMenuActions{
 
+    private String selectedCourse;
+    private JSONArray studentListResponse;
+    private ArrayList<String> studentList;
+    private ArrayList<String> courseInsList;
+    private JSONObject attandanceResult;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attandance_listmethod);
 
-
-        //adding data to table
-        TableLayout tableLayout = findViewById(R.id.attandaceListTable);
-
-        //row creation
-        TableRow row = new TableRow(getApplicationContext());
-        row.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,TableRow.LayoutParams.WRAP_CONTENT));
-        TableRow.LayoutParams params2 = new TableRow.LayoutParams(0,ViewGroup.LayoutParams.WRAP_CONTENT);
-
-        //col creation
-        TextView col1 = new TextView(getApplicationContext());
-        TableRow.LayoutParams params1 = new TableRow.LayoutParams(0,ViewGroup.LayoutParams.WRAP_CONTENT);
-        params1.weight = 4;
-        col1.setText("b");
-        col1.setLayoutParams(params1);
-        CheckBox col2 = new CheckBox(getApplicationContext());
-        col2.setGravity(Gravity.RIGHT);
-        params2.weight = 1;
-        col2.setText("a");
-        col2.setLayoutParams(params2);
-
-        //append col to row
-        row.addView(col1);
-        row.addView(col2);
-
-        //append row to table
-        tableLayout.addView(row);
+        studentList = new ArrayList<>();
+        courseInsList = new ArrayList<>();
+        attandanceResult = new JSONObject();
 
         //spinnerCreation
         spinnerBuilder();
 
         navBarBuilder();
+
+        studentListBuilder();
+
+        Button submitButton = (Button) findViewById(R.id.SendButton);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setAttandanceData();
+                Toast.makeText(AttandanceListMethodActivity.this,"Successfully sended.",Toast.LENGTH_LONG);
+            }
+        });
+
     }
 
     @Override
@@ -72,15 +82,31 @@ public class AttandanceListMethodActivity extends AppCompatActivity implements S
         //spinner
         final Spinner spinner = (Spinner) findViewById(R.id.courseSelectSpinner);
 
-        String[] courses = new String[]{
-                "Select a course",
-                "a",
-                "b"
+        //final List<String> courseList = new ArrayList<>();
+
+        Response.Listener listener = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try{
+                    JSONObject jsonObject=new JSONObject(response);
+                    int count = jsonObject.getInt("count");
+                    for (int i = 0; i < count ; i++){
+                        courseInsList.add(jsonObject.getString("courseCode"+i));
+                    }
+
+                }catch (JSONException e){e.printStackTrace();}
+            }
         };
 
-        final List<String> courseList = new ArrayList<String>(Arrays.asList(courses));
+        // int socketTimeout = 30000;
+        // RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        // stringRequest.setRetryPolicy(policy);
+        SpinnerDataRequest spinnerDataRequest = new SpinnerDataRequest(getIntent().getStringExtra("email"),listener );
+        RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(spinnerDataRequest);
 
-        final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,R.layout.spinner_item,courseList){
+
+        final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,R.layout.spinner_item,courseInsList){
             @Override
             public boolean isEnabled(int position){
                 if(position == 0)
@@ -114,9 +140,7 @@ public class AttandanceListMethodActivity extends AppCompatActivity implements S
                 // First item is disable and it is used for hint
                 if(position > 0){
                     // Notify the selected item text
-                    Toast.makeText
-                            (getApplicationContext(), "Selected : " + selectedItemText, Toast.LENGTH_SHORT)
-                            .show();
+                    selectedCourse = selectedItemText;
                 }
             }
 
@@ -127,6 +151,66 @@ public class AttandanceListMethodActivity extends AppCompatActivity implements S
         });
 
     }
+
+    public void studentListBuilder(){
+
+        //adding data to table
+        TableLayout tableLayout = findViewById(R.id.attandaceListTable);
+
+
+
+        Response.Listener<String> response1Listener=new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonResponse = new JSONObject(response);
+                    int count = jsonResponse.getInt("count");
+                    for (int i= 0; i < count ; i++){
+                        studentList.add(jsonResponse.getString("name"+i));
+                    }
+                    //Toast.makeText(AttandanceListMethodActivity.this,"successfull respond",Toast.LENGTH_LONG).show();
+
+                } catch (JSONException e) {
+                    Toast.makeText(AttandanceListMethodActivity.this,e.toString(),Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
+
+            }
+        };
+
+        AttandanceStudentListRequest attandanceStudentListRequest= new AttandanceStudentListRequest("CSE101",response1Listener);
+        RequestQueue queue = Volley.newRequestQueue(AttandanceListMethodActivity.this);
+        queue.add(attandanceStudentListRequest);
+
+
+
+        //col creation
+        TextView col1 = new TextView(getApplicationContext());
+        TableRow.LayoutParams params1 = new TableRow.LayoutParams(0,ViewGroup.LayoutParams.WRAP_CONTENT);
+        params1.weight = 4;
+        for (String student: studentList ) {
+            //row creation
+            TableRow row = new TableRow(getApplicationContext());
+            row.setPadding(20,0,20,0);
+            row.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,TableRow.LayoutParams.WRAP_CONTENT));
+            TableRow.LayoutParams params2 = new TableRow.LayoutParams(0,ViewGroup.LayoutParams.WRAP_CONTENT);
+
+            col1.setText(student);
+            col1.setLayoutParams(params1);
+            CheckBox col2 = new CheckBox(getApplicationContext());
+            col2.setGravity(Gravity.RIGHT);
+            params2.weight = 1;
+            col2.setLayoutParams(params2);
+
+            //append col to row
+            row.addView(col1);
+            row.addView(col2);
+
+            //append row to table
+            tableLayout.addView(row);
+        }
+    }
+
 
     @Override
     public void navBarBuilder(){
@@ -154,5 +238,38 @@ public class AttandanceListMethodActivity extends AppCompatActivity implements S
                 return false;
             }
         });
+    }
+
+    public void setAttandanceData(){
+
+        TableLayout tableLayout = findViewById(R.id.attandaceListTable);
+
+        for (int i = 0 ; i < tableLayout.getChildCount();i++){
+            View child = tableLayout.getChildAt(i);
+            if(child instanceof TableRow){
+                TableRow row = (TableRow) child;
+                for (int j=0;j < row.getChildCount();j++){
+                    View colChild = row.getChildAt(j);
+                    if(colChild instanceof TextView){
+                        TextView col = (TextView) colChild;
+                        try {
+                            attandanceResult.put("name"+i,"");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    else if(colChild instanceof CheckBox){
+                        CheckBox col = (CheckBox) colChild;
+                        try {
+                            attandanceResult.put("name"+i,col.isChecked());
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                }
+            }
+        }
+
     }
 }
