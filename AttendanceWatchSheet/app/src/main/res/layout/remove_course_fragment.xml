@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UploadCourses">
+    tools:context=".UploadCourses"
+    tools:layout_editor_absoluteY="25dp">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="409dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="44dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="76dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -29,7 +28,7 @@
             tools:layout_editor_absoluteY="83dp" />
 
         <Spinner
-            android:id="@+id/spinner2"
+            android:id="@+id/courseSpinner"
             android:layout_width="202dp"
             android:layout_height="wrap_content"
             android:background="@android:drawable/btn_dropdown"
@@ -38,102 +37,51 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/semesterText"
-        android:layout_width="wrap_content"
-        android:layout_height="28dp"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="33dp"
-        android:layout_marginBottom="31dp"
-        android:text="Semester: "
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/notificationSwitch"
-        app:layout_constraintEnd_toStartOf="@+id/semesterTextbox"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
-
     <EditText
         android:id="@+id/editText4"
-        android:layout_width="276dp"
+        android:layout_width="282dp"
         android:layout_height="167dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="28dp"
         android:ems="10"
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/semesterTextbox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView13"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
     <TextView
         android:id="@+id/textView13"
-        android:layout_width="75dp"
+        android:layout_width="0dp"
         android:layout_height="35dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="32dp"
         android:text="Reason:"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/editText4"
+        app:layout_constraintEnd_toStartOf="@+id/editText4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+        app:layout_constraintTop_toTopOf="@+id/editText4" />
 
-    <Switch
-        android:id="@+id/notificationSwitch"
-        android:layout_width="250dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="53dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="81dp"
-        android:layout_marginBottom="12dp"
-        android:text="Notification:"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/removeCourseButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/semesterTextbox" />
-
-
-    <EditText
-        android:id="@+id/semesterTextbox"
-        android:layout_width="222dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="21dp"
-        android:ems="10"
-        android:hint="Fall-Spring/ Year"
-        android:inputType="date"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/notificationSwitch"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/semesterText"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
 
     <Button
         android:id="@+id/removeCourseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="63dp"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="35dp"
+        android:layout_marginStart="74dp"
         android:onClick="alertDialog2"
         android:text="remove"
-        app:layout_constraintEnd_toStartOf="@+id/cancelCourseRemovingButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/notificationSwitch" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/cancelCourseRemovingButton"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/cancelCourseRemovingButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="110dp"
-        android:layout_marginBottom="46dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="46dp"
+        android:layout_marginEnd="108dp"
         android:onClick="removeFragment2"
         android:text="cancel"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/removeCourseButton"
-        app:layout_constraintTop_toBottomOf="@+id/notificationSwitch" />
+        app:layout_constraintStart_toStartOf="@+id/editText4"
+        app:layout_constraintTop_toBottomOf="@+id/editText4" />
 </android.support.constraint.ConstraintLayout>

@@ -18,6 +18,7 @@
         android:hint="Course Code:"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/SpinnerForDays"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/addScheduleButton"
         app:layout_constraintTop_toBottomOf="@+id/courseName" />
 
@@ -25,135 +26,98 @@
         android:id="@+id/courseName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="Course Name:"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/courseCode"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/courseCode"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Switch
-        android:id="@+id/notificationSwitch"
-        android:layout_width="250dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginBottom="61dp"
-        android:text="Notification:"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/createCourseButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/semesterTextbox" />
 
     <TextView
         android:id="@+id/weeklyScheduleText"
         android:layout_width="160dp"
         android:layout_height="28dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="60dp"
         android:text="Weekly Schedule"
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/courseCode" />
-
-    <EditText
-        android:id="@+id/semesterTextbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="58dp"
-        android:ems="10"
-        android:hint="Fall-Spring/ Year"
-        android:inputType="date"
-        android:textAlignment="center"
-        app:layout_constraintStart_toEndOf="@+id/semesterText"
-        app:layout_constraintTop_toBottomOf="@+id/addScheduleButton" />
-
-    <TextView
-        android:id="@+id/semesterText"
-        android:layout_width="wrap_content"
-        android:layout_height="28dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginBottom="21dp"
-        android:text="Semester: "
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/notificationSwitch"
-        app:layout_constraintEnd_toStartOf="@+id/notificationSwitch"
-        app:layout_constraintStart_toStartOf="@+id/notificationSwitch"
-        app:layout_constraintTop_toTopOf="@+id/semesterTextbox" />
 
     <Button
         android:id="@+id/createCourseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="17dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginBottom="116dp"
         android:onClick="alertDialog2"
         android:text="CREATE"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/notificationSwitch" />
+        app:layout_constraintEnd_toStartOf="@+id/cancelCourseAdditionButton"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/cancelCourseAdditionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="12dp"
         android:onClick="removeFragment2"
         android:text="CANCEL"
         app:layout_constraintBottom_toBottomOf="@+id/createCourseButton"
-        app:layout_constraintEnd_toEndOf="@+id/notificationSwitch" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/createCourseButton" />
 
 
     <ImageButton
         android:id="@+id/addScheduleButton"
-        android:layout_width="0dp"
+        android:layout_width="56dp"
         android:layout_height="52dp"
         android:layout_marginStart="38dp"
-        android:layout_marginTop="210dp"
-        android:layout_marginEnd="38dp"
-        android:layout_marginBottom="209dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="96dp"
         android:onClick="AddDataInListView"
         android:src="@android:drawable/ic_input_add"
         app:layout_constraintBottom_toBottomOf="@+id/cancelCourseAdditionButton"
         app:layout_constraintEnd_toStartOf="@+id/SpinnerForHours"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/weeklyScheduleText" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ListView
         android:id="@+id/listView"
         android:layout_width="0dp"
-        android:layout_height="107dp"
+        android:layout_height="143dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="52dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="51dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/addScheduleButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/weeklyScheduleText" />
+        app:layout_constraintTop_toTopOf="@+id/weeklyScheduleText"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Spinner
         android:id="@+id/SpinnerForDays"
-        android:layout_width="0dp"
+        android:layout_width="155dp"
         android:layout_height="0dp"
         android:layout_marginEnd="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/SpinnerForHours"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/SpinnerForHours"
-        app:layout_constraintTop_toTopOf="@+id/SpinnerForHours" />
+        app:layout_constraintTop_toTopOf="@+id/SpinnerForHours"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Spinner
         android:id="@+id/SpinnerForHours"
-        android:layout_width="0dp"
+        android:layout_width="109dp"
         android:layout_height="27dp"
-        android:layout_marginTop="67dp"
-        android:layout_marginBottom="67dp"
-        app:layout_constraintBottom_toTopOf="@+id/semesterTextbox"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toStartOf="@+id/SpinnerForDays"
         app:layout_constraintStart_toEndOf="@+id/addScheduleButton"
         app:layout_constraintTop_toBottomOf="@+id/listView" />

@@ -10,7 +10,7 @@
         android:layout_height="30dp" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/adminNameText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Admin Name:"
@@ -31,7 +31,28 @@
         android:layout_height="18dp" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/adminSurnameText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Admin Name:"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/adminSurname"
+        android:layout_width="match_parent"
+        android:layout_height="40sp"
+        android:layout_gravity="bottom"
+        android:ems="10"
+        android:hint="Name Surname "
+        android:inputType="textEmailAddress" />
+
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="18dp" />
+
+    <TextView
+        android:id="@+id/adminEmailText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="E-mail Address:"
@@ -43,13 +64,13 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/adminEmail"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:ems="5"
             android:hint="name.surname"
-        android:inputType="textEmailAddress"
-        android:textAlignment="center" />
+            android:inputType="textEmailAddress"
+            android:textAlignment="center" />
 
         <TextView
             android:id="@+id/textView2"

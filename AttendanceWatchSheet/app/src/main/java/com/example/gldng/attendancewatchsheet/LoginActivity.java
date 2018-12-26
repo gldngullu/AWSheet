@@ -22,115 +22,111 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
-private EditText etLoginMail;
-private EditText etLoginPassword;
-private Button btLogin;
-private Button btGoRegister;
-private TextView tvForgotPassword;
-private Button btBorder;
-private String userMail;
+    private EditText etLoginMail;
+    private EditText etLoginPassword;
+    private Button btLogin;
+    private Button btGoRegister;
+    private TextView tvForgotPassword;
+    private Button btBorder;
+    private String userMail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        etLoginMail=findViewById(R.id.etLoginMail);
-        etLoginPassword=findViewById(R.id.etLoginPassword);
+        etLoginMail = findViewById(R.id.etLoginMail);
+        etLoginPassword = findViewById(R.id.etLoginPassword);
 
-        tvForgotPassword=findViewById(R.id.tvForgotPassword);
+        tvForgotPassword = findViewById(R.id.tvForgotPassword);
         tvForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent forgotpassintent = new Intent(LoginActivity.this,ForgotPasswordActivity.class);
+                Intent forgotpassintent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
                 LoginActivity.this.startActivity(forgotpassintent);
 
             }
         });
 
-        btBorder=findViewById(R.id.btBorder);
+        btBorder = findViewById(R.id.btBorder);
         btBorder.setEnabled(false);
 
-        btLogin=findViewById(R.id.btLogin);
+        btLogin = findViewById(R.id.btLogin);
         btLogin.setEnabled(false);
 
 
-
-        btGoRegister=findViewById(R.id.btGoRegister);
+        btGoRegister = findViewById(R.id.btGoRegister);
         btGoRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent registerintent = new Intent(LoginActivity.this,RegisterActivity.class);
+                Intent registerintent = new Intent(LoginActivity.this, RegisterActivity.class);
                 LoginActivity.this.startActivity(registerintent);
 
             }
         });
 
 
-       
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-             String mail = etLoginMail.getText().toString();
+                String mail = etLoginMail.getText().toString();
                 String pass = etLoginPassword.getText().toString();
 
                 userMail = mail;
 
-                Response.Listener<String> response1Listener=new Response.Listener<String>() {
+                Response.Listener<String> response1Listener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonResponse = new JSONObject(response);
-                            int success= jsonResponse.getInt("success");
+                            int success = jsonResponse.getInt("success");
 
-                            if(success==1){
-                                int usertype = jsonResponse.getInt("usertype");
+                            if (success == 1) {
+                                String usertype = jsonResponse.getString("usertype");
 
 
-
+// User types     4:Assistant, 3:Admin, 2:Instructor, 1:Student
                                 Intent intent = null;
-                                switch(usertype){
+                                switch (Integer.parseInt(usertype)) {
                                     case 4:
-                                        intent = new Intent(LoginActivity.this,HomeActivityInstructor.class);
+                                        intent = new Intent(LoginActivity.this, HomeActivityInstructor.class);
                                         intent.putExtra("usertype", usertype);
                                         finish();
                                         break;
                                     case 3:
-                                        intent = new Intent(LoginActivity.this,HomeActivityAdmin.class);
+                                        intent = new Intent(LoginActivity.this, HomeActivityAdmin.class);
                                         intent.putExtra("usertype", usertype);
                                         finish();
                                         break;
                                     case 2:
-                                        intent = new Intent(LoginActivity.this,HomeActivityInstructor.class);
+                                        intent = new Intent(LoginActivity.this, HomeActivityInstructor.class);
                                         intent.putExtra("usertype", usertype);
                                         finish();
                                         break;
                                     case 1:
-                                        intent = new Intent(LoginActivity.this,HomeActivity.class);
+                                        intent = new Intent(LoginActivity.this, HomeActivity.class);
                                         intent.putExtra("usertype", usertype);
                                         finish();
                                         break;
                                 }
-								intent.putExtra("email",userMail);
+                                intent.putExtra("email", userMail);
                                 startActivity(intent);
-                            }else{
+                            } else {
 
-                                Toast.makeText(LoginActivity.this,"Login really unsuccesful",Toast.LENGTH_LONG).show();
+                                Toast.makeText(LoginActivity.this, "Login really unsuccesful", Toast.LENGTH_LONG).show();
 
                             }
                         } catch (JSONException e) {
-                            Toast.makeText(LoginActivity.this,"Login unsuccesful",Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this, "Login unsuccesful", Toast.LENGTH_LONG).show();
                             e.printStackTrace();
                         }
-
                     }
                 };
 
-                LoginRequest loginRequest= new LoginRequest(mail,pass,response1Listener);
+                LoginRequest loginRequest = new LoginRequest(mail, pass, response1Listener);
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
                 queue.add(loginRequest);
-
 
 
             }
@@ -142,7 +138,7 @@ private String userMail;
     }
 
 
-    private TextWatcher loginTextWatcher=new TextWatcher() {
+    private TextWatcher loginTextWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -150,11 +146,11 @@ private String userMail;
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            String mailinput=etLoginMail.getText().toString().trim();
-            String passwordinput=etLoginPassword.getText().toString().trim();
-            boolean a=isValidEmail(mailinput);
+            String mailinput = etLoginMail.getText().toString().trim();
+            String passwordinput = etLoginPassword.getText().toString().trim();
+            boolean a = isValidEmail(mailinput);
 
-            btLogin.setEnabled(!mailinput.isEmpty() && !passwordinput.isEmpty()&& a);
+            btLogin.setEnabled(!mailinput.isEmpty() && !passwordinput.isEmpty() && a);
 
 
         }

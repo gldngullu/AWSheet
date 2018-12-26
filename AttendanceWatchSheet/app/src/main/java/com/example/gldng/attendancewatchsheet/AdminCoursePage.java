@@ -34,6 +34,10 @@ TextView addCourseText;
 TextView removeCourseText;
 FrameLayout frameLayout2;
 FragmentManager manager;
+    AddCourse fragment1;
+            UploadCourses fragment2;
+    RemoveCourse fragment3;
+    SetAddDrop fragment4;
 static ArrayList<String> StringsForListView = new ArrayList<>();
 
     @Override
@@ -70,19 +74,19 @@ static ArrayList<String> StringsForListView = new ArrayList<>();
         FragmentTransaction transaction = manager.beginTransaction();
         switch (userType) {
             case R.id.manualAddCourseButton:
-                AddCourse fragment1 = new AddCourse();
+                fragment1 = new AddCourse();
                 transaction.add(R.id.frameLayout2, fragment1, "manualAddCourseFragment");
                 break;
             case R.id.uploadCourseListButton:
-                UploadCourses fragment2 = new UploadCourses();
+                fragment2 = new UploadCourses();
                 transaction.add(R.id.frameLayout2, fragment2, "uploadCoursesFragment");
                 break;
             case R.id.manualDeleteCourseButton:
-                RemoveCourse fragment3 = new RemoveCourse();
+                fragment3 = new RemoveCourse();
                 transaction.add(R.id.frameLayout2, fragment3, "removeCourseFragment");
                 break;
             case R.id.setAddDropButton:
-                SetAddDrop fragment4 = new SetAddDrop();
+                fragment4 = new SetAddDrop();
                 transaction.add(R.id.frameLayout2, fragment4, "setAddDropFragment");
                 break;
         }
@@ -99,7 +103,12 @@ static ArrayList<String> StringsForListView = new ArrayList<>();
                         .setMessage("You will add a new course to the System, Are you sure ? ")
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                // ADD course TO DATABASE
+                                try{
+                                    fragment1.addNewCourse();
+                                    Toast.makeText(v.getContext(), "New course added successfully", Toast.LENGTH_LONG).show();
+                                }catch (Exception e){
+                                    Toast.makeText(v.getContext(), "New course cannot be added", Toast.LENGTH_LONG).show();
+                                }
                                 removeFragment2(-1);
                             }
                         })
@@ -129,7 +138,12 @@ static ArrayList<String> StringsForListView = new ArrayList<>();
                         .setMessage("You will delete a course from the System, Are you sure ? ")
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                // delete course from DATABASE
+                                try{
+                                    fragment3.removeCourse();
+                                    Toast.makeText(v.getContext(), "New course added successfully", Toast.LENGTH_LONG).show();
+                                }catch (Exception e){
+                                    Toast.makeText(v.getContext(), "New course cannot be added", Toast.LENGTH_LONG).show();
+                                }
                                 removeFragment2(-3);
                             }
                         })
@@ -265,15 +279,13 @@ static ArrayList<String> StringsForListView = new ArrayList<>();
                 ListView listView = findViewById(R.id.listView);
                 Spinner spinnerdays = findViewById(R.id.SpinnerForDays);
                 Spinner spinnerhours = findViewById(R.id.SpinnerForHours);
-                String data = spinnerdays.getSelectedItem().toString() +spinnerhours.getSelectedItem().toString();
+                String data = spinnerdays.getSelectedItem().toString() +" "+ spinnerhours.getSelectedItem().toString();
                 StringsForListView.add(data);
                 ArrayAdapter<String> veriAdaptoru = new ArrayAdapter<String>
                         (this, android.R.layout.simple_list_item_1, android.R.id.text1, StringsForListView);
                 listView.setAdapter(veriAdaptoru);
                 break;
-
         }
-
     }
 
     @Override

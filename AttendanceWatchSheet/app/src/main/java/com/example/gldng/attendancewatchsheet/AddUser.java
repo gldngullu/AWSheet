@@ -28,6 +28,9 @@ public class AddUser extends AppCompatActivity implements NavigationMenuActions{
     Button addAdmin;
     FragmentManager manager;
     FrameLayout frameLayout;
+    AddInstructor fragment1;
+    AddAssistant fragment2;
+    AddAdmin fragment3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,15 +59,15 @@ public class AddUser extends AppCompatActivity implements NavigationMenuActions{
         FragmentTransaction transaction = manager.beginTransaction();
         switch (userType) {
             case R.id.addInstructor:
-                AddInstructor fragment1 = new AddInstructor();
+                fragment1 = new AddInstructor();
                 transaction.add(R.id.frameLayout, fragment1, "AddInstructorFragment");
                 break;
             case R.id.addAssistant:
-                AddAssistant fragment2 = new AddAssistant();
+                fragment2 = new AddAssistant();
                 transaction.add(R.id.frameLayout, fragment2, "AddAssistantFragment");
                 break;
             case R.id.addAdmin:
-                AddAdmin fragment3 = new AddAdmin();
+                fragment3 = new AddAdmin();
                 transaction.add(R.id.frameLayout, fragment3, "AddAdminFragment");
                 break;
         }
@@ -81,8 +84,12 @@ public class AddUser extends AppCompatActivity implements NavigationMenuActions{
                         .setMessage("You will add a New Instructor to the System, Are you sure ? ")
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                // ADD USER TO DATABASE
-                                Log.d("aa",v.toString());
+                                try{
+                                    fragment1.addNewInstructor();
+                                    Toast.makeText(v.getContext(), "New instructor added successfully", Toast.LENGTH_LONG).show();
+                                }catch (Exception e){
+                                    Toast.makeText(v.getContext(), "New instructor cannot be added", Toast.LENGTH_LONG).show();
+                                }
                                 removeFragment(-1);
                             }
                         })
@@ -98,7 +105,12 @@ public class AddUser extends AppCompatActivity implements NavigationMenuActions{
                         .setMessage("You will add a New Assistant to the System, Are you sure ? ")
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                // ADD USER TO DATABASE
+                                try{
+                                    fragment2.addNewAssistant();
+                                    Toast.makeText(v.getContext(), "New admin added successfully", Toast.LENGTH_LONG).show();
+                                }catch (Exception e){
+                                    Toast.makeText(v.getContext(), "New admin cannot be added", Toast.LENGTH_LONG).show();
+                                }
                                 removeFragment(-2);
                             }
                         })
@@ -113,7 +125,12 @@ public class AddUser extends AppCompatActivity implements NavigationMenuActions{
                         .setMessage("You will add a New Admin to the System, Are you sure ? ")
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                // ADD USER TO DATABASE
+                                try{
+                                    fragment3.addNewAdmin();
+                                    Toast.makeText(v.getContext(), "New admin added successfully", Toast.LENGTH_LONG).show();
+                                }catch (Exception e){
+                                    Toast.makeText(v.getContext(), "New admin cannot be added", Toast.LENGTH_LONG).show();
+                                }
                                 removeFragment(-3);
                             }
                         })

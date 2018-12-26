@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,10 +25,9 @@ import org.json.JSONObject;
 public class AddInstructor extends Fragment {
 
 
-    TextView instructorName;
-    TextView instructorEmail;
-    TextView instructorSurname;
-    Button createButton;
+    EditText instructorName;
+    EditText instructorEmail;
+    EditText instructorSurname;
 
     @Nullable
     @Override
@@ -39,52 +39,29 @@ public class AddInstructor extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        createButton = getView().findViewById(R.id.doneButtonInstructor);
         instructorName = getView().findViewById(R.id.instructorName);
         instructorSurname = getView().findViewById(R.id.instructorSurname);
-        instructorEmail = getView().findViewById(R.id.email);
-        final String instructorNameText = (String) instructorName.getText();
-        final String instructorSurnameText = (String) instructorSurname.getText();
-        final String instructorEmailText = (String) instructorEmail.getText();
-        final String password = Double.toString(Math.floor(100000 + Math.random() * 900000));
+        instructorEmail = getView().findViewById(R.id.instructorEmail);
+    }
 
-        createButton.setOnClickListener(new View.OnClickListener() {
+    public void addNewInstructor() {
+        final String instructorSurnameText = instructorSurname.getText().toString();
+        final String instructorNameText = instructorName.getText().toString();
+        final String instructorEmailText = instructorEmail.getText().toString() + "@isikun.edu.tr";
+        final String password = Integer.toString(((Double) (Math.floor(100000 + Math.random() * 900000))).intValue());
+        Response.Listener<String> responselistener = new Response.Listener<String>() {
             @Override
-            public void onClick(View v) {
-                Response.Listener<String> responselistener = new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonResponse = new JSONObject(response);
-                            int success = jsonResponse.getInt("success");
-                            if (success == 1) {
-                                Log.d("successful", "quary succesful");
-                                Toast.makeText(AddInstructor.this.getContext(), "quary succesful", Toast.LENGTH_LONG).show();
-                            } else {
-                                Log.d("unsuccessful", "quary unsuccesful");
-                                Toast.makeText(AddInstructor.this.getContext(), "quary unsuccesful", Toast.LENGTH_LONG).show();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-                };
-
-                AddUserRequest addUserRequest = new AddUserRequest(instructorEmailText, instructorNameText, instructorSurnameText,  password, responselistener);
-                RequestQueue queue = Volley.newRequestQueue(AddInstructor.this.getContext());
-                queue.add(addUserRequest);
-
-                //Toast.makeText(RegisterActivity.this, "Your registration request has been sent.", Toast.LENGTH_LONG).show();
-
-
-
-        }
-    });
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonResponse = new JSONObject(response);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        AddUserRequest addUserRequest = new AddUserRequest(instructorEmailText, instructorNameText, instructorSurnameText, password, 2, responselistener);
+        RequestQueue queue = Volley.newRequestQueue(AddInstructor.this.getContext());
+        queue.add(addUserRequest);
+    }
 }
 
-
-
-
-
-}

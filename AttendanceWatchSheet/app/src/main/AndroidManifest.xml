@@ -18,9 +18,10 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".LoginActivity"
-            android:windowSoftInputMode="adjustPan">
+
+        <activity android:name=".LoginActivity"
+            android:windowSoftInputMode="adjustPan"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
