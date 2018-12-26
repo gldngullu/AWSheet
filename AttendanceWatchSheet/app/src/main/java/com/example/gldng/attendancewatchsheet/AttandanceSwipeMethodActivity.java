@@ -36,12 +36,17 @@ public class AttandanceSwipeMethodActivity extends AppCompatActivity implements 
 
     private String selectedCourse;
     ArrayList<SwipeCard> a1;
+    ArrayList<String> attanded;
+    ArrayList<String> absent;
     SwipeCardAdapter swipeCardAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attandance_swipemethod);
+
+        attanded = new ArrayList<>();
+        absent = new ArrayList<>();
 
         navBarBuilder();
 
@@ -68,12 +73,14 @@ public class AttandanceSwipeMethodActivity extends AppCompatActivity implements 
 
             @Override
             public void onLeftCardExit(Object o) {
-
+                SwipeCard s = (SwipeCard) o;
+                absent.add(s.getName());
             }
 
             @Override
             public void onRightCardExit(Object o) {
-
+                SwipeCard s = (SwipeCard) o;
+                attanded.add(s.getName());
             }
 
             @Override
