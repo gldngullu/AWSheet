@@ -86,7 +86,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="118dp"
-        android:layout_height="139dp"
+        android:layout_height="149dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -101,7 +101,7 @@
 
         <TextView
             android:id="@+id/form_name"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="@string/course_name"
             tools:layout_editor_absoluteX="59dp"
@@ -126,7 +126,7 @@
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="162dp"
-        android:layout_height="139dp"
+        android:layout_height="148dp"
         android:layout_marginEnd="56dp"
         android:layout_marginTop="8dp"
         android:gravity="center"
@@ -136,8 +136,8 @@
 
         <Spinner
             android:id="@+id/courselist"
-            android:layout_width="151dp"
-            android:layout_height="25dp"
+            android:layout_width="162dp"
+            android:layout_height="34dp"
             android:layout_marginTop="7dp"
             android:paddingBottom="50px"
             android:visibility="visible"
@@ -147,7 +147,7 @@
         <Spinner
             android:id="@+id/assistantlist"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="34dp"
             android:layout_marginTop="42px"
             android:visibility="visible" />
 
@@ -169,9 +169,11 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:layout_marginStart="80dp"
+        android:layout_marginTop="15dp"
         android:text="@string/create"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listvi" />
 
     <EditText
         android:id="@+id/gradeText"
@@ -209,8 +211,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.431"
         app:layout_constraintStart_toEndOf="@+id/createbtn"
-        app:layout_constraintTop_toBottomOf="@+id/_dynamic"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintTop_toBottomOf="@+id/listvi"
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/percent"
