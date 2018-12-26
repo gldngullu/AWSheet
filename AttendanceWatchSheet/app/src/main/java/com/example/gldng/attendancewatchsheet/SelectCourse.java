@@ -1,10 +1,12 @@
 package com.example.gldng.attendancewatchsheet;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Config;
@@ -16,33 +18,30 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ScrollView;
+import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
-
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
-
 
 public class SelectCourse extends AppCompatActivity implements NavigationMenuActions {
 
+    private final String CourseNamesSpinnerURL = "http://awsheet.cf/connect/allcourses.php";
+    private final String AssistantNamesSpinnerURL = "http://awsheet.cf/connect/allassistants.php";
     String CourseSelectRequestAssistantName;
-    String examnameRequest;
-    String CourseSelectRequestCourseName;
-    String CourseSelectRequestSyllabus;
-    String ExamGrade;
+    String examnameRequest = "";
+    String CourseSelectRequestCourseName = "";
+    String CourseSelectRequestSyllabus = "";
+    String ExamGrade = "";
+    ArrayAdapter<String> adaptor;
     private Spinner courselist;
     private Spinner assistantlist;
     private EditText syllabusText;
@@ -51,14 +50,12 @@ public class SelectCourse extends AppCompatActivity implements NavigationMenuAct
     private Button Cancelbtn;
     private EditText gradeText;
     private EditText gradePercent;
-    private String CourseNamesSpinnerURL = "http://awsheet.cf/connect/allcourses.php";
-    private String AssistantNamesSpinnerURL = "http://awsheet.cf/connect/allassistants.php";
     private ArrayList<String> Coursenames;
     private ArrayList<String> Assistantnames;
     private JSONArray resultCourseName;
     private JSONArray resultAssistantName;
-    private ScrollView examLayout;
-
+    private ListView listvi;
+    private TextView GooddayText;
     private OnItemSelectedListener Listener = new OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -78,25 +75,52 @@ public class SelectCourse extends AppCompatActivity implements NavigationMenuAct
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_course);
         navBarBuilder();
+        GooddayText = (TextView) findViewById(R.id.GoodDayText);
 
+        GooddayText.setText("Good Day "+getIntent().getStringExtra("email")+", Sir!");
         Coursenames = new ArrayList<>();
         Assistantnames = new ArrayList<>();
+        listvi = (ListView) findViewById(R.id.listvi);
         syllabusText = (EditText) findViewById(R.id.syllabusss);
         GradeAdd = (Button) findViewById(R.id.gradeAdder);
         Createbtn = (Button) findViewById(R.id.createbtn);
         Cancelbtn = (Button) findViewById(R.id.cancelbtn);
         gradeText = (EditText) findViewById(R.id.gradeText);
         gradePercent = (EditText) findViewById(R.id.percent);
-        examLayout = (ScrollView) findViewById(R.id.Midterm_View);
         courselist = (Spinner) this.findViewById(R.id.courselist);
         assistantlist = (Spinner) this.findViewById(R.id.assistantlist);
-        Createbtn.setEnabled(false);
-        examnameRequest = "";
-        ExamGrade = "";
-        CourseSelectRequestCourseName = "";
-        CourseSelectRequestSyllabus = "";
+        Createbtn.setEnabled(true);
+
         getDataToSpinner(CourseNamesSpinnerURL);
         getDataToSpinner(AssistantNamesSpinnerURL);
+
+        adaptor = new ArrayAdapter<String>
+                (this, android.R.layout.simple_list_item_1, android.R.id.text1);
+        listvi.setAdapter(adaptor);
+
+
+        AlertDialog.Builder alert =
+                new AlertDialog.Builder(SelectCourse.this);
+
+        listvi.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog.Builder alert =
+                        new AlertDialog.Builder(SelectCourse.this);
+                String outAlert=gradeText.getText().toString()+" has "+ExamGrade +" %.";
+
+                alert.setMessage(outAlert)
+                        .setCancelable(false)
+                        .setPositiveButton("Ok !", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                alert.create().show();
+            }
+        });
+
 
         courselist.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -124,7 +148,6 @@ public class SelectCourse extends AppCompatActivity implements NavigationMenuAct
             }
         });
 
-
         // ArrayAdapter<CharSequence> arrayAdapterForDays =
         //         ArrayAdapter.createFromResource(this, R.array.CourseList, android.R.layout.simple_spinner_item);
         // ArrayAdapter<CharSequence> arrayAdapterForHours =
@@ -135,15 +158,13 @@ public class SelectCourse extends AppCompatActivity implements NavigationMenuAct
         GradeAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               String  ExamGrade = gradePercent.getText().toString();
+                ExamGrade = gradePercent.getText().toString();
                 String examname = gradeText.getText().toString();
-                int exm= Integer.parseInt(ExamGrade);
-                if(exm< 0 ||exm > 100){
-                    Toast.makeText(SelectCourse.this,"YOU MUST ENTER BETWEEN 0 AND 100", Toast.LENGTH_LONG).show();
+                int exm = Integer.parseInt(ExamGrade);
+                if (exm < 0 || exm > 100) {
+                    Toast.makeText(SelectCourse.this, "YOU MUST ENTER BETWEEN 0 AND 100", Toast.LENGTH_LONG).show();
                 }
-
-                examnameRequest = Add_Course_Exam(examname);
-
+                Add_Course_Exam(examname);
             }
         });
 
@@ -154,6 +175,7 @@ public class SelectCourse extends AppCompatActivity implements NavigationMenuAct
                 CourseSelectRequestCourseName = courselist.getSelectedItem().toString();
                 CourseSelectRequestAssistantName = assistantlist.getSelectedItem().toString();
                 CourseSelectRequestSyllabus = syllabusText.getText().toString();
+                ExamGrade= gradePercent.getText().toString();
                 if (CourseSelectRequestCourseName.isEmpty()) {
                     Toast.makeText(SelectCourse.this, "YOU MUST CHOOSE A COURSE NAME", Toast.LENGTH_LONG).show();
                 }
@@ -179,7 +201,8 @@ public class SelectCourse extends AppCompatActivity implements NavigationMenuAct
                             }
 
                         }
-                    };                                               //*--------------------WARNING------------------*//
+                    };
+                    //*--------------------WARNING------------------*//
                     // String InstructorMail="mertalikoprulu@gmail.com";// THIS PART HAS TO GET FROM INTENT FROM INSTRUCTOR MAIN PAGE !!!!!!!!
                     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                     String emailIns = getIntent().getStringExtra("email");
@@ -200,6 +223,7 @@ public class SelectCourse extends AppCompatActivity implements NavigationMenuAct
             public void onClick(View v) {
                 Intent back = new Intent(SelectCourse.this, Courses_Instructor.class);
                 SelectCourse.this.startActivity(back);
+                finish();
 
             }
         });
@@ -208,8 +232,7 @@ public class SelectCourse extends AppCompatActivity implements NavigationMenuAct
     }
 
     private void getDataToSpinner(String URL) {
-        StringRequest stringRequest = new StringRequest(URL,
-                new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(URL,new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         JSONObject j = null;
@@ -235,8 +258,8 @@ public class SelectCourse extends AppCompatActivity implements NavigationMenuAct
                         JSONObject j = null;
                         try {
                             j = new JSONObject(response);
-                            resultCourseName = j.getJSONArray("result");
-                            loadAssistantName(resultCourseName);
+                            resultAssistantName = j.getJSONArray("result");
+                            loadAssistantName(resultAssistantName);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -255,11 +278,9 @@ public class SelectCourse extends AppCompatActivity implements NavigationMenuAct
         requestQueue.add(stringRequest1);
     }
 
-    public String Add_Course_Exam(String exammname) {
-        ExamGrade = gradePercent.getText().toString();
-        exammname = gradeText.getText().toString();
-        examLayout.addView(gradeText);
-        return exammname;
+    public void Add_Course_Exam(String exammname) {
+        // ExamGrade = gradePercent.getText().toString();
+        adaptor.add(exammname);
     }
 
     private void loadCourseName(JSONArray j) {
@@ -313,6 +334,7 @@ public class SelectCourse extends AppCompatActivity implements NavigationMenuAct
                 }
                 intent.putExtra("email", getIntent().getStringExtra("email"));
                 startActivity(intent);
+                finish();
                 return false;
             }
         });

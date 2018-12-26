@@ -9,20 +9,11 @@
     tools:layout_editor_absoluteY="25dp">
 
     <Button
-        android:id="@+id/removecourse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="7dp"
-        android:text="-"
-        app:layout_constraintBottom_toTopOf="@+id/removeacoursetext"
-        app:layout_constraintStart_toStartOf="@+id/removeacoursetext" />
-
-    <Button
         android:id="@+id/addcourse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="46dp"
-        android:layout_marginBottom="90dp"
+        android:layout_marginBottom="80dp"
+        android:layout_marginStart="152dp"
         android:text="+"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/course_list" />
@@ -65,18 +56,6 @@
         android:text="Add a Course"
         app:layout_constraintStart_toStartOf="@+id/addcourse"
         app:layout_constraintTop_toBottomOf="@+id/addcourse" />
-
-    <TextView
-        android:id="@+id/removeacoursetext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginBottom="12dp"
-        android:text="Remove a Course"
-        app:layout_constraintBottom_toTopOf="@+id/navigation"
-        app:layout_constraintEnd_toEndOf="@+id/navigation"
-        app:layout_constraintStart_toEndOf="@+id/addacoursetext" />
 
     <ImageView
         android:id="@+id/imageView2"

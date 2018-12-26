@@ -86,14 +86,12 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="118dp"
-        android:layout_height="139dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="90dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="63dp"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/gradeText"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
         app:layout_constraintHorizontal_bias="0.966"
         app:layout_constraintStart_toStartOf="parent"
@@ -107,26 +105,12 @@
             tools:layout_editor_absoluteX="59dp"
             tools:layout_editor_absoluteY="143dp" />
 
-        <TextView
-            android:id="@+id/assistant"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50px"
-            android:text="@string/assistant" />
-
-        <TextView
-            android:id="@+id/syllabus"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100px"
-            android:text="Syllabus :"
-            tools:text="Syllabus :" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="162dp"
-        android:layout_height="139dp"
+        android:layout_height="87dp"
         android:layout_marginEnd="56dp"
         android:layout_marginTop="8dp"
         android:gravity="center"
@@ -144,89 +128,33 @@
             tools:layout_editor_absoluteX="176dp"
             tools:layout_editor_absoluteY="143dp" />
 
-        <Spinner
-            android:id="@+id/assistantlist"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="42px"
-            android:visibility="visible" />
-
-        <EditText
-            android:id="@+id/syllabusss"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginTop="45px"
-            android:ems="10"
-            android:hint="Name"
-            android:inputType="text|textPersonName"
-            tools:text="Name" />
-
     </LinearLayout>
 
     <Button
         android:id="@+id/createbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:layout_marginStart="80dp"
-        android:text="@string/create"
+        android:layout_marginBottom="56dp"
+        android:layout_marginStart="96dp"
+        android:text="ENROLL"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/gradeText"
-        android:layout_width="153dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="10dp"
-        android:ems="10"
-        android:hint="Midterm /Quiz/Att."
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        tools:text="Midterm /Quiz/Att." />
-
-    <Button
-        android:id="@+id/gradeAdder"
-        android:layout_width="85dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="52dp"
-        android:layout_marginTop="8dp"
-        android:text="Grade Adder"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
     <Button
         android:id="@+id/cancelbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="56dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/cancel"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.431"
+        app:layout_constraintHorizontal_bias="0.357"
         app:layout_constraintStart_toEndOf="@+id/createbtn"
         app:layout_constraintTop_toBottomOf="@+id/_dynamic"
         app:layout_constraintVertical_bias="0.3" />
-
-    <EditText
-        android:id="@+id/percent"
-        android:layout_width="63dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="%"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/gradeAdder"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/gradeText"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        tools:text="%" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
@@ -249,11 +177,14 @@
         android:id="@+id/listvi"
         android:layout_width="395dp"
         android:layout_height="145dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="64dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="52dp"
         app:layout_constraintBottom_toTopOf="@+id/createbtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/percent" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 </android.support.constraint.ConstraintLayout>

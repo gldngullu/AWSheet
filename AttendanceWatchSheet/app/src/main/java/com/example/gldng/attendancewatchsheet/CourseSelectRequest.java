@@ -7,22 +7,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CourseSelectRequest extends StringRequest {
-    private static final String SelectCourse_request_URL ="http://awsheet.cf/connect/courseSelectInnstr.php";
-    private Map<String,String> params ;
+    private static final String SelectCourse_request_URL = "http://awsheet.cf/connect/courseSelectInnstr.php";
+    private Map<String, String> params;
 
-   public CourseSelectRequest(String ImailAdress,String AmailAdress,String coursecode,String syllabus,Response.Listener<String> listener ){
-    super(Method.POST,SelectCourse_request_URL,listener, null);
-    params=new HashMap<>();
-    params.put("ImailAdress",ImailAdress);
-    params.put("AmailAdress",AmailAdress);
-    params.put("coursecode",coursecode);
-    params.put("syllabus",syllabus);
+    public CourseSelectRequest(String ImailAdress, String AmailAdress, String coursecode, String syllabus, Response.Listener<String> listener) {
+        super(Method.POST, SelectCourse_request_URL, listener, null);
+        params = new HashMap<>();
+        params.put("AmailAdress", AmailAdress);
+        params.put("ImailAdress", ImailAdress);
+        params.put("coursecode", coursecode);
+        params.put("syllabus", syllabus);
 
 
-   }
-   @Override
-   public Map<String,String> getParams(){
-       return params;
-   }
+    }
+
+    @Override
+    public Map<String, String> getParams() {
+        return params;
+    }
 
 }
