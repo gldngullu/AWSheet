@@ -83,7 +83,7 @@ public class Courses_Instructor extends AppCompatActivity implements NavigationM
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 AlertDialog.Builder alert =
                         new AlertDialog.Builder(Courses_Instructor.this);
-                String outAlert="AWW SHEET";
+                String outAlert="ARE YOU SURE , THAT YOU WANT TO REMOVE THE COURSE !";
 
                 alert.setMessage(outAlert)
                         .setCancelable(true)
@@ -91,6 +91,8 @@ public class Courses_Instructor extends AppCompatActivity implements NavigationM
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 //REMOVE COURSE REQUEST!
+              //  String delCourse =
+
                             }
                         })
                         .setPositiveButton("Ok !", new DialogInterface.OnClickListener() {

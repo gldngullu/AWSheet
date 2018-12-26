@@ -14,7 +14,7 @@ public class GetInstructorCoursesRequest extends StringRequest  {
         public GetInstructorCoursesRequest(String emailIns,Response.Listener<String> listener) {
             super(Method.POST, GetCourses, listener, null);
             params = new HashMap<>();
-            params.put("mailAdress", emailIns);
+            params.put("mail", emailIns);
 
         }
 
@@ -24,5 +24,4 @@ public class GetInstructorCoursesRequest extends StringRequest  {
         }
 
     }
-
 

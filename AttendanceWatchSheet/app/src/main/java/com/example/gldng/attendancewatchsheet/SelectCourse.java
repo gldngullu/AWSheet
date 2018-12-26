@@ -56,6 +56,8 @@ public class SelectCourse extends AppCompatActivity implements NavigationMenuAct
     private JSONArray resultAssistantName;
     private ListView listvi;
     private TextView GooddayText;
+    private int sum =0;
+    private boolean isBig=false;
     private OnItemSelectedListener Listener = new OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -160,11 +162,17 @@ public class SelectCourse extends AppCompatActivity implements NavigationMenuAct
             public void onClick(View v) {
                 ExamGrade = gradePercent.getText().toString();
                 String examname = gradeText.getText().toString();
+
                 int exm = Integer.parseInt(ExamGrade);
-                if (exm < 0 || exm > 100) {
+                sum+=exm;
+                if (sum < 0 || sum > 100|| exm<0) {
                     Toast.makeText(SelectCourse.this, "YOU MUST ENTER BETWEEN 0 AND 100", Toast.LENGTH_LONG).show();
+                    isBig=true;
                 }
+                if(!isBig){
+                    isBig=false;
                 Add_Course_Exam(examname);
+                }
             }
         });
 
