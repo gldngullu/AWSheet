@@ -155,7 +155,7 @@ public class AttandanceListMethodActivity extends AppCompatActivity implements S
     public void studentListBuilder(){
 
         //adding data to table
-        TableLayout tableLayout = findViewById(R.id.attandaceListTable);
+        //TableLayout tableLayout = findViewById(R.id.attandaceListTable);
 
 
 
@@ -166,7 +166,38 @@ public class AttandanceListMethodActivity extends AppCompatActivity implements S
                     JSONObject jsonResponse = new JSONObject(response);
                     int count = jsonResponse.getInt("count");
                     for (int i= 0; i < count ; i++){
-                        studentList.add(jsonResponse.getString("name"+i));
+                        String temp=jsonResponse.getString("name"+i);
+                        studentList.add(temp);
+                    }
+                    TableLayout tableLayout = findViewById(R.id.attandaceListTable);
+
+
+
+                    for (int j = 0 ; j < count; j++){
+                        //row creation
+                        TableRow row = new TableRow(getApplicationContext());
+                        row.setPadding(20,0,20,0);
+                        row.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,TableRow.LayoutParams.WRAP_CONTENT));
+                        TableRow.LayoutParams params2 = new TableRow.LayoutParams(0,ViewGroup.LayoutParams.WRAP_CONTENT);
+
+                        TextView col1 = new TextView(getApplicationContext());
+                        TableRow.LayoutParams params1 = new TableRow.LayoutParams(0,ViewGroup.LayoutParams.WRAP_CONTENT);
+                        params1.weight = 4;
+                        col1.setText(studentList.get(j));
+                        col1.setLayoutParams(params1);
+                        CheckBox col2 = new CheckBox(getApplicationContext());
+                        col2.setGravity(Gravity.CENTER_HORIZONTAL);
+                        params2.weight = 1;
+                        col2.setLayoutParams(params2);
+
+                        //append col to row
+                        row.addView(col1);
+                        row.addView(col2);
+
+                        //append row to table
+                        tableLayout.addView(row);
+
+
                     }
                     //Toast.makeText(AttandanceListMethodActivity.this,"successfull respond",Toast.LENGTH_LONG).show();
 
@@ -183,7 +214,7 @@ public class AttandanceListMethodActivity extends AppCompatActivity implements S
         queue.add(attandanceStudentListRequest);
 
 
-
+        /*
         //col creation
         TextView col1 = new TextView(getApplicationContext());
         TableRow.LayoutParams params1 = new TableRow.LayoutParams(0,ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -208,7 +239,10 @@ public class AttandanceListMethodActivity extends AppCompatActivity implements S
 
             //append row to table
             tableLayout.addView(row);
+
+
         }
+        */
     }
 
 
