@@ -70,42 +70,6 @@ public class AttandanceListMethodActivity extends AppCompatActivity implements S
             @Override
             public void onClick(View v) {
                 setAttandanceData();
-                TableLayout table1Layout = findViewById(R.id.attandaceListTable);
-                for(int a=0;a<table1Layout.getChildCount();a++) {
-                    try {
-                        attandanceResult.getString("name"+1);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-                Response.Listener<String> response2Listener=new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonResponse = new JSONObject(response);
-                            int success= jsonResponse.getInt("success");
-
-                            if(success==1){
-
-                            }else{
-
-                                Toast.makeText(AttandanceListMethodActivity.this," unsuccesful",Toast.LENGTH_LONG).show();
-
-                            }
-                        } catch (JSONException e) {
-                            Toast.makeText(AttandanceListMethodActivity.this,"JSON EX",Toast.LENGTH_LONG).show();
-                            e.printStackTrace();
-                        }
-
-                    }
-                };
-                }
-
-
-
-                SendAttendanceRequest send1Request= new SendAttendanceRequest(selectedCourse,studentmail,response2Listener);
-                RequestQueue queue1 = Volley.newRequestQueue(AttandanceListMethodActivity.this);
-                queue1.add(send1Request);
                 Toast.makeText(AttandanceListMethodActivity.this,"Successfully sended.",Toast.LENGTH_LONG);
             }
         });
