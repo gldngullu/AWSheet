@@ -47,7 +47,9 @@ public class AttandanceListMethodActivity extends AppCompatActivity implements S
     private JSONArray studentListResponse;
     private ArrayList<String> studentList;
     private ArrayList<String> courseInsList;
+    private ArrayList<String> studentEmailInfo;
     private JSONObject attandanceResult;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,6 +58,7 @@ public class AttandanceListMethodActivity extends AppCompatActivity implements S
 
         studentList = new ArrayList<>();
         courseInsList = new ArrayList<>();
+        studentEmailInfo= new ArrayList<>();
         attandanceResult = new JSONObject();
 
         //spinnerCreation
@@ -71,6 +74,34 @@ public class AttandanceListMethodActivity extends AppCompatActivity implements S
             public void onClick(View v) {
                 setAttandanceData();
                 Toast.makeText(AttandanceListMethodActivity.this,"Successfully sended.",Toast.LENGTH_LONG);
+
+                Response.Listener<String> listener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonResponse  = new JSONObject(response);
+                            int success = jsonResponse.getInt("success");
+                            if(success == 1){
+                                Toast.makeText(AttandanceListMethodActivity.this,"Successfully added",Toast.LENGTH_LONG);
+                            }
+                            else
+                                Toast.makeText(AttandanceListMethodActivity.this,"Unsuccessful",Toast.LENGTH_LONG);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                };
+
+                for (String email:studentEmailInfo) {
+                    Toast.makeText(AttandanceListMethodActivity.this,email,Toast.LENGTH_LONG);
+                    AttandanceSendRequest attandanceSendRequest= new AttandanceSendRequest(email,"CSE101",listener );
+                    RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
+                    requestQueue.add(attandanceSendRequest);
+                }
+
+
             }
         });
 
@@ -91,7 +122,8 @@ public class AttandanceListMethodActivity extends AppCompatActivity implements S
                     JSONObject jsonObject=new JSONObject(response);
                     int count = jsonObject.getInt("count");
                     for (int i = 0; i < count ; i++){
-                        courseInsList.add(jsonObject.getString("courseCode"+i));
+                        String temp = jsonObject.getString("courses"+i);
+                        courseInsList.add(temp);
                     }
 
                 }catch (JSONException e){e.printStackTrace();}
@@ -101,7 +133,9 @@ public class AttandanceListMethodActivity extends AppCompatActivity implements S
         // int socketTimeout = 30000;
         // RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
         // stringRequest.setRetryPolicy(policy);
-        SpinnerDataRequest spinnerDataRequest = new SpinnerDataRequest(getIntent().getStringExtra("email"),listener );
+        String email = getIntent().getStringExtra("email");
+        //Toast.makeText(AttandanceListMethodActivity.this,email,Toast.LENGTH_LONG);
+        SpinnerDataRequest spinnerDataRequest = new SpinnerDataRequest(email,listener );
         RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(spinnerDataRequest);
 
@@ -167,7 +201,9 @@ public class AttandanceListMethodActivity extends AppCompatActivity implements S
                     int count = jsonResponse.getInt("count");
                     for (int i= 0; i < count ; i++){
                         String temp=jsonResponse.getString("name"+i);
+                        String temp2=jsonResponse.getString("email"+i);
                         studentList.add(temp);
+                        studentEmailInfo.add(temp2);
                     }
                     TableLayout tableLayout = findViewById(R.id.attandaceListTable);
 
