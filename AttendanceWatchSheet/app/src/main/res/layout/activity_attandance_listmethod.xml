@@ -103,8 +103,8 @@
             android:layout_height="60dp"
             android:layout_marginTop="5dp"
             android:layout_weight="1"
-            android:background="@drawable/border_row"
-            android:spinnerMode="dropdown"></Spinner>
+            android:visibility="visible"
+            />
     </TableLayout>
 
     <android.support.design.widget.BottomNavigationView
