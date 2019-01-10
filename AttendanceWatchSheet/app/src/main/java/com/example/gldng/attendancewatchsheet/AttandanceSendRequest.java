@@ -18,7 +18,7 @@ public class AttandanceSendRequest extends StringRequest {
     private static final String Login_request_url ="http://awsheet.cf/connect/attendancesubmit.php";
     private Map<String,String> params ;
 
-    public AttandanceSendRequest (JSONObject attandance, String courseCode, Response.Listener<String> listener){
+    public AttandanceSendRequest (JSONObject attandance, String courseCode, String weekno, Response.Listener<String> listener){
         super(Request.Method.POST,Login_request_url,listener,null);
         params= new HashMap<>();
         Iterator<String> keys = attandance.keys();
@@ -31,6 +31,7 @@ public class AttandanceSendRequest extends StringRequest {
             }
         }
         params.put("CourseCode",courseCode);
+        params.put("weekNo",weekno);
 
     }
 

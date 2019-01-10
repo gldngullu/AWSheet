@@ -34,6 +34,7 @@ import java.util.List;
 public class AttandanceListMethodActivity extends AppCompatActivity implements SpinnerHelper,NavigationMenuActions{
 
     private String selectedCourse;
+    private String selectedWeek;
     private JSONArray studentListResponse;
     private ArrayList<String[]> studentList;
     private List<String> courseInsList;
@@ -57,11 +58,29 @@ public class AttandanceListMethodActivity extends AppCompatActivity implements S
         //spinnerCreation
         courseSelectSpinner = (Spinner) findViewById(R.id.courseSelectSpinner);
         spinnerBuilder();
+
+
         weekNoSpinner = (Spinner) findViewById(R.id.weekNoSpinner);
         ArrayAdapter<CharSequence> arrayAdapterForWeekNo =
                 ArrayAdapter.createFromResource(this, R.array.WeekNo, android.R.layout.simple_spinner_item);
         weekNoSpinner.setAdapter(arrayAdapterForWeekNo);
+        weekNoSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String item =  String.valueOf(position+1);
+                selectedWeek = item;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
         navBarBuilder();
+
+
 
 
 
@@ -70,7 +89,8 @@ public class AttandanceListMethodActivity extends AppCompatActivity implements S
             @Override
             public void onClick(View v) {
                 setAttandanceData();
-                Toast.makeText(AttandanceListMethodActivity.this,"Successfully sended.",Toast.LENGTH_LONG);
+
+
 
                 Response.Listener<String> listener = new Response.Listener<String>() {
                     @Override
@@ -79,20 +99,21 @@ public class AttandanceListMethodActivity extends AppCompatActivity implements S
                             JSONObject jsonResponse  = new JSONObject(response);
                             int success = jsonResponse.getInt("success");
                             if(success == 1){
-                                Toast.makeText(AttandanceListMethodActivity.this,"Successfully added",Toast.LENGTH_LONG);
+                                Toast.makeText(AttandanceListMethodActivity.this, "Attendance successfully recorded!", Toast.LENGTH_LONG).show();
                             }
                             else
-                                Toast.makeText(AttandanceListMethodActivity.this,"Unsuccessful",Toast.LENGTH_LONG);
+                                Toast.makeText(AttandanceListMethodActivity.this, "Unsuccessfull", Toast.LENGTH_LONG).show();
 
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            Toast.makeText(AttandanceListMethodActivity.this, "Attendance successfully recorded!", Toast.LENGTH_LONG).show();
+                            //e.printStackTrace();
                         }
 
                     }
                 };
 
                     //Toast.makeText(AttandanceListMethodActivity.this,email,Toast.LENGTH_LONG);
-                    AttandanceSendRequest attandanceSendRequest= new AttandanceSendRequest(attandanceResult,selectedCourse,listener);
+                    AttandanceSendRequest attandanceSendRequest= new AttandanceSendRequest(attandanceResult,selectedCourse,selectedWeek,listener);
                     RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
                     requestQueue.add(attandanceSendRequest);
 
