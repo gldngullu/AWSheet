@@ -66,22 +66,24 @@
         android:id="@+id/removeCourseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="74dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="8dp"
         android:onClick="alertDialog2"
         android:text="remove"
-        app:layout_constraintBaseline_toBaselineOf="@+id/cancelCourseRemovingButton"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/cancelCourseRemovingButton"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText4" />
 
     <Button
         android:id="@+id/cancelCourseRemovingButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="108dp"
-        android:layout_marginTop="46dp"
-        android:layout_marginEnd="108dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="64dp"
         android:onClick="removeFragment2"
         android:text="cancel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/editText4"
         app:layout_constraintTop_toBottomOf="@+id/editText4" />
 </android.support.constraint.ConstraintLayout>
