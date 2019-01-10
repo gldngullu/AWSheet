@@ -105,6 +105,14 @@
             android:layout_weight="1"
             android:visibility="visible"
             />
+
+        <Spinner
+            android:id="@+id/weekNoSpinner"
+            android:layout_height="60dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:visibility="visible"
+            />
     </TableLayout>
 
     <android.support.design.widget.BottomNavigationView

@@ -1,14 +1,11 @@
 package com.example.gldng.attendancewatchsheet;
 
-import android.app.ActionBar;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,21 +14,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.RetryPolicy;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -39,7 +29,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class AttandanceListMethodActivity extends AppCompatActivity implements SpinnerHelper,NavigationMenuActions{
@@ -50,7 +39,8 @@ public class AttandanceListMethodActivity extends AppCompatActivity implements S
     private List<String> courseInsList;
     private ArrayList<String> studentEmailInfo;
     private JSONObject attandanceResult;
-    private Spinner spinner;
+    private Spinner courseSelectSpinner;
+    private Spinner weekNoSpinner;
     private Response.Listener listener;
 
 
@@ -65,10 +55,12 @@ public class AttandanceListMethodActivity extends AppCompatActivity implements S
         attandanceResult = new JSONObject();
 
         //spinnerCreation
-        spinner = (Spinner) findViewById(R.id.courseSelectSpinner);
+        courseSelectSpinner = (Spinner) findViewById(R.id.courseSelectSpinner);
         spinnerBuilder();
-
-
+        weekNoSpinner = (Spinner) findViewById(R.id.weekNoSpinner);
+        ArrayAdapter<CharSequence> arrayAdapterForWeekNo =
+                ArrayAdapter.createFromResource(this, R.array.WeekNo, android.R.layout.simple_spinner_item);
+        weekNoSpinner.setAdapter(arrayAdapterForWeekNo);
         navBarBuilder();
 
 
@@ -143,8 +135,8 @@ public class AttandanceListMethodActivity extends AppCompatActivity implements S
     private void spinnerProcess(){
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(AttandanceListMethodActivity.this,android.R.layout.simple_spinner_dropdown_item,this.courseInsList);
         spinnerArrayAdapter.setDropDownViewResource(R.layout.spinner_item);
-        spinner.setAdapter(spinnerArrayAdapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        courseSelectSpinner.setAdapter(spinnerArrayAdapter);
+        courseSelectSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String item = courseInsList.get(position);
