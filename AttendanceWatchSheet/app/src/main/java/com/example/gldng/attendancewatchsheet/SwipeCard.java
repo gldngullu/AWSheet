@@ -7,6 +7,15 @@ public class SwipeCard {
     private String name;
     private String courseName;
     private Date today;
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public Date getToday() {
         return today;
@@ -31,8 +40,9 @@ public class SwipeCard {
     public void setCourseName(String courseName) {
         this.courseName = courseName;
     }
-    public SwipeCard(String name,String courseName){
+    public SwipeCard(String name,String courseName,String email){
         this.name = name;
+        this.email = email;
         this.courseName = courseName;
         today = new Date();
         Calendar calendar = new Calendar() {

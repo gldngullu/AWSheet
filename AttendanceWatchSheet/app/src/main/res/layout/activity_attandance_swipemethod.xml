@@ -200,18 +200,35 @@
             />
     </LinearLayout>
     -->
-        <TableRow
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:background="@drawable/border_row"
-            android:padding="0dp">
 
-            <Spinner
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:spinnerMode="dropdown"></Spinner>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
 
-        </TableRow>
+    <Spinner
+        android:layout_width="wrap_content"
+        android:id="@+id/courseSelectSpinner"
+        android:layout_height="60dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="2"
+        android:visibility="visible"
+        />
+    <Spinner
+        android:layout_width="wrap_content"
+        android:id="@+id/weekNoSpinner"
+        android:layout_height="60dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="2"
+        android:visibility="visible"
+        />
+
+
+</LinearLayout>
+
+
+
 
 
     </TableLayout>

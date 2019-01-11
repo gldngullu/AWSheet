@@ -7,13 +7,18 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.Spinner;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -40,6 +45,17 @@ public class AttandanceSwipeMethodActivity extends AppCompatActivity implements 
     ArrayList<String> absent;
     SwipeCardAdapter swipeCardAdapter;
 
+
+    private String selectedWeek;
+    private JSONArray studentListResponse;
+    private ArrayList<String[]> studentList;
+    private List<String> courseInsList;
+    private JSONObject attandanceResult;
+    private Spinner courseSelectSpinner;
+    private Spinner weekNoSpinner;
+    private Response.Listener listener;
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,37 +66,77 @@ public class AttandanceSwipeMethodActivity extends AppCompatActivity implements 
 
         navBarBuilder();
 
-        //Swipe Actions
+        studentList = new ArrayList<String[]>();
+        courseInsList = new ArrayList<String>();
+        attandanceResult = new JSONObject();
+
+        courseSelectSpinner = (Spinner) findViewById(R.id.courseSelectSpinner);
+        spinnerBuilder();
+
+
+        weekNoSpinner = (Spinner) findViewById(R.id.weekNoSpinner);
+        ArrayAdapter<CharSequence> arrayAdapterForWeekNo =  ArrayAdapter.createFromResource(this, R.array.WeekNo, android.R.layout.simple_spinner_item);
+        weekNoSpinner.setAdapter(arrayAdapterForWeekNo);
+        weekNoSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String item =  String.valueOf(position+1);
+                selectedWeek = item;
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         SwipeFlingAdapterView flingCounter = (SwipeFlingAdapterView) findViewById(R.id.itemToSwipe);
 
-        //Student Data
         a1 = new ArrayList<SwipeCard>();
-        a1.add(new SwipeCard("Mertaleeey","CSE900"));
-        a1.add(new SwipeCard("MERTTTALEEE","CSE800"));
-        a1.add(new SwipeCard("mertalü","CSE999"));
 
+        a1.add(new SwipeCard("","",""));
 
         swipeCardAdapter = new SwipeCardAdapter(this,getLayoutInflater(),a1);
 
         flingCounter.setAdapter(swipeCardAdapter);
+
+        //Swipe Actions
 
         flingCounter.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
             @Override
             public void removeFirstObjectInAdapter() {
                 a1.remove(0);
                 swipeCardAdapter.notifyDataSetChanged();
+
             }
 
             @Override
             public void onLeftCardExit(Object o) {
                 SwipeCard s = (SwipeCard) o;
-                absent.add(s.getName());
+                absent.add(s.getEmail());
+                try {
+                    attandanceResult.put(s.getEmail(),false);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                if(a1.isEmpty()){
+                    SendAttendance();
+                }
             }
 
             @Override
             public void onRightCardExit(Object o) {
                 SwipeCard s = (SwipeCard) o;
-                attanded.add(s.getName());
+                attanded.add(s.getEmail());
+                try {
+                    attandanceResult.put(s.getEmail(),true);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                if(a1.isEmpty()){
+                    SendAttendance();
+                }
             }
 
             @Override
@@ -95,7 +151,43 @@ public class AttandanceSwipeMethodActivity extends AppCompatActivity implements 
         });
 
 
+
     }
+
+    private void SendAttendance() {
+
+
+        Response.Listener<String> listener = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonResponse  = new JSONObject(response);
+                    int success = jsonResponse.getInt("success");
+                    if(success == 1){
+                        Toast.makeText(AttandanceSwipeMethodActivity.this, "Attendance successfully recorded!", Toast.LENGTH_LONG).show();
+                    }
+                    else
+                        Toast.makeText(AttandanceSwipeMethodActivity.this, "Unsuccessfull", Toast.LENGTH_LONG).show();
+
+                } catch (JSONException e) {
+                    Toast.makeText(AttandanceSwipeMethodActivity.this, "Attendance successfully recorded!", Toast.LENGTH_LONG).show();
+                    //e.printStackTrace();
+                }
+
+            }
+        };
+
+        //Toast.makeText(AttandanceListMethodActivity.this,email,Toast.LENGTH_LONG);
+        AttandanceSendRequest attandanceSendRequest= new AttandanceSendRequest(attandanceResult,selectedCourse,selectedWeek,listener);
+        RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(attandanceSendRequest);
+
+
+
+
+    }
+
+
     @Override
     public void navBarBuilder(){
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
@@ -124,83 +216,125 @@ public class AttandanceSwipeMethodActivity extends AppCompatActivity implements 
         });
     }
 
+
     @Override
     public void spinnerBuilder() {
-
-        //spinner
-        final Spinner spinner = (Spinner) findViewById(R.id.courseSelectSpinner);
-
-        final List<String> courseList = new ArrayList<>();
-
-        Response.Listener listener = new Response.Listener<String>() {
+        //List<String> courseList = new ArrayList<String>();
+        listener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try{
                     JSONObject jsonObject=new JSONObject(response);
-                    if(jsonObject.getInt("success")==1){
-                        JSONArray jsonArray=jsonObject.getJSONArray("Name");
-                        for(int i=0;i<jsonArray.length();i++){
-                            JSONObject jsonObject1=jsonArray.getJSONObject(i);
-                            String country=jsonObject1.getString("Country");
-                            courseList.add(country);
-                        }
+                    int count = jsonObject.getInt("count");
+                    for (int i = 0; i < count ; i++){
+                        String temp = jsonObject.getString("courses"+i);
+                        courseInsList.add(temp);
                     }
+                    spinnerProcess();
                 }catch (JSONException e){e.printStackTrace();}
             }
         };
-
-
         // int socketTimeout = 30000;
         // RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
         // stringRequest.setRetryPolicy(policy);
-        SpinnerDataRequest spinnerDataRequest = new SpinnerDataRequest(getIntent().getStringExtra("email"),listener );
+        String email = getIntent().getStringExtra("email");
+        //Toast.makeText(AttandanceListMethodActivity.this,email,Toast.LENGTH_LONG);
+        SpinnerDataRequest spinnerDataRequest = new SpinnerDataRequest(email,listener);
         RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(spinnerDataRequest);
 
+    }
 
-        final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,R.layout.spinner_item,courseList){
-            @Override
-            public boolean isEnabled(int position){
-                if(position == 0)
-                {
-                    // Disable the first item from Spinner
-                    // First item will be use for hint
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
-            @Override
-            public View getDropDownView(int position, View convertView,
-                                        ViewGroup parent) {
-                View view = super.getDropDownView(position, convertView, parent);
-                TextView tv = (TextView) view;
-                tv.setTextColor(Color.BLACK);
-                return view;
-            }
-        };
+    private void spinnerProcess(){
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(AttandanceSwipeMethodActivity.this,android.R.layout.simple_spinner_dropdown_item,this.courseInsList);
         spinnerArrayAdapter.setDropDownViewResource(R.layout.spinner_item);
-        spinner.setAdapter(spinnerArrayAdapter);
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        courseSelectSpinner.setAdapter(spinnerArrayAdapter);
+        courseSelectSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedItemText = (String) parent.getItemAtPosition(position);
-                // If user change the default selection
-                // First item is disable and it is used for hint
-                if(position > 0){
-                    // Notify the selected item text
-                    selectedCourse = selectedItemText;
-                }
+                String item = courseInsList.get(position);
+                selectedCourse = item;
+                studentListCleaner();
+                studentListBuilder();
+                //Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
+    }
+
+    private void studentListCleaner(){
+        studentList = new ArrayList<String[]>();
+        // clean card array
+        a1.clear();
+        swipeCardAdapter.notifyDataSetChanged();
+
+    }
+
+    public void studentListBuilder(){
+
+
+
+        //adding data to table
+        //TableLayout tableLayout = findViewById(R.id.attandaceListTable);
+
+
+
+        Response.Listener<String> response1Listener=new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonResponse = new JSONObject(response);
+                    int count = jsonResponse.getInt("count");
+                    for (int i= 0; i < count ; i++){
+                        String temp=jsonResponse.getString("name"+i);
+                        String temp2=jsonResponse.getString("email"+i);
+                        String[] tempList = {temp,temp2};
+                        studentList.add(tempList);
+                    }
+
+                    studentListProcess();
+
+                } catch (JSONException e) {
+                    Toast.makeText(AttandanceSwipeMethodActivity.this,e.toString(),Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
+
+            }
+        };
+
+        AttandanceStudentListRequest attandanceStudentListRequest= new AttandanceStudentListRequest(selectedCourse,response1Listener);
+        RequestQueue queue = Volley.newRequestQueue(AttandanceSwipeMethodActivity.this);
+        queue.add(attandanceStudentListRequest);
+
+
+
+    }
+
+    private void studentListProcess(){
+
+
+        /*
+        a1.clear();
+        swipeCardAdapter.notifyDataSetChanged();
+        */
+
+        for (String[] student: studentList) {
+
+            //Student Data
+
+
+            // a1.add(new SwipeCard("MERTTTALEEE","CSE800"));
+
+            a1.add(new SwipeCard(student[0],selectedCourse,student[1]));
+
+        }
+        swipeCardAdapter.notifyDataSetChanged();
+        //a1.add(new SwipeCard("Mertaleeey","CSE900"));
+
+
 
     }
 
