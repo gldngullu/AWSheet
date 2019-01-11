@@ -95,7 +95,7 @@ import java.util.ArrayList;
                                 public void onClick(DialogInterface dialog, int which) {
                                     //REMOVE COURSE REQUEST!
                                     removeCourse(urlDropCourse);
-                                    Intent CourseRemove = new Intent(Courses_Student.this, Courses_Instructor.class);
+                                    Intent CourseRemove = new Intent(Courses_Student.this, Courses_Student.class);
                                     CourseRemove.putExtra("email", getIntent().getStringExtra("email"));
                                     Courses_Student.this.startActivity(CourseRemove);
                                     finish();
