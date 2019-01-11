@@ -13,6 +13,7 @@ public class CourseSelectRequest extends StringRequest {
     public CourseSelectRequest(String ImailAdress, String AmailAdress, String coursecode, String syllabus, Response.Listener<String> listener) {
         super(Method.POST, SelectCourse_request_URL, listener, null);
         params = new HashMap<>();
+        System.out.println(ImailAdress+AmailAdress+syllabus+coursecode);
         params.put("AmailAdress", AmailAdress);
         params.put("ImailAdress", ImailAdress);
         params.put("coursecode", coursecode);

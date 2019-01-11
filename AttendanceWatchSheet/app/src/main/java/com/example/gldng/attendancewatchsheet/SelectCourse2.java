@@ -52,6 +52,7 @@ public class SelectCourse2 extends AppCompatActivity implements NavigationMenuAc
     private JSONArray resultAssistantName;
     private ListView listvi;
     private TextView GooddayText;
+    JSONArray Nothing;
     private OnItemSelectedListener Listener = new OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -79,6 +80,7 @@ public class SelectCourse2 extends AppCompatActivity implements NavigationMenuAc
         gradeText = (EditText) findViewById(R.id.gradeText);
         gradePercent = (EditText) findViewById(R.id.percent);
         courselist = (Spinner) this.findViewById(R.id.courselist);
+
         Enrollbtn.setEnabled(true);
         getDataToSpinner(CourseNamesSpinnerURL);
 
@@ -128,7 +130,6 @@ public class SelectCourse2 extends AppCompatActivity implements NavigationMenuAc
         Enrollbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent back = new Intent(SelectCourse2.this, Courses_Instructor.class);
                 CourseSelectRequestStudentCourseName = courselist.getSelectedItem().toString();
                 if (CourseSelectRequestStudentCourseName.isEmpty()) {
                     Toast.makeText(SelectCourse2.this, "YOU MUST CHOOSE A COURSE NAME", Toast.LENGTH_LONG).show();
@@ -153,13 +154,12 @@ public class SelectCourse2 extends AppCompatActivity implements NavigationMenuAc
 
                         }
                     };
-
-                    String emailStu = getIntent().getStringExtra("email");
-                    CourseSelectStudentRequest courseSelectionRequest = new CourseSelectStudentRequest(emailStu,CourseSelectRequestStudentCourseName, responselistener);
-                    RequestQueue queue = Volley.newRequestQueue(SelectCourse2.this);
-                    queue.add(courseSelectionRequest);
-
-                    SelectCourse2.this.startActivity(back);
+                    String mail = getIntent().getStringExtra("email");
+                    String URL = ("http://awsheet.cf/connect/EnrollCourse.php?coursecode="+CourseSelectRequestStudentCourseName+"&mail="+mail);
+                    sendQuary(URL);
+                    Intent CourseEnroll = new Intent(SelectCourse2.this, Courses_Student.class);
+                    CourseEnroll.putExtra("email", getIntent().getStringExtra("email"));
+                    SelectCourse2.this.startActivity(CourseEnroll);
                     finish();
                 }
             }
@@ -173,6 +173,30 @@ public class SelectCourse2 extends AppCompatActivity implements NavigationMenuAc
                 finish();
             }
         });
+
+    }
+    public void sendQuary (String URL){
+        StringRequest stringRequest = new StringRequest(URL, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                JSONObject j = null;
+                try {
+                    j = new JSONObject(response);
+                    Nothing = j.getJSONArray("result");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                    }
+                });
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
 
     }
 
@@ -212,7 +236,7 @@ public class SelectCourse2 extends AppCompatActivity implements NavigationMenuAc
             try {
                 JSONObject json = j.getJSONObject(i);
                 // System.out.println(json.getString("coursecode"));
-                Coursenames.add(json.getString("coursecode"));
+                Coursenames.add(json.getString("CourseCode"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }

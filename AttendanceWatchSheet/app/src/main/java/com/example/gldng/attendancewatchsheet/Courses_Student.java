@@ -38,7 +38,7 @@ import java.util.ArrayList;
         ArrayAdapter<String> adaptor;
         private ArrayList<String> Coursenames;
         private JSONArray InstCourses;
-
+        String urlDropCourse;
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -70,9 +70,9 @@ import java.util.ArrayList;
 
                 }
             };
-            String emailIns = getIntent().getStringExtra("email");
-            System.out.println(emailIns);
-            GetInstructorCoursesRequest coursereq= new GetInstructorCoursesRequest(emailIns,responselistener);
+            String email = getIntent().getStringExtra("email");
+            System.out.println(email);
+            GetInstructorCoursesRequest coursereq= new GetInstructorCoursesRequest(email,responselistener);
             RequestQueue queue = Volley.newRequestQueue(Courses_Student.this);
             queue.add(coursereq);
 
@@ -82,9 +82,11 @@ import java.util.ArrayList;
             course_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    String selected= course_list.getItemAtPosition(position).toString();
+                  urlDropCourse = "http://awsheet.cf/connect/dropCourseStu.php?CourseCode="+selected;
                     AlertDialog.Builder alert =
                             new AlertDialog.Builder(Courses_Student.this);
-                    String outAlert="AWW SHEET";
+                    String outAlert="Would you like to Remove it ! ";
 
                     alert.setMessage(outAlert)
                             .setCancelable(true)
@@ -92,6 +94,11 @@ import java.util.ArrayList;
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     //REMOVE COURSE REQUEST!
+                                    removeCourse(urlDropCourse);
+                                    Intent CourseRemove = new Intent(Courses_Student.this, Courses_Instructor.class);
+                                    CourseRemove.putExtra("email", getIntent().getStringExtra("email"));
+                                    Courses_Student.this.startActivity(CourseRemove);
+                                    finish();
                                 }
                             })
                             .setPositiveButton("Ok !", new DialogInterface.OnClickListener() {
@@ -115,8 +122,35 @@ import java.util.ArrayList;
                     finish();
                 }
             });
-        }
 
+        String Url1= "http://awsheet.cf/connect/takenCourseStudent.php?mailAdress="+email;
+        System.out.println(Url1);
+        getDatatoList(Url1);///URL FIXED !!!
+    }
+
+        public void removeCourse(String URL){
+            StringRequest stringRequest = new StringRequest(URL, new Response.Listener<String>() {
+
+                @Override
+                public void onResponse(String response) {
+                    JSONObject j = null;
+                    try {
+                        j = new JSONObject(response);
+                        InstCourses = j.getJSONArray("result");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                        }
+                    });
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
+            requestQueue.add(stringRequest);
+
+        }
         private void getDatatoList(String URL){
             StringRequest stringRequest = new StringRequest(URL, new Response.Listener<String>() {
 
