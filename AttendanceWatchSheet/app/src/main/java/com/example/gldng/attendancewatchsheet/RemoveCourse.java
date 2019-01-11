@@ -27,7 +27,7 @@ public class RemoveCourse extends Fragment {
     private JSONArray resultCourseName;
     private ArrayList<String> Coursenames;
     private Spinner courseSpinner;
-    private String CourseNamesSpinnerURL = "http://awsheet.cf/connect/allcourses.php";
+    private String CourseNamesSpinnerURL = "http://awsheet.cf/connect/reallyAllCourses.php";
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

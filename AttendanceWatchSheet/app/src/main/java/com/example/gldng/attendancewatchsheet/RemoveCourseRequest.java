@@ -12,7 +12,7 @@ public class RemoveCourseRequest extends StringRequest{
     private Map<String, String> params;
 
     public RemoveCourseRequest(String courseCode, Response.Listener<String> listener) {
-        super(Request.Method.POST, removeCourse_Request_Url, listener, null);
+        super(Request.Method.GET, removeCourse_Request_Url, listener, null);
         params = new HashMap<>();
         params.put("courseCode", courseCode);
     }
