@@ -1,5 +1,6 @@
 package com.example.gldng.attendancewatchsheet;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -23,6 +24,7 @@ public class AddAdmin extends Fragment {
     EditText adminName;
     EditText adminEmail;
     EditText adminSurname;
+     String password;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -39,16 +41,21 @@ public class AddAdmin extends Fragment {
 
     }
 
+    public  String getPassword() {
+        return password;
+    }
+
     public void addNewAdmin(){
         final String adminSurnameText = adminSurname.getText().toString();
         final String adminNameText = adminName.getText().toString();
         final String adminEmailText = adminEmail.getText().toString()+"@isikun.edu.tr";
-        final String password = Integer.toString(((Double)(Math.floor(100000 + Math.random() * 900000))).intValue());
+        password = Integer.toString(((Double)(Math.floor(100000 + Math.random() * 900000))).intValue());
         Response.Listener<String> responselistener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONObject jsonResponse = new JSONObject(response);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -58,6 +65,7 @@ public class AddAdmin extends Fragment {
         RequestQueue queue = Volley.newRequestQueue(AddAdmin.this.getContext());
         queue.add(addUserRequest);
     }
+
 
 
 }

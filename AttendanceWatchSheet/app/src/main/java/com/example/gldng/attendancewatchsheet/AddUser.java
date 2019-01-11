@@ -86,7 +86,9 @@ public class AddUser extends AppCompatActivity implements NavigationMenuActions{
                             public void onClick(DialogInterface dialog, int which) {
                                 try{
                                     fragment1.addNewInstructor();
+
                                     Toast.makeText(v.getContext(), "New instructor added successfully", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(v.getContext(), "Your Password is: " + fragment1.getPassword(), Toast.LENGTH_LONG).show();
                                 }catch (Exception e){
                                     Toast.makeText(v.getContext(), "New instructor cannot be added", Toast.LENGTH_LONG).show();
                                 }
@@ -107,9 +109,10 @@ public class AddUser extends AppCompatActivity implements NavigationMenuActions{
                             public void onClick(DialogInterface dialog, int which) {
                                 try{
                                     fragment2.addNewAssistant();
-                                    Toast.makeText(v.getContext(), "New admin added successfully", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(v.getContext(), "New Assistant added successfully", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(v.getContext(), "Your Password is: " + fragment2.getPassword(), Toast.LENGTH_LONG).show();
                                 }catch (Exception e){
-                                    Toast.makeText(v.getContext(), "New admin cannot be added", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(v.getContext(), "New Assistant cannot be added", Toast.LENGTH_LONG).show();
                                 }
                                 removeFragment(-2);
                             }
@@ -128,6 +131,7 @@ public class AddUser extends AppCompatActivity implements NavigationMenuActions{
                                 try{
                                     fragment3.addNewAdmin();
                                     Toast.makeText(v.getContext(), "New admin added successfully", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(v.getContext(), "Your Password is: " + fragment3.getPassword(), Toast.LENGTH_LONG).show();
                                 }catch (Exception e){
                                     Toast.makeText(v.getContext(), "New admin cannot be added", Toast.LENGTH_LONG).show();
                                 }

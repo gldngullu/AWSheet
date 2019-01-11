@@ -28,6 +28,7 @@ public class AddInstructor extends Fragment {
     EditText instructorName;
     EditText instructorEmail;
     EditText instructorSurname;
+    String password;
 
     @Nullable
     @Override
@@ -44,11 +45,15 @@ public class AddInstructor extends Fragment {
         instructorEmail = getView().findViewById(R.id.instructorEmail);
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public void addNewInstructor() {
         final String instructorSurnameText = instructorSurname.getText().toString();
         final String instructorNameText = instructorName.getText().toString();
         final String instructorEmailText = instructorEmail.getText().toString() + "@isikun.edu.tr";
-        final String password = Integer.toString(((Double) (Math.floor(100000 + Math.random() * 900000))).intValue());
+        password = Integer.toString(((Double) (Math.floor(100000 + Math.random() * 900000))).intValue());
         Response.Listener<String> responselistener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

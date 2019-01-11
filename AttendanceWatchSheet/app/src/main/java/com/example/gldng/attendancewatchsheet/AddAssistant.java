@@ -27,6 +27,7 @@ public class AddAssistant extends Fragment {
     EditText assistantName;
     EditText assistantEmail;
     EditText assistantSurname;
+    String password;
 
     @Nullable
     @Override
@@ -44,11 +45,15 @@ public class AddAssistant extends Fragment {
 
     }
 
-        public void addNewAssistant(){
+    public  String getPassword() {
+        return password;
+    }
+
+    public void addNewAssistant(){
             final String assistantSurnameText = assistantSurname.getText().toString();
             final String assistantNameText = assistantName.getText().toString();
             final String assistantEmailText = assistantEmail.getText().toString()+"@isikun.edu.tr";
-            final String password = Integer.toString(((Double)(Math.floor(100000 + Math.random() * 900000))).intValue());
+             password = Integer.toString(((Double)(Math.floor(100000 + Math.random() * 900000))).intValue());
             Response.Listener<String> responselistener = new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
